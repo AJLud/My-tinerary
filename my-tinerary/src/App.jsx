@@ -43,7 +43,7 @@ const App = () => (
         <Route path="/trips/:trip_id" exact>
           <Trip />
         </Route>
-        <Route path="/trips/new_trip" exact>
+        <Route path="/trips/new-trip" exact>
           <NewTrip />
         </Route>
         <Route path="/profile" exact>
