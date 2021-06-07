@@ -1,7 +1,14 @@
 import React from 'react';
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Trips from './Components/Trips';
+import Profile from './Components/Profile';
+import ProfileSettings from './Components/ProfileSettings';
+import Trip from './Components/Trip';
+import NewTrip from './Components/NewTrip';
+import Buddies from './Components/Buddies';
+import Navbar from './Components/Navbar';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,21 +29,35 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App = () => {
-  return (
-    <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to="/page/Inbox" />
-            </Route>
-            <Route path="/page/:name" exact={true}></Route>
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
-    </IonApp>
-  );
-};
+const App = () => (
+  <IonApp>
+    <IonReactRouter>
+      <Navbar />
+      <IonRouterOutlet id="main">
+        <Route path="/trips" exact>
+          <Trips />
+        </Route>
+        <Route path="/trips/archive" exact>
+          <Trips />
+        </Route>
+        <Route path="/trips/:trip_id" exact>
+          <Trip />
+        </Route>
+        <Route path="/trips/new_trip" exact>
+          <NewTrip />
+        </Route>
+        <Route path="/profile" exact>
+          <Profile />
+        </Route>
+        <Route path="/profile/settings" exact>
+          <ProfileSettings />
+        </Route>
+        <Route path="/profile/buddies" exact>
+          <Buddies />
+        </Route>
+      </IonRouterOutlet>
+    </IonReactRouter>
+  </IonApp>
+);
 
 export default App;
