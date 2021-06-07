@@ -1,0 +1,7 @@
+{
+  "name": "my-tinerary",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
