@@ -7,15 +7,18 @@ import {
   IonCardSubtitle,
   IonButton,
 } from '@ionic/react';
+import { Link } from 'react-router-dom';
 
 const Homepage = () => (
   <>
     <IonButton>Current Trips</IonButton>
     <IonButton>Previous Trips</IonButton>
-    <IonButton color="secondary">Start new trip!!!</IonButton>
+    <IonButton color="secondary">
+      <Link to="/trips/new-trip">Start new trip!!!</Link>
+    </IonButton>
     <IonCard>
       <IonCardHeader>
-        <IonCardSubtitle>54 days until </IonCardSubtitle>
+        <IonCardSubtitle>54 days until... </IonCardSubtitle>
         <IonCardTitle>Spain</IonCardTitle>
       </IonCardHeader>
       <IonCardContent>
@@ -26,7 +29,7 @@ const Homepage = () => (
     </IonCard>
     <IonCard>
       <IonCardHeader>
-        <IonCardSubtitle>194 days until </IonCardSubtitle>
+        <IonCardSubtitle>194 days until... </IonCardSubtitle>
         <IonCardTitle>New York</IonCardTitle>
       </IonCardHeader>
       <IonCardContent>
@@ -37,7 +40,7 @@ const Homepage = () => (
     </IonCard>
     <IonCard>
       <IonCardHeader>
-        <IonCardSubtitle>404 days until </IonCardSubtitle>
+        <IonCardSubtitle>404 days until... </IonCardSubtitle>
         <IonCardTitle>Ireland</IonCardTitle>
       </IonCardHeader>
       <IonCardContent>
@@ -48,7 +51,7 @@ const Homepage = () => (
     </IonCard>
     <IonCard>
       <IonCardHeader>
-        <IonCardSubtitle>404 days until </IonCardSubtitle>
+        <IonCardSubtitle>404 days until... </IonCardSubtitle>
         <IonCardTitle>Ireland</IonCardTitle>
       </IonCardHeader>
       <IonCardContent>

@@ -7,13 +7,13 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonPage,
   IonButton,
 } from '@ionic/react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NewTrip = () => (
-  <IonPage>
+  <>
     <IonHeader>
       <IonToolbar>
         <IonTitle>Plan New Trip ⛅ </IonTitle>
@@ -41,10 +41,16 @@ const NewTrip = () => (
         <IonItem>
           <IonInput type="text" placeholder="Notes..." />
         </IonItem>
-        <IonButton expand="block">Submit</IonButton>
+        <IonButton expand="block" color="danger">
+          <Link to="/trips">Submit</Link>
+        </IonButton>
       </IonList>
+
+      <IonButton color="success">
+        <Link to="/trips">Cancel</Link>
+      </IonButton>
     </IonContent>
-  </IonPage>
+  </>
 );
 
 export default NewTrip;
