@@ -1,7 +1,17 @@
-import React from 'react';
-import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { React, useState } from 'react';
+import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Trips from './Components/Trips';
+import Profile from './Components/Profile';
+import ProfileSettings from './Components/ProfileSettings';
+import Trip from './Components/Trip';
+import NewTrip from './Components/NewTrip';
+import Buddies from './Components/Buddies';
+import Navbar from './Components/Navbar';
+import SignIn from './Components/SignIn';
+// import RequireLogin from './Components/RequireLogin';
+import UserContext from './Contexts/User';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,18 +33,43 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App = () => {
+  const [user, setUser] = useState({ name: 'Elijah' });
+
   return (
     <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
+      <UserContext.Provider value={{ user }}>
+        {/* <RequireLogin> */}
+        <IonReactRouter>
+          <Route path="/" exact>
+            <SignIn user={user} setUser={setUser} />
+          </Route>
+          <Navbar />
           <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to="/page/Inbox" />
+            <Route path="/trips" exact>
+              <Trips />
             </Route>
-            <Route path="/page/:name" exact={true}></Route>
+            <Route path="/trips/archive" exact>
+              <Trips />
+            </Route>
+            <Route path="/trips/:trip_id" exact>
+              <Trip />
+            </Route>
+            <Route path="/trips/new-trip" exact>
+              <NewTrip />
+            </Route>
+            <Route path="/profile" exact>
+              <Profile value={{ setUser }} />
+            </Route>
+            <Route path="/profile/settings" exact>
+              <ProfileSettings />
+            </Route>
+            <Route path="/buddies" exact>
+              <Buddies />
+            </Route>
           </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
+        </IonReactRouter>
+        {/* </RequireLogin> */}
+      </UserContext.Provider>
     </IonApp>
   );
 };
