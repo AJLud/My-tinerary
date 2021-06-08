@@ -42,53 +42,6 @@ const Profile = () => (
         <IonLabel color="secondary">Archived Trips</IonLabel>
       </IonItem>
 
-      <IonItem>
-        <IonList>
-          <IonItem>
-            <IonLabel color="secondary">Buddies</IonLabel>
-            <IonButton slot="end" color="success">
-              Add Buddy
-            </IonButton>
-          </IonItem>
-
-          <IonItem>
-            <IonAvatar slot="start">
-              <IonImg src={item.src} />
-            </IonAvatar>
-            <IonLabel color="tertiary">
-              <h3>Shekiel</h3>
-            </IonLabel>
-            <IonButton slot="end" color="danger">
-              Remove Buddy
-            </IonButton>
-          </IonItem>
-
-          <IonItem>
-            <IonAvatar slot="start">
-              <IonImg src={item.src} />
-            </IonAvatar>
-            <IonLabel color="tertiary">
-              <h3>Johann</h3>
-            </IonLabel>
-            <IonButton slot="end" color="danger">
-              Remove Buddy
-            </IonButton>
-          </IonItem>
-
-          <IonItem>
-            <IonAvatar slot="start">
-              <IonImg src={item.src} />
-            </IonAvatar>
-            <IonLabel color="tertiary">
-              <h3>Anna</h3>
-            </IonLabel>
-            <IonButton slot="end" color="danger">
-              Remove Buddy
-            </IonButton>
-          </IonItem>
-        </IonList>
-      </IonItem>
-
       <IonItem lines="none">
         <IonLabel color="secondary">Settings</IonLabel>
       </IonItem>
