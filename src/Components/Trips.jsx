@@ -41,8 +41,8 @@ const Homepage = () => (
     </IonButton>
 
     <IonCard>
-      <IonButton size="large">
-        <Link to="trips/:trip_id">
+      <IonButton size="large" color="light">
+        <Link to="/trips/1">
           <IonCardHeader>
             <IonCardSubtitle>54 days until... </IonCardSubtitle>
             <IonCardTitle>Spain</IonCardTitle>
