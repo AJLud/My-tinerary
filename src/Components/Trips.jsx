@@ -1,48 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  IonCardContent,
+  IonButton,
   IonCard,
   IonCardHeader,
   IonCardTitle,
-  IonCardSubtitle,
-  IonButton,
+  IonCardContent,
 } from '@ionic/react';
 import { Link } from 'react-router-dom';
 
-// const [trips, setTrip] = useState({
-//   trips: [
-//     {
-//       trip_id: 01,
-//       trip_name: 'Big Northcoders Sesh',
-//       destination: 'Manchester',
-//       start_date: '2021-06-08T20:11:00.000Z',
-//     },
-//     {
-//       trip_id:02,
-//       trip_name: 'Middle East Mashup',
-//       destination: 'Egypt',
-//       start_date: '2021-10-11T20:11:00.000Z',
-//     },
-//     {
-//       trip_id: 03,
-//       trip_name: 'West Midlands Mix Up',
-//       destination: 'Birmingham',
-//       start_date: '2022-01-11T20:11:00.000Z',
-//     },
-//   ],
-// });
+import getTripsByUser from '../api';
 
-const Homepage = () => (
-  <>
-    <IonButton>Current Trips</IonButton>
-    <IonButton>Previous Trips</IonButton>
-    <IonButton color="secondary">
-      <Link to="/trips/new-trip">Start new trip!!!</Link>
-    </IonButton>
+const Homepage = ({ user }) => {
+  const [userTrips, setUserTrips] = useState([]);
 
-    <IonCard>
-      <IonButton size="large" color="light">
-        <Link to="/trips/1">
+  useEffect(() => {
+    getTripsByUser(user, setUserTrips);
+  }, []);
+
+  return (
+    <>
+      <IonButton>Current Trips</IonButton>
+      <IonButton>Previous Trips</IonButton>
+      <IonButton color="secondary">
+        <Link to="/trips/new-trip">Start new trip!!!</Link>
+      </IonButton>
+      {userTrips.map((trip) => (
+        <IonCard key={trip.trip_name}>
+          <IonCardHeader>
+            <IonCardTitle>{trip.trip_name}</IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>{trip.destination}</IonCardContent>
+        </IonCard>
+      ))}
+
+      {/* <IonCard>
+        <IonButton size="large">
+        <Link to="trips/:trip_id">
           <IonCardHeader>
             <IonCardSubtitle>54 days until... </IonCardSubtitle>
             <IonCardTitle>Spain</IonCardTitle>
@@ -53,43 +46,44 @@ const Homepage = () => (
             spirit clean.
           </IonCardContent>
         </Link>
-      </IonButton>
-    </IonCard>
+         </IonButton>
+      </IonCard>
 
-    <IonCard>
-      <IonCardHeader>
-        <IonCardSubtitle>194 days until... </IonCardSubtitle>
-        <IonCardTitle>New York</IonCardTitle>
-      </IonCardHeader>
-      <IonCardContent>
-        Keep close to Nature&apos;s heart... and break clear away, once in
-        awhile, and climb a mountain or spend a week in the woods. Wash your
-        spirit clean.
-      </IonCardContent>
-    </IonCard>
-    <IonCard>
-      <IonCardHeader>
-        <IonCardSubtitle>404 days until... </IonCardSubtitle>
-        <IonCardTitle>Ireland</IonCardTitle>
-      </IonCardHeader>
-      <IonCardContent>
-        Keep close to Nature&apos;s heart... and break clear away, once in
-        awhile, and climb a mountain or spend a week in the woods. Wash your
-        spirit clean.
-      </IonCardContent>
-    </IonCard>
-    <IonCard>
-      <IonCardHeader>
-        <IonCardSubtitle>404 days until... </IonCardSubtitle>
-        <IonCardTitle>Ireland</IonCardTitle>
-      </IonCardHeader>
-      <IonCardContent>
-        Keep close to Nature&apos;s heart... and break clear away, once in
-        awhile, and climb a mountain or spend a week in the woods. Wash your
-        spirit clean.
-      </IonCardContent>
-    </IonCard>
-  </>
-);
+      <IonCard>
+        <IonCardHeader>
+          <IonCardSubtitle>194 days until... </IonCardSubtitle>
+          <IonCardTitle>New York</IonCardTitle>
+        </IonCardHeader>
+        <IonCardContent>
+          Keep close to Nature&apos;s heart... and break clear away, once in
+          awhile, and climb a mountain or spend a week in the woods. Wash your
+          spirit clean.
+        </IonCardContent>
+      </IonCard>
+      <IonCard>
+        <IonCardHeader>
+          <IonCardSubtitle>404 days until... </IonCardSubtitle>
+          <IonCardTitle>Ireland</IonCardTitle>
+        </IonCardHeader>
+        <IonCardContent>
+          Keep close to Nature&apos;s heart... and break clear away, once in
+          awhile, and climb a mountain or spend a week in the woods. Wash your
+          spirit clean.
+        </IonCardContent>
+      </IonCard>
+      <IonCard>
+        <IonCardHeader>
+          <IonCardSubtitle>404 days until... </IonCardSubtitle>
+          <IonCardTitle>Ireland</IonCardTitle>
+        </IonCardHeader>
+        <IonCardContent>
+          Keep close to Nature&apos;s heart... and break clear away, once in
+          awhile, and climb a mountain or spend a week in the woods. Wash your
+          spirit clean.
+        </IonCardContent>
+      </IonCard> */}
+    </>
+  );
+};
 
 export default Homepage;
