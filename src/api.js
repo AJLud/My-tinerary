@@ -1,16 +1,19 @@
 import db from './Config/firebase-setup';
 
-const getTrips = (username) => {
-  const tripsFromFirebase = [];
+const getTripsByUser = (user, setUserTrips) => {
+  const userTripsArray = [];
   db.collection('trips')
-    .where('owner', '==', username)
+    .where('owner', '==', user.username)
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
-        tripsFromFirebase.push(doc.data());
+        const tripData = doc.data();
+        const tripId = doc.id;
+        const combinedTripIdAndData = { tripId, ...tripData };
+        userTripsArray.push(combinedTripIdAndData);
       });
+      setUserTrips(userTripsArray);
     });
-  return tripsFromFirebase;
 };
 
-export default getTrips;
+export default getTripsByUser;

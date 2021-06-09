@@ -7,45 +7,15 @@ import {
   IonCardContent,
 } from '@ionic/react';
 import { Link } from 'react-router-dom';
-import db from '../Config/firebase-setup';
-// import getTrips from '../api';
 
-const Homepage = (/* { user } */) => {
-  // const [userTrips, setUserTrips] = useState([]);
+import getTripsByUser from '../api';
 
-  // useEffect(() => {
-  //   setUserTrips(
-  //     (currUserTrips) => {
-  //       const newUserTrips = [...currUserTrips];
-  //       newUserTrips.trips = getTrips(user.username);
-  //       return newUserTrips;
-  //     },
-  //   );
-
-  const [data, setData] = useState([]);
-
-  const getFirestore = () => {
-    const data1 = [];
-    db.collection('trips')
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          const dataObj = doc.data();
-          const dataId = doc.id;
-          const combined = { dataId, ...dataObj };
-          // i need this explaining lol whats going on
-          // needs adding into api.js
-          // needs adding into a different state (user specific trip in userTrips?)
-          data1.push(combined);
-        });
-        setData(data1);
-      });
-  };
+const Homepage = ({ user }) => {
+  const [userTrips, setUserTrips] = useState([]);
 
   useEffect(() => {
-    getFirestore();
+    getTripsByUser(user, setUserTrips);
   }, []);
-  // }, []);
 
   return (
     <>
@@ -54,8 +24,7 @@ const Homepage = (/* { user } */) => {
       <IonButton color="secondary">
         <Link to="/trips/new-trip">Start new trip!!!</Link>
       </IonButton>
-
-      {data.map((trip) => (
+      {userTrips.map((trip) => (
         <IonCard key={trip.trip_name}>
           <IonCardHeader>
             <IonCardTitle>{trip.trip_name}</IonCardTitle>
