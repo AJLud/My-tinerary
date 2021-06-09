@@ -33,7 +33,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App = () => {
-  const [user, setUser] = useState({ name: 'Elijah' });
+  const [user, setUser] = useState({ username: 'bex123' });
 
   return (
     <IonApp>
@@ -46,7 +46,7 @@ const App = () => {
           <Navbar />
           <IonRouterOutlet id="main">
             <Route path="/trips" exact>
-              <Trips />
+              <Trips user={user} />
             </Route>
             <Route path="/trips/archive" exact>
               <Trips />
