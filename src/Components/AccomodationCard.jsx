@@ -18,7 +18,9 @@ const AccomodationCard = () => (
         <IonItem>Duration of Stay</IonItem>
         <IonItem>Type of board</IonItem>
       </IonList>
-      <IonButton>Edit</IonButton>
+      <IonButton color="success" href="/form">
+        Edit
+      </IonButton>
     </IonCard>
   </>
 );

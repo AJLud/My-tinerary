@@ -18,7 +18,9 @@ const ExcursionCard = () => (
         <IonItem>Location</IonItem>
         <IonItem>Mode of transport</IonItem>
       </IonList>
-      <IonButton>Edit</IonButton>
+      <IonButton color="success" href="/form">
+        Edit
+      </IonButton>
     </IonCard>
   </>
 );

@@ -11,13 +11,15 @@ import {
 const TravelCard = () => (
   <>
     <IonCard>
-      <IonCardTitle>Travel </IonCardTitle>
+      <IonCardTitle>Travel ✈️</IonCardTitle>
       <IonList>
         <IonItem>Airport</IonItem>
         <IonItem>Departure Time</IonItem>
         <IonItem>Flight number</IonItem>
       </IonList>
-      <IonButton>Edit</IonButton>
+      <IonButton color="success" href="/form">
+        Edit
+      </IonButton>
     </IonCard>
   </>
 );
