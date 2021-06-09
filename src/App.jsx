@@ -10,6 +10,7 @@ import NewTrip from './Components/NewTrip';
 import Buddies from './Components/Buddies';
 import Navbar from './Components/Navbar';
 import SignIn from './Components/SignIn';
+import FormPage from './Components/FormPage';
 // import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
 
@@ -50,6 +51,9 @@ const App = () => {
             </Route>
             <Route path="/trips/archive" exact>
               <Trips />
+            </Route>
+            <Route path="/form" exact>
+              <FormPage />
             </Route>
             <Route path="/trips/:trip_id" exact>
               <Trip />
