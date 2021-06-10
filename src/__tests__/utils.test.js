@@ -59,4 +59,4 @@ describe('dateDifference', () => {
 
 // const date = Math.floor(Date.now() / 1000);
 // console.log(typeof date);
-//gives seconds in number
+// gives seconds in number
