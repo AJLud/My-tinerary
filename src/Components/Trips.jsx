@@ -26,7 +26,11 @@ const Homepage = ({ user }) => {
         <Link to="/trips/new-trip">Start new trip!!!</Link>
       </IonButton>
       {userTrips.map((trip) => (
-        <IonCard key={trip.trip_name} color="light" href="/buddies">
+        <IonCard
+          key={trip.trip_name}
+          color="light"
+          href={`/trips/${trip.tripId}`}
+        >
           <IonCardHeader>
             <IonCardTitle>{trip.trip_name}</IonCardTitle>
           </IonCardHeader>
