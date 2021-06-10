@@ -15,7 +15,6 @@ const Trip = () => {
   useEffect(() => {
     getTripById(trip, setTrip);
   }, []);
-
   return (
     <>
       <IonCard color="light">
@@ -30,13 +29,13 @@ const Trip = () => {
         <IonCardSubtitle>{'With: '}</IonCardSubtitle>
       </IonCard>
 
-      <TravelCard />
+      <TravelCard trip={trip} />
 
-      <AccomodationCard />
+      <AccomodationCard trip={trip} />
 
-      <ExcursionCard />
+      <ExcursionCard trip={trip} />
 
-      <BuddiesCard />
+      <BuddiesCard trip={trip} />
 
       <IonCard>
         <IonCardTitle>Notes</IonCardTitle>

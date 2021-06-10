@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   IonCard,
   IonCardTitle,
@@ -6,34 +7,37 @@ import {
   IonItem,
   IonItemDivider,
   IonInput,
+  IonButton,
 } from '@ionic/react';
 
 const FormPage = () => (
   <>
     <IonCard>
-      <IonCardTitle>FORM</IonCardTitle>
+      <IonCardTitle>Travel Details:</IonCardTitle>
     </IonCard>
 
     <IonList>
-      <IonItemDivider>Default Input with Placeholder</IonItemDivider>
+      <IonItemDivider>{'Airport: '}</IonItemDivider>
       <IonItem>
-        <IonInput placeholder="Enter Input">I am an input</IonInput>
+        <IonInput />
       </IonItem>
 
-      <IonItemDivider>
-        Input with clear button when there is a value
-      </IonItemDivider>
+      <IonItemDivider>{'Flight Number: '}</IonItemDivider>
       <IonItem>
-        <IonInput placeholder="Enter Input">I am an input</IonInput>
+        <IonInput />
       </IonItem>
 
-      <IonItemDivider>Number type input</IonItemDivider>
+      <IonItemDivider>{'Flight Time: '}</IonItemDivider>
       <IonItem>
-        <IonInput type="number" placeholder="Enter Number">
-          I am an input
-        </IonInput>
+        <IonInput />
       </IonItem>
+      <IonButton color="success">
+        <Link to="/form">Submit</Link>
+      </IonButton>
     </IonList>
+    <IonButton color="danger">
+      <Link to="/trips/">Back to Trips</Link>
+    </IonButton>
   </>
 );
 
