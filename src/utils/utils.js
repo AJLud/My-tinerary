@@ -15,10 +15,16 @@ const countdown = ({ seconds }) => {
     return `${hours} hour${pluralized(hours)} until`;
   }
 
-  if (seconds < 3600) {
+  if (seconds < 3600 && seconds >= 0) {
     return "Don't forget your toothbrush!";
   }
   return '';
 };
 
-export default countdown;
+const dateDifference = (currDate, futureTripDate) => {
+  if (!futureTripDate) return { seconds: 0 };
+  const timeElapsed = futureTripDate - currDate;
+  return { seconds: timeElapsed };
+};
+
+module.exports = { countdown, dateDifference };
