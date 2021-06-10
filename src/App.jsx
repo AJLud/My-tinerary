@@ -34,7 +34,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App = () => {
-  const [user, setUser] = useState({ username: 'bex123' });
+  const [user, setUser] = useState({ username: 'Bex123' });
 
   return (
     <IonApp>

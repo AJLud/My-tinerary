@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import {
   IonButton,
   IonCard,
@@ -7,17 +8,21 @@ import {
   IonCardSubtitle,
   IonCardContent,
 } from '@ionic/react';
-import { Link } from 'react-router-dom';
+
+import { Link, useHistory } from 'react-router-dom';
 
 import getTripsByUser from '../api';
 
 const Homepage = ({ user }) => {
+  const history = useHistory();
   const [userTrips, setUserTrips] = useState([]);
-
   useEffect(() => {
     getTripsByUser(user, setUserTrips);
   }, []);
-
+  const setText = (trip) => {
+    console.log(trip.tripId);
+    history.push(`/trips/${trip.tripId}`);
+  };
   return (
     <>
       <IonButton>Current Trips</IonButton>
@@ -29,7 +34,7 @@ const Homepage = ({ user }) => {
         <IonCard
           key={trip.trip_name}
           color="light"
-          href={`/trips/${trip.tripId}`}
+          onClick={() => setText(trip)}
         >
           <IonCardHeader>
             <IonCardTitle>{trip.trip_name}</IonCardTitle>
@@ -51,58 +56,7 @@ const Homepage = ({ user }) => {
           </IonCardContent>
         </IonCard>
       ))}
-
-      {/* <IonCard>
-        <IonButton size="large">
-        <Link to="trips/:trip_id">
-          <IonCardHeader>
-            <IonCardSubtitle>54 days until... </IonCardSubtitle>
-            <IonCardTitle>Spain</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            Keep close to Nature&apos;s heart... and break clear away, once in
-            awhile, and climb a mountain or spend a week in the woods. Wash your
-            spirit clean.
-          </IonCardContent>
-        </Link>
-         </IonButton>
-      </IonCard>
-
-      <IonCard>
-        <IonCardHeader>
-          <IonCardSubtitle>194 days until... </IonCardSubtitle>
-          <IonCardTitle>New York</IonCardTitle>
-        </IonCardHeader>
-        <IonCardContent>
-          Keep close to Nature&apos;s heart... and break clear away, once in
-          awhile, and climb a mountain or spend a week in the woods. Wash your
-          spirit clean.
-        </IonCardContent>
-      </IonCard>
-      <IonCard>
-        <IonCardHeader>
-          <IonCardSubtitle>404 days until... </IonCardSubtitle>
-          <IonCardTitle>Ireland</IonCardTitle>
-        </IonCardHeader>
-        <IonCardContent>
-          Keep close to Nature&apos;s heart... and break clear away, once in
-          awhile, and climb a mountain or spend a week in the woods. Wash your
-          spirit clean.
-        </IonCardContent>
-      </IonCard>
-      <IonCard>
-        <IonCardHeader>
-          <IonCardSubtitle>404 days until... </IonCardSubtitle>
-          <IonCardTitle>Ireland</IonCardTitle>
-        </IonCardHeader>
-        <IonCardContent>
-          Keep close to Nature&apos;s heart... and break clear away, once in
-          awhile, and climb a mountain or spend a week in the woods. Wash your
-          spirit clean.
-        </IonCardContent>
-      </IonCard> */}
     </>
   );
 };
-
 export default Homepage;

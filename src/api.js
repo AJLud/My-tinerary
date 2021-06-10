@@ -13,6 +13,9 @@ const getTripsByUser = (user, setUserTrips) => {
         userTripsArray.push(combinedTripIdAndData);
       });
       setUserTrips(userTripsArray);
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };
 
