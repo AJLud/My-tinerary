@@ -20,7 +20,6 @@ const Homepage = ({ user }) => {
     getTripsByUser(user, setUserTrips);
   }, []);
   const setText = (trip) => {
-    console.log(trip.tripId);
     history.push(`/trips/${trip.tripId}`);
   };
   return (
@@ -46,7 +45,7 @@ const Homepage = ({ user }) => {
                 {trip.destination}
               </h5>
             </IonCardSubtitle>
-            {console.log(trip)}
+
             <IonCardSubtitle>
               <h5>
                 Organised by:
