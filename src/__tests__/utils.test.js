@@ -28,4 +28,8 @@ describe('countdown', () => {
   test('when passed an object containing 4320100 seconds, it will return a string of "50 days until"', () => {
     expect(countdown({ seconds: 4320100 })).toBe('50 days until');
   });
+
+  test('when passed an object containing less than 3600 seconds, it will return a string of "Don\'t forget your toothbrush!"', () => {
+    expect(countdown({ seconds: 3460 })).toBe("Don't forget your toothbrush!");
+  });
 });
