@@ -10,9 +10,13 @@ const countdown = ({ seconds }) => {
     return `${days} day${pluralized(days)} until`;
   }
 
-  if (seconds < 86400) {
+  if (seconds >= 3600) {
     const hours = Math.floor(seconds / hour);
     return `${hours} hour${pluralized(hours)} until`;
+  }
+
+  if (seconds < 3600) {
+    return "Don't forget your toothbrush!";
   }
   return '';
 };
