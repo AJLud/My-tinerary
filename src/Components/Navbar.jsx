@@ -1,19 +1,40 @@
 import { React } from 'react';
 import { Link } from 'react-router-dom';
-import { IonFab, IonFabButton, IonFabList } from '@ionic/react';
+/*eslint-disable */
+import { IonFab, IonFabButton, IonFabList, IonIcon } from '@ionic/react';
+import {
+  airplane,
+  people,
+  person,
+  triangle,
+  chatbubbles,
+} from 'ionicons/icons';
 
 const Navbar = () => (
   <IonFab vertical="bottom" horizontal="end">
-    <IonFabButton>Nav</IonFabButton>
+    <IonFabButton color="light">
+      <IonIcon icon={triangle} />
+    </IonFabButton>
     <IonFabList side="top">
       <IonFabButton>
-        <Link to="/profile">Profile</Link>
+        <Link to="/profile">
+          <IonIcon icon={person} />
+        </Link>
       </IonFabButton>
       <IonFabButton>
-        <Link to="/buddies">Buddies</Link>
+        <Link to="/buddies">
+          <IonIcon icon={people} />
+        </Link>
       </IonFabButton>
       <IonFabButton>
-        <Link to="/trips">Trips</Link>
+        <Link to="/chats">
+          <IonIcon icon={chatbubbles} />
+        </Link>
+      </IonFabButton>
+      <IonFabButton>
+        <Link to="/trips">
+          <IonIcon icon={airplane} />
+        </Link>
       </IonFabButton>
     </IonFabList>
   </IonFab>
