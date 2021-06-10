@@ -1,16 +1,27 @@
+// import db from './Config/firebase-setup';
+
+// const getTripById = (trip, setTrip) => {
+//   let tripById = {};
+//   db.collection('trips')
+//     .doc(trip)
+//     .get()
+//     .then((doc) => {
+//       tripById = doc.data();
+//     });
+//   setTrip(tripById);
+// };
+
+// export default getTripById;
+
 import db from './Config/firebase-setup';
 
-const getTripById = (trip, setTrip) => {
+const getTripById = (currTrip, setCurrTrip) => {
   db.collection('trips')
-    .where('tripId', '==', trip)
+    .doc(currTrip)
     .get()
     .then((snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        const tripData = doc.data();
-        const tripId = doc.id;
-        const combinedTripIdAndData = { tripId, ...tripData };
-        setTrip(combinedTripIdAndData);
-      });
+      const specificTrip = snapshot.data();
+      setCurrTrip(specificTrip);
     });
 };
 

@@ -5,11 +5,11 @@ import {
   IonCard,
   IonCardHeader,
   IonCardTitle,
+  IonHeader,
   IonCardSubtitle,
   IonCardContent,
 } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
-
 import getTripsByUser from '../api';
 
 const Homepage = ({ user }) => {
@@ -20,22 +20,23 @@ const Homepage = ({ user }) => {
     getTripsByUser(user, setUserTrips);
   }, []);
 
-  const setText = (trip) => {
+  const specificTrip = (trip) => {
     history.push(`/trips/${trip.tripId}`);
   };
 
   return (
-    <>
-      <IonButton>Current Trips</IonButton>
-      <IonButton>Previous Trips</IonButton>
+    <div>
+      <IonHeader>
+        <h1>Current Trips</h1>
+      </IonHeader>
       <IonButton color="secondary">
-        <Link to="/trips/new-trip">Start new trip!!!</Link>
+        <Link to="/new_trip">Start new trip!!!</Link>
       </IonButton>
       {userTrips.map((trip) => (
         <IonCard
           key={trip.trip_name}
           color="light"
-          onClick={() => setText(trip)}
+          onClick={() => specificTrip(trip)}
         >
           <IonCardHeader>
             <IonCardTitle>{trip.trip_name}</IonCardTitle>
@@ -43,21 +44,21 @@ const Homepage = ({ user }) => {
           <IonCardContent>
             <IonCardSubtitle>
               <h5>
-                Location:
+                {'Location: '}
                 {trip.destination}
               </h5>
             </IonCardSubtitle>
 
             <IonCardSubtitle>
               <h5>
-                Organised by:
+                {'Organised By: '}
                 {trip.owner}
               </h5>
             </IonCardSubtitle>
           </IonCardContent>
         </IonCard>
       ))}
-    </>
+    </div>
   );
 };
 export default Homepage;
