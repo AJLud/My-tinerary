@@ -18,7 +18,9 @@ const BuddiesCard = () => (
         <IonItem>Dave the rave</IonItem>
         <IonItem>Haz</IonItem>
       </IonList>
-      <IonButton>Edit</IonButton>
+      <IonButton color="success" href="/form">
+        Edit
+      </IonButton>
     </IonCard>
   </>
 );

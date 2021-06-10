@@ -4,6 +4,7 @@ import {
   IonCard,
   IonCardHeader,
   IonCardTitle,
+  IonCardSubtitle,
   IonCardContent,
 } from '@ionic/react';
 import { Link } from 'react-router-dom';
@@ -25,11 +26,25 @@ const Homepage = ({ user }) => {
         <Link to="/trips/new-trip">Start new trip!!!</Link>
       </IonButton>
       {userTrips.map((trip) => (
-        <IonCard key={trip.trip_name}>
+        <IonCard key={trip.trip_name} color="light" href="/buddies">
           <IonCardHeader>
             <IonCardTitle>{trip.trip_name}</IonCardTitle>
           </IonCardHeader>
-          <IonCardContent>{trip.destination}</IonCardContent>
+          <IonCardContent>
+            <IonCardSubtitle>
+              <h5>
+                Location:
+                {trip.destination}
+              </h5>
+            </IonCardSubtitle>
+            {console.log(trip)}
+            <IonCardSubtitle>
+              <h5>
+                Organised by:
+                {trip.owner}
+              </h5>
+            </IonCardSubtitle>
+          </IonCardContent>
         </IonCard>
       ))}
 
