@@ -13,6 +13,5 @@ const getAccommodationByTripId = (tripID, setAccommodation) => {
       setAccommodation(accommData);
     });
 };
-getAccommodationByTripId();
 
 export default getAccommodationByTripId;
