@@ -10,7 +10,7 @@ import {
   IonCardContent,
 } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
-import getTripsByUser from '../api';
+import getTripsByUser from '../api/api';
 import * as utils from '../utils/utils';
 
 const Homepage = ({ user }) => {

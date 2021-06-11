@@ -1,4 +1,4 @@
-import db from './Config/firebase-setup';
+import db from '../Config/firebase-setup';
 
 const getExcursionsByTripId = (tripID, setExcursions) => {
   let excursionsData = '';

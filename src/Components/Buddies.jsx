@@ -7,7 +7,7 @@ import {
   IonListHeader,
 } from '@ionic/react';
 
-import getBuddies from '../buddies.api';
+import getBuddies from '../api/buddies.api';
 // const item = {
 //   src: 'http://placekitten.com/g/200/300',
 // };
