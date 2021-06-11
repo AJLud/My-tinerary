@@ -13,7 +13,7 @@ import { Link, useHistory } from 'react-router-dom';
 import getTripsByUser from '../api/api';
 import * as utils from '../utils/utils';
 
-const Homepage = ({ user }) => {
+const TripsList = ({ user }) => {
   const history = useHistory();
   const [userTrips, setUserTrips] = useState([]);
 
@@ -76,4 +76,4 @@ const Homepage = ({ user }) => {
     </div>
   );
 };
-export default Homepage;
+export default TripsList;
