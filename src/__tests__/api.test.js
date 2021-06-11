@@ -1,4 +1,4 @@
-import getTrips from '../api';
+import getTrips from '../api/api';
 
 describe('GET trips', () => {
   test('should return an object containg an array', () => {

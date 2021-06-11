@@ -7,7 +7,7 @@ import {
   IonItem,
   IonButton,
 } from '@ionic/react';
-import getExcursionsByTripId from '../ExcursionCard.api';
+import getExcursionsByTripId from '../api/ExcursionCard.api';
 
 const ExcursionCard = (id) => {
   const history = useHistory();
