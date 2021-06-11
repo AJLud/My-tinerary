@@ -36,9 +36,13 @@ const Homepage = ({ user }) => {
         <Link to="/new_trip">Start new trip!!!</Link>
       </IonButton>
       {userTrips.map((trip) => {
-        const tripDate = trip.start_date.seconds;
-        const timeElapsed = utils.dateDifference(currDate, tripDate);
-        console.log(trip.start_date);
+        const tripStartDate = trip.start_date.seconds;
+        const tripEndDate = trip.end_date.seconds;
+        const timeElapsed = utils.dateDifference(
+          currDate,
+          tripStartDate,
+          tripEndDate,
+        );
         return (
           <IonCard
             key={trip.trip_name}
