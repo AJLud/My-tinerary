@@ -38,7 +38,7 @@ const Navbar = () => (
         </Link>
       </IonFabButton>
       <IonFabButton>
-        <Link to="/home">
+        <Link to="/">
           <IonIcon icon={home} />
         </Link>
       </IonFabButton>
