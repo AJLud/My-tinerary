@@ -12,7 +12,7 @@ import Navbar from './Components/Navbar';
 import SignIn from './Components/SignIn';
 import FormPage from './Components/FormPage';
 import SignUp from './Components/SignUp';
-// import Home from './Components/Homepage';
+import Home from './Components/Homepage';
 // import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
 
@@ -48,6 +48,9 @@ const App = () => {
           <IonReactRouter>
             <Navbar />
             <IonRouterOutlet id="main">
+              <Route path="/" exact>
+                <Home />
+              </Route>
               <Route path="/trips" exact>
                 <Trips user={user} />
               </Route>
@@ -80,12 +83,14 @@ const App = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <Route path="/" exact>
-          <SignIn />
-        </Route>
-        <Route>
-          <SignUp path="/signup" exact />
-        </Route>
+        <IonRouterOutlet>
+          <Route path="/" exact>
+            <SignIn />
+          </Route>
+          <Route>
+            <SignUp path="/signup" exact />
+          </Route>
+        </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
   );

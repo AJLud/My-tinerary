@@ -1,6 +1,6 @@
 import { IonButton, IonInput, IonItem } from '@ionic/react';
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => (
   <>
@@ -12,6 +12,9 @@ const SignUp = () => (
         <IonInput type="name" placeholder=" ...Email" />
       </IonItem>
       <IonButton>Register</IonButton>
+      <Link to="/">
+        <IonButton>Back To Login</IonButton>
+      </Link>
     </form>
   </>
 );
