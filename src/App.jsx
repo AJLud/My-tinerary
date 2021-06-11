@@ -85,7 +85,7 @@ const App = () => {
       <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/" exact>
-            <SignIn />
+            <SignIn setUser={setUser} />
           </Route>
           <Route>
             <SignUp path="/signup" exact />
