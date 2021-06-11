@@ -12,7 +12,7 @@ import AccomodationCard from './AccomodationCard';
 import ExcursionCard from './ExcursionCard';
 import BuddiesCard from './BuddiesCard';
 
-import getTripById from '../tripById.api';
+import getTripById from '../api/tripById.api';
 
 const Trip = () => {
   const history = useHistory();
