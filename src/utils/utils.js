@@ -1,4 +1,6 @@
-const countdown = ({ seconds }) => {
+// parameter is being passed from the returned object of dateDifference.
+const countdown = ({ seconds, tripDurationSeconds }) => {
+  // potentially refactor to switches
   const hour = 60 * 60;
 
   const pluralized = (remainingTime) => (remainingTime > 1 ? 's' : '');
@@ -15,16 +17,25 @@ const countdown = ({ seconds }) => {
     return `${hours} hour${pluralized(hours)} until`;
   }
 
+  // within the last hour of start trip
   if (seconds < 3600 && seconds >= 0) {
     return "Don't forget your toothbrush!";
   }
+
+  // if curr date is in the durationg of an ongoing trip
+  if (seconds < 0 && seconds >= -tripDurationSeconds) {
+    return "Ongoing - don't forget your postcard";
+  }
+
   return 'Archived';
 };
 
-const dateDifference = (currDate, futureTripDate) => {
-  if (!futureTripDate) return { seconds: 0 };
-  const timeElapsed = futureTripDate - currDate;
-  return { seconds: timeElapsed };
+const dateDifference = (currDate, tripStartDate, tripEndDate) => {
+  if (!tripStartDate) return { seconds: 0, tripDurationSeconds: 0 };
+  const timeElapsed = tripStartDate - currDate;
+  const tripDuration = tripEndDate - tripStartDate;
+  return { seconds: timeElapsed, tripDurationSeconds: tripDuration };
 };
+// returned object to be passed into countdown
 
 module.exports = { countdown, dateDifference };
