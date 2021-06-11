@@ -9,7 +9,6 @@ const getBuddies = (user, setBuddies) => {
       snapshot.docs.forEach((doc) => {
         const buddyData = doc.data();
         buddiesArray.push(buddyData);
-        console.log(buddiesArray);
       });
       setBuddies(buddiesArray);
     });

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import {
   IonCard,
   IonCardTitle,
@@ -18,8 +18,9 @@ const BuddiesCard = () => (
         <IonItem>Dave the rave</IonItem>
         <IonItem>Haz</IonItem>
       </IonList>
-      <IonButton color="success" href="/form">
-        Edit
+
+      <IonButton color="success">
+        <Link to="/form"> Edit</Link>
       </IonButton>
     </IonCard>
   </>

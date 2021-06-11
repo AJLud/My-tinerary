@@ -51,20 +51,18 @@ const App = () => {
             <Route path="/trips" exact>
               <Trips user={user} />
             </Route>
-            <Route path="/trips/archive" exact>
-              <Trips />
-            </Route>
+
             <Route path="/form" exact>
               <FormPage />
             </Route>
             <Route path="/trips/:trip_id" exact>
               <Trip />
             </Route>
-            <Route path="/trips/new-trip" exact>
+            <Route path="/new_trip" exact>
               <NewTrip />
             </Route>
             <Route path="/profile" exact>
-              <Profile value={{ setUser }} />
+              <Profile value={{ user, setUser }} />
             </Route>
             <Route path="/profile/settings" exact>
               <ProfileSettings />

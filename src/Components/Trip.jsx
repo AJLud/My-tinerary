@@ -1,31 +1,58 @@
-import React from 'react';
-
-import { IonCard, IonCardTitle, IonCardSubtitle } from '@ionic/react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+import {
+  IonCard,
+  IonCardTitle,
+  IonCardSubtitle,
+  IonButton,
+} from '@ionic/react';
 
 import TravelCard from './TravelCard';
 import AccomodationCard from './AccomodationCard';
 import ExcursionCard from './ExcursionCard';
 import BuddiesCard from './BuddiesCard';
 
-const Trip = () => (
-  <>
-    <IonCard>
-      <IonCardTitle>15 Days until Spain</IonCardTitle>
-      <IonCardSubtitle>Lads Trip</IonCardSubtitle>
-    </IonCard>
+import getTripById from '../tripById.api';
 
-    <TravelCard />
+const Trip = () => {
+  const history = useHistory();
+  const tripId = useParams();
+  const id = tripId;
+  const [currTrip, setCurrTrip] = useState(tripId.trip_id);
 
-    <AccomodationCard />
+  useEffect(() => {
+    getTripById(currTrip, setCurrTrip);
+  }, []);
 
-    <ExcursionCard />
+  return (
+    <>
+      <IonCard color="light">
+        <IonCardTitle>
+          {'15 days until '}
+          {currTrip.trip_name}
+        </IonCardTitle>
+        <IonCardSubtitle>
+          {'Location: '}
+          {currTrip.destination}
+        </IonCardSubtitle>
+      </IonCard>
 
-    <BuddiesCard />
+      <TravelCard id={id} />
 
-    <IonCard>
-      <IonCardTitle>Notes</IonCardTitle>
-    </IonCard>
-  </>
-);
+      <AccomodationCard id={id} />
+
+      <ExcursionCard id={id} />
+
+      <BuddiesCard id={id} />
+
+      <IonCard>
+        <IonCardTitle>Notes</IonCardTitle>
+      </IonCard>
+      <IonButton color="success" onClick={() => history.push('/form')}>
+        Edit Details
+      </IonButton>
+    </>
+  );
+};
 
 export default Trip;

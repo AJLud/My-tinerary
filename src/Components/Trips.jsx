@@ -1,104 +1,64 @@
 import React, { useEffect, useState } from 'react';
+
 import {
   IonButton,
   IonCard,
   IonCardHeader,
   IonCardTitle,
+  IonHeader,
   IonCardSubtitle,
   IonCardContent,
 } from '@ionic/react';
-import { Link } from 'react-router-dom';
-
+import { Link, useHistory } from 'react-router-dom';
 import getTripsByUser from '../api';
 
 const Homepage = ({ user }) => {
+  const history = useHistory();
   const [userTrips, setUserTrips] = useState([]);
 
   useEffect(() => {
     getTripsByUser(user, setUserTrips);
   }, []);
 
+  const specificTrip = (trip) => {
+    history.push(`/trips/${trip.tripId}`);
+  };
+
   return (
-    <>
-      <IonButton>Current Trips</IonButton>
-      <IonButton>Previous Trips</IonButton>
+    <div>
+      <IonHeader>
+        <h1>Current Trips</h1>
+      </IonHeader>
       <IonButton color="secondary">
-        <Link to="/trips/new-trip">Start new trip!!!</Link>
+        <Link to="/new_trip">Start new trip!!!</Link>
       </IonButton>
       {userTrips.map((trip) => (
-        <IonCard key={trip.trip_name} color="light" href="/buddies">
+        <IonCard
+          key={trip.trip_name}
+          color="light"
+          onClick={() => specificTrip(trip)}
+        >
           <IonCardHeader>
             <IonCardTitle>{trip.trip_name}</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
             <IonCardSubtitle>
               <h5>
-                Location:
+                {'Location: '}
                 {trip.destination}
               </h5>
             </IonCardSubtitle>
-            {console.log(trip)}
+
             <IonCardSubtitle>
               <h5>
-                Organised by:
+                {'Organised By: '}
                 {trip.owner}
               </h5>
             </IonCardSubtitle>
           </IonCardContent>
         </IonCard>
       ))}
-
-      {/* <IonCard>
-        <IonButton size="large">
-        <Link to="trips/:trip_id">
-          <IonCardHeader>
-            <IonCardSubtitle>54 days until... </IonCardSubtitle>
-            <IonCardTitle>Spain</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            Keep close to Nature&apos;s heart... and break clear away, once in
-            awhile, and climb a mountain or spend a week in the woods. Wash your
-            spirit clean.
-          </IonCardContent>
-        </Link>
-         </IonButton>
-      </IonCard>
-
-      <IonCard>
-        <IonCardHeader>
-          <IonCardSubtitle>194 days until... </IonCardSubtitle>
-          <IonCardTitle>New York</IonCardTitle>
-        </IonCardHeader>
-        <IonCardContent>
-          Keep close to Nature&apos;s heart... and break clear away, once in
-          awhile, and climb a mountain or spend a week in the woods. Wash your
-          spirit clean.
-        </IonCardContent>
-      </IonCard>
-      <IonCard>
-        <IonCardHeader>
-          <IonCardSubtitle>404 days until... </IonCardSubtitle>
-          <IonCardTitle>Ireland</IonCardTitle>
-        </IonCardHeader>
-        <IonCardContent>
-          Keep close to Nature&apos;s heart... and break clear away, once in
-          awhile, and climb a mountain or spend a week in the woods. Wash your
-          spirit clean.
-        </IonCardContent>
-      </IonCard>
-      <IonCard>
-        <IonCardHeader>
-          <IonCardSubtitle>404 days until... </IonCardSubtitle>
-          <IonCardTitle>Ireland</IonCardTitle>
-        </IonCardHeader>
-        <IonCardContent>
-          Keep close to Nature&apos;s heart... and break clear away, once in
-          awhile, and climb a mountain or spend a week in the woods. Wash your
-          spirit clean.
-        </IonCardContent>
-      </IonCard> */}
-    </>
+    </div>
   );
 };
-
 export default Homepage;
