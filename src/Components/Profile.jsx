@@ -1,53 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   IonButton,
   IonContent,
   IonItem,
   IonLabel,
-  IonList,
   IonListHeader,
-  IonAvatar,
   IonImg,
 } from '@ionic/react';
 
-const item = {
-  src: 'http://placekitten.com/g/200/300',
-};
+import getUserDetails from '../userDetails.api';
 
-const Profile = ({ user, setUser }) => {
-  console.log(user);
+const Profile = ({ user }) => {
+  const [userDetails, setUserDetails] = useState('');
+
+  useEffect(() => {
+    getUserDetails(user, setUserDetails);
+  }, []);
+
   return (
     <IonContent>
-      <IonList>
-        <IonListHeader lines="full">
-          <IonLabel>
-            <h1>Profile</h1>
-          </IonLabel>
-          <IonButton onClick={() => setUser(false)}>Sign Out</IonButton>
-        </IonListHeader>
-        <IonItem>
-          <IonAvatar slot="end">
-            <IonImg src={item.src} />
-          </IonAvatar>
-          <IonLabel>name</IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonLabel>Username: ElijahElijah1</IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonLabel>Contact Details: elijah@gmail.com</IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonButton color="warning">Change Avatar</IonButton>
-        </IonItem>
-        <IonItem>
-          <IonLabel color="secondary">Archived Trips</IonLabel>
-        </IonItem>
+      <IonListHeader lines="full">
+        <IonLabel>
+          <h1>Profile</h1>
+        </IonLabel>
+        <IonButton>Sign Out</IonButton>
+      </IonListHeader>
+      <IonItem>
+        {'User: '}
+        {userDetails.name}
+      </IonItem>
 
-        <IonItem lines="none">
-          <IonLabel color="secondary">Settings</IonLabel>
-        </IonItem>
-      </IonList>
+      <IonImg src={userDetails.avatar_url} alt={userDetails.name} />
+
+      <IonButton expand="full" size="large" color="warning">
+        Change Avatar
+      </IonButton>
+      <br />
+      <IonButton expand="full" size="large" color="warning">
+        Change Password
+      </IonButton>
+      <br />
+      <IonButton expand="full" size="large" color="secondary">
+        Archived Trips
+      </IonButton>
+      <br />
+      <IonButton expand="full" size="large" color="secondary">
+        Settings
+      </IonButton>
     </IonContent>
   );
 };
