@@ -5,6 +5,7 @@ import {
   IonCardTitle,
   IonCardSubtitle,
   IonButton,
+  IonContent,
 } from '@ionic/react';
 
 import TravelCard from './TravelCard';
@@ -25,7 +26,7 @@ const Trip = () => {
   }, []);
 
   return (
-    <>
+    <IonContent>
       <IonCard color="light">
         <IonCardTitle>
           {'15 days until '}
@@ -36,10 +37,8 @@ const Trip = () => {
           {currTrip.destination}
         </IonCardSubtitle>
       </IonCard>
-
-      <TravelCard id={id} />
-
       <AccomodationCard id={id} />
+      <TravelCard id={id} />
 
       <ExcursionCard id={id} />
 
@@ -51,7 +50,7 @@ const Trip = () => {
       <IonButton color="success" onClick={() => history.push('/form')}>
         Edit Details
       </IonButton>
-    </>
+    </IonContent>
   );
 };
 

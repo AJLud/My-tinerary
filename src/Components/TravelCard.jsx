@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+
 import {
-  IonCard,
   IonCardTitle,
   IonList,
   IonItem,
   IonButton,
+  IonItemDivider,
+  IonTextarea,
+  IonCard,
+  IonLabel,
+  IonToggle,
 } from '@ionic/react';
 import getTravelByTripId from '../TravelCard.api';
 
 const TravelCard = (id) => {
-  const history = useHistory();
   const [travel, setTravel] = useState([]);
+  const [editable, setEditable] = useState(true);
 
   /* eslint-disable */
   const tripID = id.id.trip_id;
@@ -20,28 +24,45 @@ const TravelCard = (id) => {
     getTravelByTripId(tripID, setTravel);
   }, []);
 
+  const updateDetails = () => {
+    if (editable === false) {
+      setEditable(true);
+    } else setEditable(false);
+  };
   return (
-    <>
+    <form>
       <IonCard>
-        <IonCardTitle>Travel ✈️</IonCardTitle>
+        <IonCardTitle>Travel</IonCardTitle>
         <IonList>
           <IonItem>
-            {'Departing from: '}
-            {travel.leavingFrom}
+            <IonLabel>Edit</IonLabel>
+            <IonToggle
+              onClick={() => {
+                updateDetails();
+              }}
+              slot="start"
+            />
           </IonItem>
+          <IonItemDivider>Transport:</IonItemDivider>
           <IonItem>
-            {'Transport: '}
-            {travel.transport}
+            <IonTextarea value={travel.transport} disabled={editable} />
           </IonItem>
-          <IonItem>{'Departure Time: '}</IonItem>
-          <IonItem>{'Arrival Time: '}</IonItem>
+          <IonItemDivider>Departing From:</IonItemDivider>
+          <IonItem>
+            <IonTextarea />
+          </IonItem>
+          <IonItemDivider>Departure Time: </IonItemDivider>
+          <IonItem>
+            <IonTextarea />
+          </IonItem>
+          <IonItemDivider>Arrival Time:</IonItemDivider>
+          <IonItem>
+            <IonTextarea />
+          </IonItem>
         </IonList>
-
-        <IonButton color="success" onClick={() => history.push('/form')}>
-          Edit
-        </IonButton>
       </IonCard>
-    </>
+      <IonButton color="success">Update</IonButton>
+    </form>
   );
 };
 

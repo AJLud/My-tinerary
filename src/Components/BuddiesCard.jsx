@@ -4,19 +4,17 @@ import {
   IonCard,
   IonCardTitle,
   IonList,
-  IonItem,
   IonButton,
+  IonAvatar,
 } from '@ionic/react';
 
 const BuddiesCard = () => (
   <>
     <IonCard>
-      <IonCardTitle>Vaycay Buddies</IonCardTitle>
+      <IonCardTitle>Buddies</IonCardTitle>
+
       <IonList>
-        <IonItem>Elijah</IonItem>
-        <IonItem>Shekiel</IonItem>
-        <IonItem>Dave the rave</IonItem>
-        <IonItem>Haz</IonItem>
+        <IonAvatar />
       </IonList>
 
       <IonButton color="success">

@@ -13,6 +13,5 @@ const getTravelByTripId = (tripID, setTravel) => {
       setTravel(travelData);
     });
 };
-getTravelByTripId();
 
 export default getTravelByTripId;
