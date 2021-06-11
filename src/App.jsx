@@ -11,6 +11,7 @@ import Buddies from './Components/Buddies';
 import Navbar from './Components/Navbar';
 import SignIn from './Components/SignIn';
 import FormPage from './Components/FormPage';
+import Home from './Components/Homepage';
 // import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
 
@@ -48,6 +49,9 @@ const App = () => {
           </Route>
           <Navbar />
           <IonRouterOutlet id="main">
+            <Route path="/home" exact>
+              <Home />
+            </Route>
             <Route path="/trips" exact>
               <Trips user={user} />
             </Route>
