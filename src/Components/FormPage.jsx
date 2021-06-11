@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   IonCard,
   IonCardTitle,
@@ -6,35 +7,41 @@ import {
   IonItem,
   IonItemDivider,
   IonInput,
+  IonButton,
 } from '@ionic/react';
 
-const FormPage = () => (
-  <>
-    <IonCard>
-      <IonCardTitle>FORM</IonCardTitle>
-    </IonCard>
+const FormPage = () => {
+  const history = useHistory();
+  return (
+    <>
+      <IonCard>
+        <IonCardTitle>Travel Details:</IonCardTitle>
+      </IonCard>
 
-    <IonList>
-      <IonItemDivider>Default Input with Placeholder</IonItemDivider>
-      <IonItem>
-        <IonInput placeholder="Enter Input">I am an input</IonInput>
-      </IonItem>
+      <IonList>
+        <IonItemDivider>{'Airport: '}</IonItemDivider>
+        <IonItem>
+          <IonInput />
+        </IonItem>
 
-      <IonItemDivider>
-        Input with clear button when there is a value
-      </IonItemDivider>
-      <IonItem>
-        <IonInput placeholder="Enter Input">I am an input</IonInput>
-      </IonItem>
+        <IonItemDivider>{'Flight Number: '}</IonItemDivider>
+        <IonItem>
+          <IonInput />
+        </IonItem>
 
-      <IonItemDivider>Number type input</IonItemDivider>
-      <IonItem>
-        <IonInput type="number" placeholder="Enter Number">
-          I am an input
-        </IonInput>
-      </IonItem>
-    </IonList>
-  </>
-);
+        <IonItemDivider>{'Flight Time: '}</IonItemDivider>
+        <IonItem>
+          <IonInput />
+        </IonItem>
+        <IonButton color="success" onClick={() => history.push('/trips')}>
+          Add Details
+        </IonButton>
+      </IonList>
+      <IonButton color="danger" onClick={() => history.push('/trips')}>
+        Back
+      </IonButton>
+    </>
+  );
+};
 
 export default FormPage;

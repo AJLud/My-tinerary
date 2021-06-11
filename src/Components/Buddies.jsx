@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   IonButton,
   IonContent,
-  IonItem,
   IonLabel,
   IonList,
-  IonAvatar,
   IonListHeader,
-  IonImg,
 } from '@ionic/react';
 
-const item = {
-  src: 'http://placekitten.com/g/200/300',
-};
+import getBuddies from '../buddies.api';
+// const item = {
+//   src: 'http://placekitten.com/g/200/300',
+// };
 
-const Buddies = () => (
-  <IonContent>
-    <IonList>
-      <IonListHeader>
-        <IonLabel color="secondary">Buddies</IonLabel>
-        <IonButton fill="solid" color="success">
-          Add Buddy
-        </IonButton>
-      </IonListHeader>
+const Buddies = ({ user }) => {
+  const [buddies, setBuddies] = useState([]);
 
-      <IonItem>
+  useEffect(() => {
+    getBuddies(user, setBuddies);
+  }, []);
+  console.log(buddies);
+  return (
+    <IonContent>
+      <IonList>
+        <IonListHeader>
+          <IonLabel color="secondary">Buddies</IonLabel>
+          <IonButton fill="solid" color="success">
+            Add Buddy
+          </IonButton>
+        </IonListHeader>
+
+        {/* <IonItem>
         <IonAvatar slot="start">
           <IonImg src={item.src} />
         </IonAvatar>
@@ -58,8 +63,9 @@ const Buddies = () => (
         <IonButton slot="end" color="danger">
           Remove Buddy
         </IonButton>
-      </IonItem>
-    </IonList>
-  </IonContent>
-);
+      </IonItem> */}
+      </IonList>
+    </IonContent>
+  );
+};
 export default Buddies;
