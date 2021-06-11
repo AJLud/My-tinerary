@@ -9,7 +9,6 @@ const getTravelByTripId = (tripID, setTravel) => {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         travelData = doc.data();
-        console.log(travelData);
       });
       setTravel(travelData);
     });
