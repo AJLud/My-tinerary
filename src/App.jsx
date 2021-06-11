@@ -62,7 +62,7 @@ const App = () => {
               <NewTrip />
             </Route>
             <Route path="/profile" exact>
-              <Profile value={{ user, setUser }} />
+              <Profile user={user} />
             </Route>
             <Route path="/profile/settings" exact>
               <ProfileSettings />
