@@ -18,7 +18,7 @@ const countdown = ({ seconds }) => {
   if (seconds < 3600 && seconds >= 0) {
     return "Don't forget your toothbrush!";
   }
-  return '';
+  return 'Archived';
 };
 
 const dateDifference = (currDate, futureTripDate) => {
