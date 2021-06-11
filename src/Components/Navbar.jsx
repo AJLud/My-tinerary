@@ -8,6 +8,7 @@ import {
   person,
   triangle,
   chatbubbles,
+  home,
 } from 'ionicons/icons';
 
 const Navbar = () => (
@@ -34,6 +35,11 @@ const Navbar = () => (
       <IonFabButton>
         <Link to="/trips">
           <IonIcon icon={airplane} />
+        </Link>
+      </IonFabButton>
+      <IonFabButton>
+        <Link to="/home">
+          <IonIcon icon={home} />
         </Link>
       </IonFabButton>
     </IonFabList>
