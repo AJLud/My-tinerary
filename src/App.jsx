@@ -11,7 +11,8 @@ import Buddies from './Components/Buddies';
 import Navbar from './Components/Navbar';
 import SignIn from './Components/SignIn';
 import FormPage from './Components/FormPage';
-import Home from './Components/Homepage';
+import SignUp from './Components/SignUp';
+// import Home from './Components/Homepage';
 // import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
 
@@ -39,45 +40,53 @@ const App = () => {
     username: 'Bex123',
   });
 
+  if (user) {
+    return (
+      <IonApp>
+        <UserContext.Provider value={{ user, setUser }}>
+          {/* <RequireLogin> */}
+          <IonReactRouter>
+            <Navbar />
+            <IonRouterOutlet id="main">
+              <Route path="/trips" exact>
+                <Trips user={user} />
+              </Route>
+
+              <Route path="/form" exact>
+                <FormPage />
+              </Route>
+              <Route path="/trips/:trip_id" exact>
+                <Trip />
+              </Route>
+              <Route path="/new_trip" exact>
+                <NewTrip />
+              </Route>
+              <Route path="/profile" exact>
+                <Profile user={user} setUser={setUser} />
+              </Route>
+              <Route path="/profile/settings" exact>
+                <ProfileSettings />
+              </Route>
+              <Route path="/buddies" exact>
+                <Buddies user={user} />
+              </Route>
+            </IonRouterOutlet>
+          </IonReactRouter>
+          {/* </RequireLogin> */}
+        </UserContext.Provider>
+      </IonApp>
+    );
+  }
   return (
     <IonApp>
-      <UserContext.Provider value={{ user }}>
-        {/* <RequireLogin> */}
-        <IonReactRouter>
-          <Route path="/" exact>
-            <SignIn user={user} setUser={setUser} />
-          </Route>
-          <Navbar />
-          <IonRouterOutlet id="main">
-            <Route path="/home" exact>
-              <Home />
-            </Route>
-            <Route path="/trips" exact>
-              <Trips user={user} />
-            </Route>
-
-            <Route path="/form" exact>
-              <FormPage />
-            </Route>
-            <Route path="/trips/:trip_id" exact>
-              <Trip />
-            </Route>
-            <Route path="/new_trip" exact>
-              <NewTrip />
-            </Route>
-            <Route path="/profile" exact>
-              <Profile user={user} />
-            </Route>
-            <Route path="/profile/settings" exact>
-              <ProfileSettings />
-            </Route>
-            <Route path="/buddies" exact>
-              <Buddies user={user} />
-            </Route>
-          </IonRouterOutlet>
-        </IonReactRouter>
-        {/* </RequireLogin> */}
-      </UserContext.Provider>
+      <IonReactRouter>
+        <Route path="/" exact>
+          <SignIn />
+        </Route>
+        <Route>
+          <SignUp path="/signup" exact />
+        </Route>
+      </IonReactRouter>
     </IonApp>
   );
 };
