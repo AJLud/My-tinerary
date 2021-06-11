@@ -13,6 +13,5 @@ const getExcursionsByTripId = (tripID, setExcursions) => {
       setExcursions(excursionsData);
     });
 };
-getExcursionsByTripId();
 
 export default getExcursionsByTripId;
