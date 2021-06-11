@@ -12,7 +12,7 @@ import Navbar from './Components/Navbar';
 import SignIn from './Components/SignIn';
 import FormPage from './Components/FormPage';
 import SignUp from './Components/SignUp';
-// import Home from './Components/Homepage';
+import Home from './Components/Homepage';
 // import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
 
@@ -51,7 +51,9 @@ const App = () => {
               <Route path="/trips" exact>
                 <Trips user={user} />
               </Route>
-
+              <Route path="/" exact>
+                <Home />
+              </Route>
               <Route path="/form" exact>
                 <FormPage />
               </Route>
