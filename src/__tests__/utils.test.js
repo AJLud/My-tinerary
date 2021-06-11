@@ -5,8 +5,8 @@ describe('countdown', () => {
     expect(typeof countdown({})).toBe('string');
   });
 
-  test('when passed an empty object, it will return an empty string', () => {
-    expect(countdown({})).toBe('');
+  test('when passed an empty object, it will return an "Archived" string', () => {
+    expect(countdown({})).toBe('Archived');
   });
 
   test('when passed an object containing 172,800 seconds, it will return a string of "2 Days until"', () => {
@@ -32,8 +32,8 @@ describe('countdown', () => {
   test('when passed an object containing less than 3600 seconds, it will return a string of "Don\'t forget your toothbrush!"', () => {
     expect(countdown({ seconds: 3460 })).toBe("Don't forget your toothbrush!");
   });
-  test('when passed an object containing negative seconds, it will return an empty string', () => {
-    expect(countdown({ seconds: -3460 })).toBe('');
+  test('when passed an object containing negative seconds, it will return an "Archived" string', () => {
+    expect(countdown({ seconds: -3460 })).toBe('Archived');
   });
 });
 
