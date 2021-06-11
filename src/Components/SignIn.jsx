@@ -1,24 +1,26 @@
 import { React } from 'react';
 import { IonItem, IonInput, IonButton } from '@ionic/react';
+import { Link } from 'react-router-dom';
 
 /* eslint-disable */
 const SignIn = () => {
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
   return (
     <>
-      <IonButton>Sign up</IonButton>
+      <Link to="/signup">
+        <IonButton>Sign up</IonButton>
+      </Link>
       <IonItem>
-        <IonInput type="name" placeholder=" ...Name">
+        <IonInput type="text" placeholder=" ...Name">
           Enter Name
         </IonInput>
       </IonItem>
       <IonItem>
-        <IonInput type="name" placeholder=" ...Email">
+        <IonInput type="text" placeholder=" ...Email">
           Enter Email
         </IonInput>
       </IonItem>
-
-      <IonButton>Sign in with Facebook</IonButton>
-      <IonButton>Sign in with Email</IonButton>
     </>
   );
   /* eslint-enable */

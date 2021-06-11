@@ -47,7 +47,7 @@ const App = () => {
           <IonReactRouter>
             <Navbar />
             <IonRouterOutlet id="main">
-              <Route path="/" exact>
+              <Route path="/trips" exact>
                 <Trips user={user} />
               </Route>
 
@@ -61,7 +61,7 @@ const App = () => {
                 <NewTrip />
               </Route>
               <Route path="/profile" exact>
-                <Profile user={user} />
+                <Profile user={user} setUser={setUser} />
               </Route>
               <Route path="/profile/settings" exact>
                 <ProfileSettings />
@@ -77,14 +77,16 @@ const App = () => {
     );
   }
   return (
-    <IonReactRouter>
-      <Route path="/" exact>
-        <SignIn />
-      </Route>
-      <Route>
-        <SignUp />
-      </Route>
-    </IonReactRouter>
+    <IonApp>
+      <IonReactRouter>
+        <Route path="/" exact>
+          <SignIn />
+        </Route>
+        <Route>
+          <SignUp path="/signup" exact />
+        </Route>
+      </IonReactRouter>
+    </IonApp>
   );
 };
 
