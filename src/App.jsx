@@ -54,7 +54,9 @@ const App = () => {
               <Route path="/trips" exact>
                 <Trips user={user} />
               </Route>
-
+              <Route path="/" exact>
+                <Home />
+              </Route>
               <Route path="/form" exact>
                 <FormPage />
               </Route>
