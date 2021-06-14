@@ -10,21 +10,28 @@ import { Link } from 'react-router-dom';
 import db from '../Config/firebase-setup';
 
 /* eslint-disable */
-const SignIn = (setUser) => {
+const SignIn = ({ setUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignIn = (username, password) => {
-    let user = '';
+  const handleSignIn = (username, password, setUser) => {
     db.collection('Users')
       .where('username', '==', username)
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
-          user = doc.data();
+          let user = doc.data();
+          if (!user) {
+            alert('Login Attempt Failed');
+          }
+          if (user.password === password) {
+            setUser({ username: user.username });
+          } else {
+            alert('Login Attempt Failed');
+          }
         });
       });
-    console.log(user);
+
     //Finish this pls
   };
 
@@ -49,7 +56,6 @@ const SignIn = (setUser) => {
         </IonItem>
         <IonItem>
           <IonLabel>
-            {' '}
             Password
             <IonInput
               value={password}
@@ -58,14 +64,12 @@ const SignIn = (setUser) => {
               onIonChange={(e) => {
                 setPassword(e.target.value);
               }}
-            >
-              {console.log(password)}
-            </IonInput>
+            ></IonInput>
           </IonLabel>
         </IonItem>
         <IonButton
           onClick={() => {
-            handleSignIn(username, password);
+            handleSignIn(username, password, setUser);
           }}
         >
           Login
