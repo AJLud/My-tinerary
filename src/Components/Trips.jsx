@@ -8,6 +8,7 @@ import {
   IonHeader,
   IonCardSubtitle,
   IonCardContent,
+  IonContent,
 } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
 import getTripsByUser from '../api/api';
@@ -26,7 +27,7 @@ const TripsList = ({ user }) => {
   };
 
   return (
-    <div>
+    <IonContent>
       <IonHeader>
         <h1>Current Trips</h1>
       </IonHeader>
@@ -60,7 +61,7 @@ const TripsList = ({ user }) => {
           </IonCardContent>
         </IonCard>
       ))}
-    </div>
+    </IonContent>
   );
 };
 export default TripsList;

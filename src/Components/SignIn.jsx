@@ -9,18 +9,17 @@ import {
 import { Link } from 'react-router-dom';
 import db from '../Config/firebase-setup';
 
-/* eslint-disable */
 const SignIn = ({ setUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignIn = (username, password, setUser) => {
+  const handleSignIn = () => {
     db.collection('Users')
       .where('username', '==', username)
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
-          let user = doc.data();
+          const user = doc.data();
           if (!user) {
             alert('Login Attempt Failed');
           }
@@ -31,8 +30,6 @@ const SignIn = ({ setUser }) => {
           }
         });
       });
-
-    //Finish this pls
   };
 
   return (
@@ -43,9 +40,6 @@ const SignIn = ({ setUser }) => {
           handleSignIn(username, password, setUser);
         }}
       >
-        <Link to="/signup">
-          <IonButton>Sign up</IonButton>
-        </Link>
         <IonItem>
           <IonLabel>
             Username
@@ -57,7 +51,7 @@ const SignIn = ({ setUser }) => {
               onIonChange={(e) => {
                 setUsername(e.target.value);
               }}
-            ></IonInput>
+            />
           </IonLabel>
         </IonItem>
         <IonItem>
@@ -71,13 +65,15 @@ const SignIn = ({ setUser }) => {
               onIonChange={(e) => {
                 setPassword(e.target.value);
               }}
-            ></IonInput>
+            />
           </IonLabel>
         </IonItem>
         <IonButton type="submit">Login</IonButton>
+        <Link to="/signup">
+          <IonButton>Sign up</IonButton>
+        </Link>
       </form>
     </IonContent>
   );
-  /* eslint-enable */
 };
 export default SignIn;
