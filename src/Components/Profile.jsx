@@ -7,10 +7,11 @@ import {
   IonListHeader,
   IonImg,
 } from '@ionic/react';
+import { Link } from 'react-router-dom';
 
 import getUserDetails from '../userDetails.api';
 
-const Profile = ({ user }) => {
+const Profile = ({ user, setUser }) => {
   const [userDetails, setUserDetails] = useState('');
 
   useEffect(() => {
@@ -23,7 +24,15 @@ const Profile = ({ user }) => {
         <IonLabel>
           <h1>Profile</h1>
         </IonLabel>
-        <IonButton>Sign Out</IonButton>
+        <Link to="/">
+          <IonButton
+            onClick={() => {
+              setUser(null);
+            }}
+          >
+            Sign Out
+          </IonButton>
+        </Link>
       </IonListHeader>
       <IonItem>
         {'User: '}

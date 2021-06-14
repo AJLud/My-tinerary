@@ -11,9 +11,10 @@ import {
   IonContent,
 } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
-import getTripsByUser from '../api';
+import getTripsByUser from '../api/api';
+import * as utils from '../utils/utils';
 
-const Homepage = ({ user }) => {
+const TripsList = ({ user }) => {
   const history = useHistory();
   const [userTrips, setUserTrips] = useState([]);
 
@@ -25,6 +26,8 @@ const Homepage = ({ user }) => {
     history.push(`/trips/${trip.tripId}`);
   };
 
+  const currDate = Math.floor(Date.now() / 1000);
+
   return (
     <IonContent>
       <IonHeader>
@@ -33,33 +36,45 @@ const Homepage = ({ user }) => {
       <IonButton color="secondary">
         <Link to="/new_trip">Start new trip!!!</Link>
       </IonButton>
-      {userTrips.map((trip) => (
-        <IonCard
-          key={trip.trip_name}
-          color="light"
-          onClick={() => specificTrip(trip)}
-        >
-          <IonCardHeader>
-            <IonCardTitle>{trip.trip_name}</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <IonCardSubtitle>
-              <h5>
-                {'Location: '}
-                {trip.destination}
-              </h5>
-            </IonCardSubtitle>
+      {userTrips.map((trip) => {
+        const tripStartDate = trip.start_date.seconds;
+        const tripEndDate = trip.end_date.seconds;
+        const timeElapsed = utils.dateDifference(
+          currDate,
+          tripStartDate,
+          tripEndDate,
+        );
+        return (
+          <IonCard
+            key={trip.trip_name}
+            color="light"
+            onClick={() => specificTrip(trip)}
+          >
+            <IonCardHeader>
+              <IonCardSubtitle>
+                <h5>{utils.countdown(timeElapsed)}</h5>
+              </IonCardSubtitle>
+              <IonCardTitle>{trip.trip_name}</IonCardTitle>
+            </IonCardHeader>
+            <IonCardContent>
+              <IonCardSubtitle>
+                <h5>
+                  {'Location: '}
+                  {trip.destination}
+                </h5>
+              </IonCardSubtitle>
 
-            <IonCardSubtitle>
-              <h5>
-                {'Organised By: '}
-                {trip.owner}
-              </h5>
-            </IonCardSubtitle>
-          </IonCardContent>
-        </IonCard>
-      ))}
+              <IonCardSubtitle>
+                <h5>
+                  {'Organised By: '}
+                  {trip.owner}
+                </h5>
+              </IonCardSubtitle>
+            </IonCardContent>
+          </IonCard>
+        );
+      })}
     </IonContent>
   );
 };
-export default Homepage;
+export default TripsList;

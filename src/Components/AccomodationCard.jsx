@@ -8,10 +8,8 @@ import {
   IonItemDivider,
   IonTextarea,
   IonCard,
-  IonLabel,
-  IonToggle,
 } from '@ionic/react';
-import getAccommodationByTripId from '../AccomCard.api';
+import getAccommodationByTripId from '../api/AccomCard.api';
 
 const AccomodationCard = (id) => {
   const [accommodation, setAccommodation] = useState([]);
@@ -27,31 +25,30 @@ const AccomodationCard = (id) => {
   const updateEditable = () => {
     if (editable === false) {
       setEditable(true);
-    } else setEditable(false);
-  };
-
-  const updateDetails = () => {
-    console.log('hello');
+    } else {
+      setEditable(false);
+      setAccommodation(accommodation);
+    }
   };
 
   return (
-    <form>
-      <IonCard onIonSubmit={updateDetails()}>
-        <IonCardTitle>Accomodation</IonCardTitle>
+    <form onSubmit={updateEditable}>
+      <IonCard>
         <IonList>
           <IonItem>
-            <IonLabel>Edit</IonLabel>
-            <IonToggle
-              onIonChange={() => {
-                if (editable === true) {
-                  console.log('hey');
-                  updateEditable();
-                }
-              }}
-              slot="start"
-            />
-          </IonItem>
+            <IonCardTitle>Accomodation</IonCardTitle>
 
+            <IonButton
+              color="success"
+              onClick={() => {
+                console.log('clicked');
+                updateEditable();
+              }}
+              slot="end"
+            >
+              Update
+            </IonButton>
+          </IonItem>
           <IonItemDivider>Place:</IonItemDivider>
           <IonItem>
             <IonTextarea
@@ -94,7 +91,16 @@ const AccomodationCard = (id) => {
           </IonItem>
         </IonList>
       </IonCard>
-      <IonButton color="success">Update</IonButton>
+      {/* <IonLabel>Edit</IonLabel> */}
+      {/* <IonToggle
+              onIonChange={() => {
+                if (editable === true) {
+                  console.log('now editable');
+                  updateEditable();
+                }
+              }}
+              slot="start"
+            /> */}
     </form>
   );
 };

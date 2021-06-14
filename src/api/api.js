@@ -1,4 +1,4 @@
-import db from './Config/firebase-setup';
+import db from '../Config/firebase-setup';
 
 const getTripsByUser = (user, setUserTrips) => {
   const userTripsArray = [];
@@ -13,6 +13,9 @@ const getTripsByUser = (user, setUserTrips) => {
         userTripsArray.push(combinedTripIdAndData);
       });
       setUserTrips(userTripsArray);
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };
 
