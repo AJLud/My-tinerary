@@ -37,58 +37,14 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App = () => {
-  const [user, setUser] = useState({
-    username: 'Bex123',
-  });
+  const [user, setUser] = useState(null);
 
-  if (user) {
-    return (
-      <IonApp>
-        <UserContext.Provider value={{ user, setUser }}>
-          {/* <RequireLogin> */}
-          <IonReactRouter>
-            <Navbar />
-            <IonRouterOutlet id="main">
-              <Route path="/" exact>
-                <Home />
-              </Route>
-              <Route path="/trips" exact>
-                <Trips user={user} />
-              </Route>
-              <Route path="/" exact>
-                <Home />
-              </Route>
-              <Route path="/form" exact>
-                <FormPage />
-              </Route>
-              <Route path="/trips/:trip_id" exact>
-                <Trip />
-              </Route>
-              <Route path="/new_trip" exact>
-                <NewTrip />
-              </Route>
-              <Route path="/profile" exact>
-                <Profile user={user} setUser={setUser} />
-              </Route>
-              <Route path="/profile/settings" exact>
-                <ProfileSettings />
-              </Route>
-              <Route path="/buddies" exact>
-                <Buddies user={user} />
-              </Route>
-            </IonRouterOutlet>
-          </IonReactRouter>
-          {/* </RequireLogin> */}
-        </UserContext.Provider>
-      </IonApp>
-    );
-  }
-  return (
+  const SignInSignUpView = () => (
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/" exact>
-            <SignIn />
+            <SignIn setUser={setUser} />
           </Route>
           <Route>
             <SignUp path="/signup" exact />
@@ -97,6 +53,52 @@ const App = () => {
       </IonReactRouter>
     </IonApp>
   );
+
+  const AuthUserView = () => (
+    <IonApp>
+      <UserContext.Provider value={{ user, setUser }}>
+        {/* <RequireLogin> */}
+        <IonReactRouter>
+          <Navbar />
+          <IonRouterOutlet id="main">
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/trips" exact>
+              <Trips user={user} />
+            </Route>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/form" exact>
+              <FormPage />
+            </Route>
+            <Route path="/trips/:trip_id" exact>
+              <Trip />
+            </Route>
+            <Route path="/new_trip" exact>
+              <NewTrip />
+            </Route>
+            <Route path="/profile" exact>
+              <Profile user={user} setUser={setUser} />
+            </Route>
+            <Route path="/profile/settings" exact>
+              <ProfileSettings />
+            </Route>
+            <Route path="/buddies" exact>
+              <Buddies user={user} />
+            </Route>
+          </IonRouterOutlet>
+        </IonReactRouter>
+        {/* </RequireLogin> */}
+      </UserContext.Provider>
+    </IonApp>
+  );
+
+  if (user) {
+    return <AuthUserView />;
+  }
+  return <SignInSignUpView />;
 };
 
 export default App;
