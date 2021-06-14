@@ -36,8 +36,13 @@ const SignIn = ({ setUser }) => {
   };
 
   return (
-    <>
-      <IonContent>
+    <IonContent>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSignIn(username, password, setUser);
+        }}
+      >
         <Link to="/signup">
           <IonButton>Sign up</IonButton>
         </Link>
@@ -45,6 +50,7 @@ const SignIn = ({ setUser }) => {
           <IonLabel>
             Username
             <IonInput
+              required
               value={username}
               type="text"
               placeholder=" ...Username"
@@ -58,6 +64,7 @@ const SignIn = ({ setUser }) => {
           <IonLabel>
             Password
             <IonInput
+              required
               value={password}
               type="password"
               placeholder=" ...Password"
@@ -67,15 +74,9 @@ const SignIn = ({ setUser }) => {
             ></IonInput>
           </IonLabel>
         </IonItem>
-        <IonButton
-          onClick={() => {
-            handleSignIn(username, password, setUser);
-          }}
-        >
-          Login
-        </IonButton>
-      </IonContent>
-    </>
+        <IonButton type="submit">Login</IonButton>
+      </form>
+    </IonContent>
   );
   /* eslint-enable */
 };
