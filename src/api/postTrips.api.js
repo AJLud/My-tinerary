@@ -1,13 +1,20 @@
 import db from '../Config/firebase-setup';
 
-const postTripByUser = () => {
-  db.collection('trips')
+const postTripByUser = (newTrip) => {
+  let response;
+  return db
+    .collection('trips')
     .add({
-      trip_name: '',
-      destination: '',
+      trip_name: newTrip.trip_name,
+      destination: newTrip.destination,
+      owner: newTrip.owner,
+      start_date: newTrip.start_date,
+      end_date: newTrip.end_date,
+      notes: newTrip.notes,
     })
     .then((docRef) => {
-      console.log('success', docRef.id);
+      response = `successfully posted trip: ${docRef.id}`;
+      return response;
     })
     .catch((err) => {
       console.log(err);
