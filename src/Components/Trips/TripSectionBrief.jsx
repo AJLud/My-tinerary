@@ -15,7 +15,7 @@ const TripSectionBrief = ({ section, tripId }) => {
     <IonCard
       color="light"
       onClick={() => {
-        history.push(`/trips/${tripId}/accommodation`);
+        history.push(`/trips/${tripId}/${section}`);
       }}
     >
       <IonCardHeader>
