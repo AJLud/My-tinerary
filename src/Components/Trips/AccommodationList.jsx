@@ -11,7 +11,8 @@ import {
   IonContent,
 } from '@ionic/react';
 
-import getAccommodationByTripId from '../../api/AccomCard.api';
+import getAccommodationByTripId from '../../api/getAccom.api';
+import { formatDate } from '../../utils/utils';
 
 const AccommodationDetails = () => {
   const history = useHistory();
@@ -45,7 +46,10 @@ const AccommodationDetails = () => {
           </IonCardHeader>
           <IonCardContent>
             <IonCardSubtitle>
-              <h5>{'Check-In Date: '}</h5>
+              <h5>
+                {'Check-In Date: '}
+                {formatDate(hotel.check_in.seconds)}
+              </h5>
             </IonCardSubtitle>
             <IonCardSubtitle>
               <h5>

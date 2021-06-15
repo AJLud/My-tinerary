@@ -11,7 +11,7 @@ import {
   IonInput,
 } from '@ionic/react';
 
-import postAccommodationDetails from '../../api/postTripDetails';
+import postAccommodationDetails from '../../api/postAccom';
 
 const AccommodationForm = () => {
   const [isPosted, setIsPosted] = useState(false);

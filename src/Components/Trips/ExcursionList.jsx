@@ -13,6 +13,7 @@ import {
 
 import getExcursionByTripID from '../../api/getExcursions.api';
 import getTripById from '../../api/tripById.api';
+import { formatDate } from '../../utils/utils';
 
 const ExcursionList = () => {
   const history = useHistory();
@@ -48,9 +49,17 @@ const ExcursionList = () => {
           </IonCardHeader>
           <IonCardContent>
             <IonCardSubtitle>
-              <h5>{'Date/Time: '}</h5>
+              <h5>
+                {'Date: '}
+                {formatDate(excursion.date.seconds)}
+              </h5>
             </IonCardSubtitle>
-
+            <IonCardSubtitle>
+              <h5>
+                {'Time: '}
+                {/* {formatTime function} */}
+              </h5>
+            </IonCardSubtitle>
             <IonCardSubtitle>
               <h5>
                 {'Cost: '}

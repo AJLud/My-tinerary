@@ -11,7 +11,8 @@ import {
   IonContent,
 } from '@ionic/react';
 
-import getTravelByTripId from '../../api/TravelCard.api';
+import getTravelByTripId from '../../api/getTravel.api';
+import { formatDate } from '../../utils/utils';
 
 const TravelList = () => {
   const history = useHistory();
@@ -43,7 +44,10 @@ const TravelList = () => {
           </IonCardHeader>
           <IonCardContent>
             <IonCardSubtitle>
-              <h5>{'Departure Date: '}</h5>
+              <h5>
+                {'Departure Date: '}
+                {formatDate(journey.leavingDate.seconds)}
+              </h5>
             </IonCardSubtitle>
             <IonCardSubtitle>
               <h5>
