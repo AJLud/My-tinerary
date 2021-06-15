@@ -6,8 +6,8 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonHeader,
-  IonCardSubtitle,
   IonContent,
+  IonCardContent,
 } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
 import getTripsByUser from '../../api/api';
@@ -27,36 +27,35 @@ const TripsList = ({ user }) => {
   };
 
   return (
-    <IonContent overflow-scroll="true" class="has-header">
-              <IonHeader>
-          <h1>Current Trips</h1>
-        </IonHeader>
-        <Link to="/new-trip">
-          <IonButton color="secondary">New Trip</IonButton>
-        </Link>
+    <IonContent overflow-scroll="true">
+      <IonHeader>
+        <h1>Current Trips</h1>
+      </IonHeader>
+      <Link to="/new-trip">
+        <IonButton color="secondary">New Trip</IonButton>
+      </Link>
 
-        {userTrips.map((trip) => (
-          <IonCard
-            key={trip.tripId}
-            color="light"
-            onClick={() => specificTrip(trip)}
-          >
-            <IonCardHeader>
-              <Countdown trip={trip} />
-              <IonCardTitle>{trip.trip_name}</IonCardTitle>
-            </IonCardHeader>
-             <IonCardSubtitle>
-              <h5>
-                {'Organised By: '}
-                {trip.owner}
-              </h5>
-            </IonCardSubtitle>
-            <IonCardSubtitle>
-              {' '}
-              {formatDate(trip.start_date.seconds)}
-              {' - '}
-              {formatDate(trip.end_date.seconds)}
-            </IonCardSubtitle>
+      {userTrips.map((trip) => (
+        <IonCard
+          key={trip.tripId}
+          color="light"
+          onClick={() => specificTrip(trip)}
+        >
+          <Countdown trip={trip} />
+          <IonCardHeader>
+            <IonCardTitle>{trip.trip_name}</IonCardTitle>
+          </IonCardHeader>
+
+          <IonCardContent>
+            <h5>
+              {'Organised By: '}
+              {trip.owner}
+            </h5>
+            {'Dates: '}
+            {formatDate(trip.start_date.seconds)}
+            {' - '}
+            {formatDate(trip.end_date.seconds)}
+          </IonCardContent>
         </IonCard>
       ))}
     </IonContent>
