@@ -11,7 +11,7 @@ import {
   IonInput,
 } from '@ionic/react';
 
-import postAccommodationDetails from '../api/postTripDetails';
+import postAccommodationDetails from '../../api/postTripDetails';
 
 const FormPage = () => {
   const [isPosted, setIsPosted] = useState(false);
@@ -47,8 +47,7 @@ const FormPage = () => {
     };
 
     postAccommodationDetails(newAccommodation, tripId)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         setIsPosted(true);
       })
       .catch((err) => console.log('details did not post', err));

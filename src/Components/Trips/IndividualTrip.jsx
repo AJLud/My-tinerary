@@ -8,7 +8,7 @@ import {
   IonContent,
 } from '@ionic/react';
 
-import getTripById from '../api/tripById.api';
+import getTripById from '../../api/tripById.api';
 import TripSectionBrief from './TripSectionBrief';
 
 const Trip = () => {

@@ -11,19 +11,18 @@ import {
   IonContent,
 } from '@ionic/react';
 
-import getAccommodationByTripId from '../api/AccomCard.api';
+import getAccommodationByTripId from '../../api/AccomCard.api';
 
 const AccommodationDetails = () => {
   const history = useHistory();
   const { tripId } = useParams();
-  console.log(tripId);
+
   const [accommodation, setAccommodation] = useState([]);
 
   useEffect(() => {
     getAccommodationByTripId(tripId, setAccommodation);
   }, []);
 
-  console.log(accommodation);
   return (
     <IonContent>
       <IonHeader>

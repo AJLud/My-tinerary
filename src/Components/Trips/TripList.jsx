@@ -11,7 +11,7 @@ import {
   IonContent,
 } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
-import getTripsByUser from '../api/api';
+import getTripsByUser from '../../api/api';
 import Countdown from './Countdown';
 
 const TripsList = ({ user }) => {
