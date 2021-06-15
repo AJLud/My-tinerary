@@ -11,15 +11,22 @@ import {
 import getTripById from '../../api/tripById.api';
 import TripSectionBrief from './TripSectionBrief';
 
+import deleteTripByID from '../../api/deleteTripById.api';
+
 const Trip = () => {
   const history = useHistory();
   const { tripId } = useParams();
-
   const [currTrip, setCurrTrip] = useState(tripId);
 
   useEffect(() => {
     getTripById(currTrip, setCurrTrip);
   }, []);
+
+  const deleteTrip = (tripID) => {
+    deleteTripByID(tripID).then(() => {
+      history.go(-1);
+    });
+  };
 
   return (
     <IonContent>
@@ -39,8 +46,14 @@ const Trip = () => {
       <TripSectionBrief section="Excursions" tripId={tripId} />
       <TripSectionBrief section="Notes" tripId={tripId} />
 
-      <IonButton color="danger" onClick={() => history.push('/form')}>
-        Edit Details
+      <IonButton
+        expand="block"
+        color="danger"
+        onClick={() => {
+          deleteTrip(tripId);
+        }}
+      >
+        Delete
       </IonButton>
     </IonContent>
   );
