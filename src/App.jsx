@@ -13,6 +13,7 @@ import SignIn from './Components/SignIn';
 import FormPage from './Components/FormPage';
 import SignUp from './Components/SignUp';
 import Home from './Components/Homepage';
+import AccommodationDetails from './Components/AccommodationDetails';
 
 // import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
@@ -37,7 +38,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ username: 'Bex123' });
 
   const SignInSignUpView = () => (
     <IonApp>
@@ -70,13 +71,16 @@ const App = () => {
             <Route path="/" exact>
               <Home />
             </Route>
-            <Route path="/form" exact>
+            <Route path="/trips/:tripId/accommodation/form" exact>
               <FormPage />
             </Route>
-            <Route path="/trips/:trip_id" exact>
+            <Route path="/trips/:tripId/accommodation" exact>
+              <AccommodationDetails />
+            </Route>
+            <Route path="/trips/:tripId" exact>
               <Trip />
             </Route>
-            <Route path="/new_trip" exact>
+            <Route path="/new-trip" exact>
               <NewTrip />
             </Route>
             <Route path="/profile" exact>

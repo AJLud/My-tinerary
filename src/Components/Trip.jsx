@@ -8,18 +8,14 @@ import {
   IonContent,
 } from '@ionic/react';
 
-import TravelCard from './TravelCard';
-import AccomodationCard from './AccomodationCard';
-import ExcursionCard from './ExcursionCard';
-import BuddiesCard from './BuddiesCard';
-
 import getTripById from '../api/tripById.api';
+import TripSectionBrief from './TripSectionBrief';
 
 const Trip = () => {
   const history = useHistory();
-  const tripId = useParams();
-  const id = tripId;
-  const [currTrip, setCurrTrip] = useState(tripId.trip_id);
+  const { tripId } = useParams();
+
+  const [currTrip, setCurrTrip] = useState(tripId);
 
   useEffect(() => {
     getTripById(currTrip, setCurrTrip);
@@ -37,17 +33,13 @@ const Trip = () => {
           {currTrip.destination}
         </IonCardSubtitle>
       </IonCard>
-      <AccomodationCard id={id} />
-      <TravelCard id={id} />
 
-      <ExcursionCard id={id} />
+      <TripSectionBrief section="Accommodation" tripId={tripId} />
+      <TripSectionBrief section="Travel" tripId={tripId} />
+      <TripSectionBrief section="Excursions" tripId={tripId} />
+      <TripSectionBrief section="Notes" tripId={tripId} />
 
-      <BuddiesCard id={id} />
-
-      <IonCard>
-        <IonCardTitle>Notes</IonCardTitle>
-      </IonCard>
-      <IonButton color="success" onClick={() => history.push('/form')}>
+      <IonButton color="danger" onClick={() => history.push('/form')}>
         Edit Details
       </IonButton>
     </IonContent>
