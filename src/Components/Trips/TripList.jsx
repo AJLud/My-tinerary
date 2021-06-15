@@ -60,8 +60,10 @@ const TripsList = ({ user }) => {
               </h5>
             </IonCardSubtitle>
             <IonCardSubtitle>
-              {''}
+              {' '}
               {formatDate(trip.start_date.seconds)}
+              {' - '}
+              {formatDate(trip.end_date.seconds)}
             </IonCardSubtitle>
           </IonCardContent>
         </IonCard>

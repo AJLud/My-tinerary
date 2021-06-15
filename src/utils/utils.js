@@ -41,10 +41,8 @@ const dateDifference = (currDate, tripStartDate, tripEndDate) => {
 const formatDate = (startDate) => {
   const fullTS = startDate * 1000;
   const isoDate = new Date(fullTS).toISOString();
-  console.log(isoDate);
 
-  const [date, time] = isoDate.split('T');
-  console.log(time);
+  const [date] = isoDate.split('T');
 
   const splitDate = date.split('-');
 
