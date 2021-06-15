@@ -14,6 +14,8 @@ import FormPage from './Components/Trips/AccommodationForm';
 import SignUp from './Components/LogIn/SignUp';
 import Home from './Components/Homepage';
 import AccommodationDetails from './Components/Trips/AccommodationList';
+// import ExcursionList from './Components/Trips/ExcursionList';
+import TravelList from './Components/Trips/TravelList';
 
 // import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
@@ -76,6 +78,12 @@ const App = () => {
             </Route>
             <Route path="/trips/:tripId/accommodation" exact>
               <AccommodationDetails />
+            </Route>
+            {/* <Route path="/trips/:tripId/excursions" exact>
+              <ExcursionList />
+            </Route> */}
+            <Route path="/trips/:tripId/travel" exact>
+              <TravelList />
             </Route>
             <Route path="/trips/:tripId" exact>
               <Trip />
