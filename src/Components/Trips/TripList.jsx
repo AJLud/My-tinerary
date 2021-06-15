@@ -26,26 +26,27 @@ const TripsList = ({ user }) => {
     history.push(`/trips/${trip.tripId}`);
   };
 
+  const deleteTrip = (tripId) => {
+    console.log(tripId);
+  };
+
   return (
     <IonContent overflow-scroll="true" class="has-header">
-              <IonHeader>
-          <h1>Current Trips</h1>
-        </IonHeader>
-        <Link to="/new-trip">
-          <IonButton color="secondary">New Trip</IonButton>
-        </Link>
+      <IonHeader>
+        <h1>Current Trips</h1>
+      </IonHeader>
+      <Link to="/new-trip">
+        <IonButton color="secondary">New Trip</IonButton>
+      </Link>
 
-        {userTrips.map((trip) => (
-          <IonCard
-            key={trip.tripId}
-            color="light"
-            onClick={() => specificTrip(trip)}
-          >
+      {userTrips.map((trip) => (
+        <IonCard key={trip.tripId}>
+          <IonCard color="light" onClick={() => specificTrip(trip)}>
             <IonCardHeader>
               <Countdown trip={trip} />
               <IonCardTitle>{trip.trip_name}</IonCardTitle>
             </IonCardHeader>
-             <IonCardSubtitle>
+            <IonCardSubtitle>
               <h5>
                 {'Organised By: '}
                 {trip.owner}
@@ -57,6 +58,15 @@ const TripsList = ({ user }) => {
               {' - '}
               {formatDate(trip.end_date.seconds)}
             </IonCardSubtitle>
+          </IonCard>
+          <IonButton
+            color="danger"
+            onClick={() => {
+              deleteTrip(trip.tripId);
+            }}
+          >
+            Delete
+          </IonButton>
         </IonCard>
       ))}
     </IonContent>
