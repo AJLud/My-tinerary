@@ -11,12 +11,13 @@ import Buddies from './Components/Buddies';
 import Navbar from './Components/Navbar';
 import SignIn from './Components/LogIn/SignIn';
 import AccomodationForm from './Components/Trips/AccommodationForm';
+import TravelForm from './Components/Trips/TravelForm';
+import ExcursionForm from './Components/Trips/ExcursionForm';
 import SignUp from './Components/LogIn/SignUp';
 import Home from './Components/Homepage';
 import AccommodationDetails from './Components/Trips/AccommodationList';
 import ExcursionList from './Components/Trips/ExcursionList';
-import ExcursionForm from './Components/Trips/ExcursionForm';
-// import TravelList from './Components/Trips/TravelList';
+import TravelList from './Components/Trips/TravelList';
 
 // import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
@@ -61,7 +62,6 @@ const App = () => {
   const AuthUserView = () => (
     <IonApp>
       <UserContext.Provider value={{ user, setUser }}>
-        {/* <RequireLogin> */}
         <IonReactRouter>
           <Navbar />
           <IonRouterOutlet id="main">
@@ -86,9 +86,12 @@ const App = () => {
             <Route path="/trips/:tripId/excursions" exact>
               <ExcursionList />
             </Route>
-            {/* <Route path="/trips/:tripId/travel" exact>
+            <Route path="/trips/:tripId/travel/form" exact>
+              <TravelForm />
+            </Route>
+            <Route path="/trips/:tripId/travel" exact>
               <TravelList />
-            </Route> */}
+            </Route>
             <Route path="/trips/:tripId" exact>
               <Trip />
             </Route>
@@ -106,7 +109,6 @@ const App = () => {
             </Route>
           </IonRouterOutlet>
         </IonReactRouter>
-        {/* </RequireLogin> */}
       </UserContext.Provider>
     </IonApp>
   );

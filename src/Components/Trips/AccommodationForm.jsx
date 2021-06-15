@@ -13,7 +13,7 @@ import {
 
 import postAccommodationDetails from '../../api/postTripDetails';
 
-const FormPage = () => {
+const AccommodationForm = () => {
   const [isPosted, setIsPosted] = useState(false);
   const history = useHistory();
   const tripId = useParams();
@@ -28,16 +28,16 @@ const FormPage = () => {
   const newDate = (date) => new Date(date).getTime() / 1000;
 
   useEffect(() => {
+    setNewAccommodation({
+      days: '',
+      hotel_name: '',
+      check_in: '',
+      notes: '',
+    });
     if (isPosted) {
-      setNewAccommodation({
-        days: '',
-        hotel_name: '',
-        check_in: '',
-        notes: '',
-      });
       history.push(`/trips/${tripId.tripId}/accommodation`);
     }
-  }, []);
+  }, [isPosted]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -136,4 +136,4 @@ const FormPage = () => {
   );
 };
 
-export default FormPage;
+export default AccommodationForm;
