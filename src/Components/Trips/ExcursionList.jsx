@@ -13,6 +13,7 @@ import {
 
 import getExcursionByTripID from '../../api/getExcursions.api';
 import getTripById from '../../api/tripById.api';
+import deleteExcursionByID from '../../api/deleteExcursionById';
 
 const ExcursionList = () => {
   const history = useHistory();
@@ -25,13 +26,26 @@ const ExcursionList = () => {
     getTripById(tripId, setCurrTrip);
   }, []);
 
+  const deleteExcursion = (ID, excursion) => {
+    console.log(excursion);
+    deleteExcursionByID(ID, excursion.excursionID).then(() => {
+      history.go(0);
+    });
+  };
+
   return (
     <IonContent>
-      <IonHeader>
+      <IonHeader
+        type="button"
+        onClick={() => {
+          history.go(-1);
+        }}
+      >
         <h1>{currTrip.trip_name}</h1>
         <h2>Excursions</h2>
       </IonHeader>
       <IonButton
+        expand="block"
         onClick={() => history.push(`/trips/${tripId}/excursions/form`)}
       >
         Add new details
@@ -43,6 +57,14 @@ const ExcursionList = () => {
               <h5>
                 {'Event: '}
                 {excursion.name}
+                <IonButton
+                  color="light"
+                  onClick={() => {
+                    deleteExcursion(tripId, excursion);
+                  }}
+                >
+                  🗑
+                </IonButton>
               </h5>
             </IonCardTitle>
           </IonCardHeader>
