@@ -29,7 +29,16 @@ const ExcursionList = () => {
   return (
     <IonContent>
       <IonHeader>
-        <h1>{currTrip.trip_name}</h1>
+        <IonButton
+          expand="block"
+          color="warning"
+          onClick={() => {
+            history.push(`/trips/${tripId}`);
+          }}
+        >
+          {currTrip.trip_name}
+        </IonButton>
+
         <h2>Excursions</h2>
       </IonHeader>
       <IonButton

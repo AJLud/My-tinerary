@@ -60,6 +60,13 @@ const TravelForm = () => {
 
   return (
     <IonContent>
+      <IonItem
+        onClick={() => {
+          history.push(`/trips/${tripId.tripId}`);
+        }}
+      >
+        Back to trip
+      </IonItem>
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>

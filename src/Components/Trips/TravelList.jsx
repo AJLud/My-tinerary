@@ -9,24 +9,35 @@ import {
   IonHeader,
   IonCardContent,
   IonContent,
+  IonItem,
 } from '@ionic/react';
 
 import getTravelByTripId from '../../api/getTravel.api';
+import getTripById from '../../api/tripById.api';
 import { formatDate } from '../../utils/utils';
 
 const TravelList = () => {
   const history = useHistory();
   const { tripId } = useParams();
+  const [currTrip, setCurrTrip] = useState({});
 
   const [travel, setTravel] = useState([]);
 
   useEffect(() => {
     getTravelByTripId(tripId, setTravel);
+    getTripById(tripId, setCurrTrip);
   }, []);
 
   return (
     <IonContent>
       <IonHeader>
+        <IonItem
+          onClick={() => {
+            history.push(`/trips/${tripId.tripId}`);
+          }}
+        >
+          {currTrip.trip_name}
+        </IonItem>
         <h1>Travel</h1>
       </IonHeader>
       <IonButton onClick={() => history.push(`/trips/${tripId}/travel/form`)}>

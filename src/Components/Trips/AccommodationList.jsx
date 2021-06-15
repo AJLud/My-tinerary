@@ -12,21 +12,33 @@ import {
 } from '@ionic/react';
 
 import getAccommodationByTripId from '../../api/getAccom.api';
+import getTripById from '../../api/tripById.api';
 import { formatDate } from '../../utils/utils';
 
 const AccommodationDetails = () => {
   const history = useHistory();
   const { tripId } = useParams();
+  const [currTrip, setCurrTrip] = useState({});
 
   const [accommodation, setAccommodation] = useState([]);
 
   useEffect(() => {
     getAccommodationByTripId(tripId, setAccommodation);
+    getTripById(tripId, setCurrTrip);
   }, []);
 
   return (
     <IonContent>
       <IonHeader>
+        <IonButton
+          expand="block"
+          color="warning"
+          onClick={() => {
+            history.push(`/trips/${tripId}`);
+          }}
+        >
+          {currTrip.trip_name}
+        </IonButton>
         <h1>Hotels</h1>
       </IonHeader>
       <IonButton
