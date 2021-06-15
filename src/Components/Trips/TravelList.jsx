@@ -11,7 +11,8 @@ import {
   IonContent,
 } from '@ionic/react';
 
-import getTravelByTripId from '../../api/getTravel.api';
+import getTravelByTripId from '../../api/TravelCard.api';
+import deleteTravelByID from '../../api/deleteTravelById.api';
 import { formatDate } from '../../utils/utils';
 
 const TravelList = () => {
@@ -24,12 +25,26 @@ const TravelList = () => {
     getTravelByTripId(tripId, setTravel);
   }, []);
 
+  const deleteTravel = (ID, journey) => {
+    deleteTravelByID(ID, journey).then(() => {
+      history.go(0);
+    });
+  };
+
   return (
     <IonContent>
-      <IonHeader>
+      <IonHeader
+        type="button"
+        onClick={() => {
+          history.go(-1);
+        }}
+      >
         <h1>Travel</h1>
       </IonHeader>
-      <IonButton onClick={() => history.push(`/trips/${tripId}/travel/form`)}>
+      <IonButton
+        expand="block"
+        onClick={() => history.push(`/trips/${tripId}/travel/form`)}
+      >
         Add new details
       </IonButton>
       {travel.map((journey) => (
@@ -39,6 +54,14 @@ const TravelList = () => {
               <h5>
                 {'Direction: '}
                 {journey.direction}
+                <IonButton
+                  color="light"
+                  onClick={() => {
+                    deleteTravel(tripId, journey.travelId);
+                  }}
+                >
+                  🗑
+                </IonButton>
               </h5>
             </IonCardTitle>
           </IonCardHeader>

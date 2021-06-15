@@ -11,7 +11,8 @@ import {
   IonContent,
 } from '@ionic/react';
 
-import getAccommodationByTripId from '../../api/getAccom.api';
+import getAccommodationByTripId from '../../api/AccomCard.api';
+import deleteAccommByID from '../../api/deleteAccommByID.api';
 import { formatDate } from '../../utils/utils';
 
 const AccommodationDetails = () => {
@@ -24,12 +25,24 @@ const AccommodationDetails = () => {
     getAccommodationByTripId(tripId, setAccommodation);
   }, []);
 
+  const deleteAccomm = (ID, hotel) => {
+    deleteAccommByID(ID, hotel.accommId).then(() => {
+      history.go(0);
+    });
+  };
+
   return (
     <IonContent>
-      <IonHeader>
-        <h1>Hotels</h1>
+      <IonHeader
+        type="button"
+        onClick={() => {
+          history.go(-1);
+        }}
+      >
+        <h1>Accommodation</h1>
       </IonHeader>
       <IonButton
+        expand="block"
         onClick={() => history.push(`/trips/${tripId}/accommodation/form`)}
       >
         Add new details
@@ -41,6 +54,15 @@ const AccommodationDetails = () => {
               <h5>
                 {'Hotel Name: '}
                 {hotel.hotel_name}
+                <IonButton
+                  slot="end"
+                  color="light"
+                  onClick={() => {
+                    deleteAccomm(tripId, hotel);
+                  }}
+                >
+                  🗑
+                </IonButton>
               </h5>
             </IonCardTitle>
           </IonCardHeader>
