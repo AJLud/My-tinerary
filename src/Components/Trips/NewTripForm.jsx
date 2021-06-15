@@ -13,8 +13,8 @@ import {
 import { React, useState, useContext, useEffect } from 'react';
 /* eslint-enable */
 import { Link, Redirect } from 'react-router-dom';
-import postTripByUser from '../api/postTrips.api';
-import UserContext from '../Contexts/User';
+import postTripByUser from '../../api/postTrips.api';
+import UserContext from '../../Contexts/User';
 
 const NewTrip = () => {
   const [isPosted, setIsPosted] = useState(false);
@@ -48,8 +48,7 @@ const NewTrip = () => {
     newTrip.end_date = { seconds: endDate, nanoseconds: 0 };
 
     postTripByUser(newTrip)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         setIsPosted(true);
       })
       .catch((err) => console.log('trip did not post', err));

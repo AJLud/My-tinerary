@@ -7,7 +7,7 @@ import {
   IonContent,
 } from '@ionic/react';
 import { Link } from 'react-router-dom';
-import db from '../Config/firebase-setup';
+import db from '../../Config/firebase-setup';
 
 const SignIn = ({ setUser }) => {
   const [username, setUsername] = useState('');

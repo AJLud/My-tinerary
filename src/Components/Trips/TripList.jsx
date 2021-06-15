@@ -11,7 +11,7 @@ import {
   IonContent,
 } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
-import getTripsByUser from '../api/api';
+import getTripsByUser from '../../api/api';
 import Countdown from './Countdown';
 
 const TripsList = ({ user }) => {
@@ -32,7 +32,7 @@ const TripsList = ({ user }) => {
         <h1>Current Trips</h1>
       </IonHeader>
       <IonButton color="secondary">
-        <Link to="/new_trip">Start new trip!!!</Link>
+        <Link to="/new-trip">Start new trip!!!</Link>
       </IonButton>
       {userTrips.map((trip) => (
         <IonCard

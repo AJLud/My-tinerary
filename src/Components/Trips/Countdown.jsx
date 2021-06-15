@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonCardSubtitle } from '@ionic/react';
 
-import * as utils from '../utils/utils';
+import * as utils from '../../utils/utils';
 
 const Countdown = ({ trip }) => {
   const tripStartDate = trip.start_date.seconds;
