@@ -58,6 +58,10 @@ const TripsList = ({ user }) => {
                 {trip.owner}
               </h5>
             </IonCardSubtitle>
+            <IonCardSubtitle>
+              {''}
+              {console.log(trip)}
+            </IonCardSubtitle>
           </IonCardContent>
         </IonCard>
       ))}
