@@ -62,7 +62,7 @@ const NewTrip = () => {
   // every other form submission the submit breaks
 
   return (
-    <>
+    <IonContent>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Plan New Trip ⛅ </IonTitle>
@@ -160,7 +160,7 @@ const NewTrip = () => {
           <Link to="/trips">Cancel</Link>
         </IonButton>
       </IonContent>
-    </>
+    </IonContent>
   );
 };
 
