@@ -10,13 +10,13 @@ import NewTrip from './Components/Trips/NewTripForm';
 import Buddies from './Components/Buddies';
 import Navbar from './Components/Navbar';
 import SignIn from './Components/LogIn/SignIn';
-import FormPage from './Components/Trips/AccommodationForm';
+import AccomodationForm from './Components/Trips/AccommodationForm';
 import TravelForm from './Components/Trips/TravelForm';
-// import ExcursionForm from './Components/Trips/ExcursionForm';
+import ExcursionForm from './Components/Trips/ExcursionForm';
 import SignUp from './Components/LogIn/SignUp';
 import Home from './Components/Homepage';
 import AccommodationDetails from './Components/Trips/AccommodationList';
-// import ExcursionList from './Components/Trips/ExcursionList';
+import ExcursionList from './Components/Trips/ExcursionList';
 import TravelList from './Components/Trips/TravelList';
 
 // import RequireLogin from './Components/RequireLogin';
@@ -62,7 +62,6 @@ const App = () => {
   const AuthUserView = () => (
     <IonApp>
       <UserContext.Provider value={{ user, setUser }}>
-        {/* <RequireLogin> */}
         <IonReactRouter>
           <Navbar />
           <IonRouterOutlet id="main">
@@ -76,14 +75,17 @@ const App = () => {
               <Home />
             </Route>
             <Route path="/trips/:tripId/accommodation/form" exact>
-              <FormPage />
+              <AccomodationForm />
             </Route>
             <Route path="/trips/:tripId/accommodation" exact>
               <AccommodationDetails />
             </Route>
-            {/* <Route path="/trips/:tripId/excursions" exact>
+            <Route path="/trips/:tripId/excursions/form">
+              <ExcursionForm />
+            </Route>
+            <Route path="/trips/:tripId/excursions" exact>
               <ExcursionList />
-            </Route> */}
+            </Route>
             <Route path="/trips/:tripId/travel/form" exact>
               <TravelForm />
             </Route>
@@ -107,7 +109,6 @@ const App = () => {
             </Route>
           </IonRouterOutlet>
         </IonReactRouter>
-        {/* </RequireLogin> */}
       </UserContext.Provider>
     </IonApp>
   );
