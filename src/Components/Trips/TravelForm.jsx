@@ -45,9 +45,9 @@ const TravelForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const leavingDate = newDate(newTravel.leavingDate);
-    newTravel.check_in = {
-      seconds: leavingDate,
+    const date = newDate(newTravel.leavingDate);
+    newTravel.leavingDate = {
+      seconds: date,
       nanoseconds: 0,
     };
 
@@ -66,6 +66,7 @@ const TravelForm = () => {
             <IonItem>
               <IonCardTitle>Travel Plans</IonCardTitle>
             </IonItem>
+            {/* Change this to a outbound/inbound dropdown */}
             <IonItemDivider>Direction:</IonItemDivider>
             <IonItem>
               <IonInput
