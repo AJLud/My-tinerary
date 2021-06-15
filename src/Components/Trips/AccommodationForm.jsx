@@ -35,6 +35,7 @@ const FormPage = () => {
         check_in: '',
         notes: '',
       });
+      history.push(`/trips/${tripId.tripId}/accommodation`);
     }
   }, []);
 
@@ -52,10 +53,6 @@ const FormPage = () => {
       })
       .catch((err) => console.log('details did not post', err));
   };
-
-  if (isPosted) {
-    history.push(`/trips/${tripId.tripId}/accommodation`);
-  }
 
   return (
     <IonContent>
