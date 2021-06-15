@@ -2,17 +2,21 @@ import { React, useState } from 'react';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Route } from 'react-router-dom';
-import Trips from './Components/Trips';
+import Trips from './Components/Trips/TripList';
 import Profile from './Components/Profile';
 import ProfileSettings from './Components/ProfileSettings';
-import Trip from './Components/Trip';
-import NewTrip from './Components/NewTrip';
+import Trip from './Components/Trips/IndividualTrip';
+import NewTrip from './Components/Trips/NewTripForm';
 import Buddies from './Components/Buddies';
 import Navbar from './Components/Navbar';
-import SignIn from './Components/SignIn';
-import FormPage from './Components/FormPage';
-import SignUp from './Components/SignUp';
+import SignIn from './Components/LogIn/SignIn';
+import FormPage from './Components/Trips/AccommodationForm';
+import SignUp from './Components/LogIn/SignUp';
 import Home from './Components/Homepage';
+<<<<<<< HEAD
+=======
+import AccommodationDetails from './Components/Trips/AccommodationList';
+>>>>>>> 46cbb5947fdeaf22969ebf277116ef62d245838a
 
 // import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
@@ -37,7 +41,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ username: 'Bex123' });
 
   const SignInSignUpView = () => (
     <IonApp>
@@ -70,13 +74,16 @@ const App = () => {
             <Route path="/" exact>
               <Home />
             </Route>
-            <Route path="/form" exact>
+            <Route path="/trips/:tripId/accommodation/form" exact>
               <FormPage />
             </Route>
-            <Route path="/trips/:trip_id" exact>
+            <Route path="/trips/:tripId/accommodation" exact>
+              <AccommodationDetails />
+            </Route>
+            <Route path="/trips/:tripId" exact>
               <Trip />
             </Route>
-            <Route path="/new_trip" exact>
+            <Route path="/new-trip" exact>
               <NewTrip />
             </Route>
             <Route path="/profile" exact>
