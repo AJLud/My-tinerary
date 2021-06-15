@@ -1,4 +1,4 @@
-import { countdown, dateDifference } from '../utils/utils';
+import { countdown, dateDifference, formatDate } from '../utils/utils';
 
 describe('countdown', () => {
   test('when passed a object, it will return an string', () => {
@@ -83,5 +83,11 @@ describe('dateDifference', () => {
       seconds: expectedOtherTimeDiff,
       tripDurationSeconds: expectedTimeDifference,
     });
+  });
+});
+describe('formatDate', () => {
+  it('should return a date and time that looks like DD/MM/YYYY', () => {
+    expect(formatDate(1623755320)).toBe('15/06/2021');
+    // expect(formatDate('2003-04-01T13:00:58.110Z')).toBe('01/04/2003');
   });
 });

@@ -7,11 +7,11 @@ import {
   IonCardTitle,
   IonHeader,
   IonCardSubtitle,
-  IonCardContent,
   IonContent,
 } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
 import getTripsByUser from '../../api/api';
+import { formatDate } from '../../utils/utils';
 import Countdown from './Countdown';
 
 const TripsList = ({ user }) => {
@@ -27,12 +27,10 @@ const TripsList = ({ user }) => {
   };
 
   return (
-    <ion-content overflow-scroll="true" class="has-header">
-      <IonContent>
-        <IonHeader>
+    <IonContent overflow-scroll="true" class="has-header">
+              <IonHeader>
           <h1>Current Trips</h1>
         </IonHeader>
-
         <Link to="/new-trip">
           <IonButton color="secondary">New Trip</IonButton>
         </Link>
@@ -47,25 +45,21 @@ const TripsList = ({ user }) => {
               <Countdown trip={trip} />
               <IonCardTitle>{trip.trip_name}</IonCardTitle>
             </IonCardHeader>
-            <IonCardContent>
-              <IonCardSubtitle>
-                <h5>
-                  {'Location: '}
-                  {trip.destination}
-                </h5>
-              </IonCardSubtitle>
-
-              <IonCardSubtitle>
-                <h5>
-                  {'Organised By: '}
-                  {trip.owner}
-                </h5>
-              </IonCardSubtitle>
-            </IonCardContent>
-          </IonCard>
-        ))}
-      </IonContent>
-    </ion-content>
+             <IonCardSubtitle>
+              <h5>
+                {'Organised By: '}
+                {trip.owner}
+              </h5>
+            </IonCardSubtitle>
+            <IonCardSubtitle>
+              {' '}
+              {formatDate(trip.start_date.seconds)}
+              {' - '}
+              {formatDate(trip.end_date.seconds)}
+            </IonCardSubtitle>
+        </IonCard>
+      ))}
+    </IonContent>
   );
 };
 export default TripsList;

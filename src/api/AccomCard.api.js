@@ -8,6 +8,7 @@ const getAccommodationByTripId = (tripID, setAccommodation) => {
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
+        // need to pull in accomodation ID
         accommData.push(doc.data());
       });
       setAccommodation(accommData);

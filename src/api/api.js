@@ -4,6 +4,7 @@ const getTripsByUser = (user, setUserTrips) => {
   const userTripsArray = [];
   db.collection('trips')
     .where('owner', '==', user.username)
+    .orderBy('start_date')
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
