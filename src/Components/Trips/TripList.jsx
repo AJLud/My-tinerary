@@ -7,7 +7,6 @@ import {
   IonCardTitle,
   IonHeader,
   IonCardSubtitle,
-  IonCardContent,
   IonContent,
 } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
@@ -28,32 +27,25 @@ const TripsList = ({ user }) => {
   };
 
   return (
-    <IonContent>
-      <IonHeader>
-        <h1>Current Trips</h1>
-      </IonHeader>
-      <IonButton color="secondary">
-        <Link to="/new-trip">Start new trip!!!</Link>
-      </IonButton>
-      {userTrips.map((trip) => (
-        <IonCard
-          key={trip.tripId}
-          color="light"
-          onClick={() => specificTrip(trip)}
-        >
-          <IonCardHeader>
-            <Countdown trip={trip} />
-            <IonCardTitle>{trip.trip_name}</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <IonCardSubtitle>
-              <h5>
-                {'Location: '}
-                {trip.destination}
-              </h5>
-            </IonCardSubtitle>
+    <IonContent overflow-scroll="true" class="has-header">
+              <IonHeader>
+          <h1>Current Trips</h1>
+        </IonHeader>
+        <Link to="/new-trip">
+          <IonButton color="secondary">New Trip</IonButton>
+        </Link>
 
-            <IonCardSubtitle>
+        {userTrips.map((trip) => (
+          <IonCard
+            key={trip.tripId}
+            color="light"
+            onClick={() => specificTrip(trip)}
+          >
+            <IonCardHeader>
+              <Countdown trip={trip} />
+              <IonCardTitle>{trip.trip_name}</IonCardTitle>
+            </IonCardHeader>
+             <IonCardSubtitle>
               <h5>
                 {'Organised By: '}
                 {trip.owner}
@@ -65,7 +57,6 @@ const TripsList = ({ user }) => {
               {' - '}
               {formatDate(trip.end_date.seconds)}
             </IonCardSubtitle>
-          </IonCardContent>
         </IonCard>
       ))}
     </IonContent>
