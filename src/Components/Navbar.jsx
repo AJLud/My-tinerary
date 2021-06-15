@@ -1,49 +1,64 @@
-import { React } from 'react';
-import { Link } from 'react-router-dom';
-/*eslint-disable */
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+/* eslint-disable */
 import { IonFab, IonFabButton, IonFabList, IonIcon } from '@ionic/react';
+/* eslint-enable */
 import {
   airplane,
   people,
-  person,
   triangle,
   chatbubbles,
+  person,
   home,
 } from 'ionicons/icons';
 
-const Navbar = () => (
-  <IonFab vertical="bottom" horizontal="end">
-    <IonFabButton color="light">
-      <IonIcon icon={triangle} />
-    </IonFabButton>
-    <IonFabList side="top">
-      <IonFabButton>
-        <Link to="/profile">
+const Navbar = () => {
+  const history = useHistory();
+
+  return (
+    <IonFab vertical="bottom" horizontal="end">
+      <IonFabButton color="light">
+        <IonIcon icon={triangle} />
+      </IonFabButton>
+      <IonFabList side="top">
+        <IonFabButton
+          onClick={() => {
+            history.push('/profile');
+          }}
+        >
           <IonIcon icon={person} />
-        </Link>
-      </IonFabButton>
-      <IonFabButton>
-        <Link to="/buddies">
+        </IonFabButton>
+        <IonFabButton
+          onClick={() => {
+            history.push('/buddies');
+          }}
+        >
           <IonIcon icon={people} />
-        </Link>
-      </IonFabButton>
-      <IonFabButton>
-        <Link to="/chats">
+        </IonFabButton>
+        <IonFabButton
+          onClick={() => {
+            history.push('/chats');
+          }}
+        >
           <IonIcon icon={chatbubbles} />
-        </Link>
-      </IonFabButton>
-      <IonFabButton>
-        <Link to="/trips">
+        </IonFabButton>
+        <IonFabButton
+          onClick={() => {
+            history.push('/trips');
+          }}
+        >
           <IonIcon icon={airplane} />
-        </Link>
-      </IonFabButton>
-      <IonFabButton>
-        <Link to="/">
+        </IonFabButton>
+        <IonFabButton
+          onClick={() => {
+            history.push('/');
+          }}
+        >
           <IonIcon icon={home} />
-        </Link>
-      </IonFabButton>
-    </IonFabList>
-  </IonFab>
-);
+        </IonFabButton>
+      </IonFabList>
+    </IonFab>
+  );
+};
 
 export default Navbar;
