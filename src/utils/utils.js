@@ -38,4 +38,17 @@ const dateDifference = (currDate, tripStartDate, tripEndDate) => {
 };
 // returned object to be passed into countdown
 
-module.exports = { countdown, dateDifference };
+const formatDate = (startDate) => {
+  const fullTS = startDate * 1000;
+  const isoDate = new Date(fullTS).toISOString();
+  console.log(isoDate);
+
+  const [date, time] = isoDate.split('T');
+  console.log(time);
+
+  const splitDate = date.split('-');
+
+  return `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
+};
+
+module.exports = { countdown, dateDifference, formatDate };

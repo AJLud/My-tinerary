@@ -12,6 +12,7 @@ import {
 } from '@ionic/react';
 import { Link, useHistory } from 'react-router-dom';
 import getTripsByUser from '../../api/api';
+import { formatDate } from '../../utils/utils';
 import Countdown from './Countdown';
 
 const TripsList = ({ user }) => {
@@ -60,7 +61,7 @@ const TripsList = ({ user }) => {
             </IonCardSubtitle>
             <IonCardSubtitle>
               {''}
-              {console.log(trip)}
+              {formatDate(trip.start_date.seconds)}
             </IonCardSubtitle>
           </IonCardContent>
         </IonCard>
