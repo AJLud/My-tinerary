@@ -35,7 +35,12 @@ const ExcursionList = () => {
 
   return (
     <IonContent>
-      <IonHeader>
+      <IonHeader
+        type="button"
+        onClick={() => {
+          history.go(-1);
+        }}
+      >
         <h1>{currTrip.trip_name}</h1>
         <h2>Excursions</h2>
       </IonHeader>

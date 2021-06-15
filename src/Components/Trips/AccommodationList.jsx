@@ -32,7 +32,12 @@ const AccommodationDetails = () => {
 
   return (
     <IonContent>
-      <IonHeader>
+      <IonHeader
+        type="button"
+        onClick={() => {
+          history.go(-1);
+        }}
+      >
         <h1>Accommodation</h1>
       </IonHeader>
       <IonButton

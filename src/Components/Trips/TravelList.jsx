@@ -32,7 +32,12 @@ const TravelList = () => {
 
   return (
     <IonContent>
-      <IonHeader>
+      <IonHeader
+        type="button"
+        onClick={() => {
+          history.go(-1);
+        }}
+      >
         <h1>Travel</h1>
       </IonHeader>
       <IonButton
