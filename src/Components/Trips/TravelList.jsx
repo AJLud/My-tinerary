@@ -32,7 +32,7 @@ const TravelList = () => {
         Add new details
       </IonButton>
       {travel.map((journey) => (
-        <IonCard key={journey.direction} color="light">
+        <IonCard key={journey.travelId} color="light">
           <IonCardHeader>
             <IonCardTitle>
               <h5>
