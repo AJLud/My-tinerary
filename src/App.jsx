@@ -13,10 +13,7 @@ import SignIn from './Components/LogIn/SignIn';
 import FormPage from './Components/Trips/AccommodationForm';
 import SignUp from './Components/LogIn/SignUp';
 import Home from './Components/Homepage';
-<<<<<<< HEAD
-=======
 import AccommodationDetails from './Components/Trips/AccommodationList';
->>>>>>> 46cbb5947fdeaf22969ebf277116ef62d245838a
 
 // import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
