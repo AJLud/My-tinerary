@@ -9,7 +9,7 @@ import {
   IonContent,
   IonCardContent,
 } from '@ionic/react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import getTripsByUser from '../../api/api';
 import { formatDate } from '../../utils/utils';
 import Countdown from './Countdown';
@@ -31,9 +31,15 @@ const TripsList = ({ user }) => {
       <IonHeader>
         <h1>Current Trips</h1>
       </IonHeader>
-      <Link to="/new-trip">
-        <IonButton color="secondary">New Trip</IonButton>
-      </Link>
+      <IonButton
+        expand="block"
+        color="secondary"
+        onClick={() => {
+          history.push('new-trip');
+        }}
+      >
+        New Trip
+      </IonButton>
 
       {userTrips.map((trip) => (
         <IonCard

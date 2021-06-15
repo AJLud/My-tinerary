@@ -151,12 +151,16 @@ const NewTrip = () => {
                   }}
                 />
               </IonItem>
-              <IonButton type="submit" expand="block" color="danger">
+              <IonButton type="submit" expand="block" color="success">
                 submit
               </IonButton>
             </IonList>
           </form>
-          <IonButton color="danger" onClick={() => history.push('/trips')}>
+          <IonButton
+            expand="block"
+            color="danger"
+            onClick={() => history.push('/trips')}
+          >
             Cancel
           </IonButton>
         </IonContent>

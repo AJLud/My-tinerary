@@ -25,9 +25,6 @@ const AccommodationDetails = () => {
   }, []);
 
   const deleteAccomm = (ID, hotel) => {
-    console.log(ID);
-    console.log(hotel.accommId);
-
     deleteAccommByID(ID, hotel.accommId).then(() => {
       history.go(0);
     });
@@ -36,52 +33,51 @@ const AccommodationDetails = () => {
   return (
     <IonContent>
       <IonHeader>
-        <h1>Hotels</h1>
+        <h1>Accommodation</h1>
       </IonHeader>
       <IonButton
+        expand="block"
         onClick={() => history.push(`/trips/${tripId}/accommodation/form`)}
       >
         Add new details
       </IonButton>
       {accommodation.map((hotel) => (
-        <IonCard key={hotel.hotel_name}>
-          <IonCard color="light">
-            <IonCardHeader>
-              <IonCardTitle>
-                <h5>
-                  {'Hotel Name: '}
-                  {hotel.hotel_name}
-                </h5>
-              </IonCardTitle>
-            </IonCardHeader>
-            <IonCardContent>
-              <IonCardSubtitle>
-                <h5>{'Check-In Date: '}</h5>
-              </IonCardSubtitle>
-              <IonCardSubtitle>
-                <h5>
-                  {'Days: '}
-                  {hotel.days}
-                </h5>
-              </IonCardSubtitle>
+        <IonCard key={hotel.hotel_name} color="light">
+          <IonCardHeader>
+            <IonCardTitle>
+              <h5>
+                {'Hotel Name: '}
+                {hotel.hotel_name}
+                <IonButton
+                  slot="end"
+                  color="light"
+                  onClick={() => {
+                    deleteAccomm(tripId, hotel);
+                  }}
+                >
+                  🗑
+                </IonButton>
+              </h5>
+            </IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <IonCardSubtitle>
+              <h5>{'Check-In Date: '}</h5>
+            </IonCardSubtitle>
+            <IonCardSubtitle>
+              <h5>
+                {'Days: '}
+                {hotel.days}
+              </h5>
+            </IonCardSubtitle>
 
-              <IonCardSubtitle>
-                <h5>
-                  {'Notes: '}
-                  {hotel.notes}
-                </h5>
-              </IonCardSubtitle>
-            </IonCardContent>
-          </IonCard>
-          <IonButton
-            expand="block"
-            color="danger"
-            onClick={() => {
-              deleteAccomm(tripId, hotel);
-            }}
-          >
-            Delete
-          </IonButton>
+            <IonCardSubtitle>
+              <h5>
+                {'Notes: '}
+                {hotel.notes}
+              </h5>
+            </IonCardSubtitle>
+          </IonCardContent>
         </IonCard>
       ))}
     </IonContent>
