@@ -156,7 +156,7 @@ const NewTrip = () => {
               </IonButton>
             </IonList>
           </form>
-          <IonButton color="sucess" onClick={() => history.push('/trips')}>
+          <IonButton color="danger" onClick={() => history.push('/trips')}>
             Cancel
           </IonButton>
         </IonContent>
