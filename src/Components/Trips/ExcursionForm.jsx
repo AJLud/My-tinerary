@@ -12,6 +12,7 @@ import {
 } from '@ionic/react';
 
 import postExcursion from '../../api/postExcursion.api';
+import BackButton from '../BackButton';
 
 const FormPage = () => {
   const [isPosted, setIsPosted] = useState(false);
@@ -56,6 +57,14 @@ const FormPage = () => {
 
   return (
     <IonContent>
+      <BackButton />
+      <IonButton
+        onClick={() => {
+          history.push(`/trips/${tripId.tripId}`);
+        }}
+      >
+        Back To Trip
+      </IonButton>
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
@@ -96,7 +105,6 @@ const FormPage = () => {
             <IonItem>
               <IonInput
                 type="text"
-                required
                 value={newExcursion.cost}
                 onIonChange={(event) => {
                   setNewExcursion((currExcursion) => {
@@ -111,7 +119,6 @@ const FormPage = () => {
             <IonItem>
               <IonInput
                 type="text"
-                required
                 value={newExcursion.address}
                 onIonChange={(event) => {
                   setNewExcursion((currExcursion) => {

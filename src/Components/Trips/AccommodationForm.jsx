@@ -12,6 +12,7 @@ import {
 } from '@ionic/react';
 
 import postAccommodationDetails from '../../api/postAccom';
+import BackButton from '../BackButton';
 
 const AccommodationForm = () => {
   const [isPosted, setIsPosted] = useState(false);
@@ -56,6 +57,16 @@ const AccommodationForm = () => {
 
   return (
     <IonContent>
+      <nav>
+        <BackButton />
+        <IonButton
+          onClick={() => {
+            history.push(`/trips/${tripId.tripId}`);
+          }}
+        >
+          Back To Trip
+        </IonButton>
+      </nav>
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
@@ -111,7 +122,6 @@ const AccommodationForm = () => {
             <IonItem>
               <IonInput
                 type="text"
-                required
                 value={newAccommodation.notes}
                 onIonChange={(event) => {
                   setNewAccommodation((currAccommodation) => {

@@ -19,7 +19,6 @@ import AccommodationDetails from './Components/Trips/AccommodationList';
 import ExcursionList from './Components/Trips/ExcursionList';
 import TravelList from './Components/Trips/TravelList';
 
-// import RequireLogin from './Components/RequireLogin';
 import UserContext from './Contexts/User';
 
 /* Core CSS required for Ionic components to work properly */

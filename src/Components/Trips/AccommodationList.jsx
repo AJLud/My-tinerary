@@ -12,17 +12,21 @@ import {
 } from '@ionic/react';
 
 import getAccommodationByTripId from '../../api/getAccom.api';
+import getTripById from '../../api/tripById.api';
 import deleteAccommByID from '../../api/deleteAccommByID.api';
 import { formatDate } from '../../utils/utils';
+import BackButton from '../BackButton';
 
 const AccommodationDetails = () => {
   const history = useHistory();
   const { tripId } = useParams();
+  const [currTrip, setCurrTrip] = useState({});
 
   const [accommodation, setAccommodation] = useState([]);
 
   useEffect(() => {
     getAccommodationByTripId(tripId, setAccommodation);
+    getTripById(tripId, setCurrTrip);
   }, []);
 
   const deleteAccomm = (ID, hotel) => {
@@ -33,13 +37,21 @@ const AccommodationDetails = () => {
 
   return (
     <IonContent>
-      <IonHeader
-        type="button"
-        onClick={() => {
-          history.go(-1);
-        }}
-      >
-        <h1>Accommodation</h1>
+      <nav>
+        {' '}
+        <BackButton />
+        <IonButton
+          onClick={() => {
+            history.push(`/trips/${tripId}`);
+          }}
+        >
+          Back To Trip
+        </IonButton>
+      </nav>
+
+      <IonHeader>
+        <h1>{currTrip.trip_name}</h1>
+        <h2>Accommodation</h2>
       </IonHeader>
       <IonButton
         color="secondary"

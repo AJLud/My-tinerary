@@ -1,8 +1,8 @@
 import React from 'react';
-
 import { IonHeader, IonButton, IonIcon } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { airplane } from 'ionicons/icons';
+import BackButton from './BackButton';
 
 const Homepage = () => {
   const history = useHistory();
@@ -12,9 +12,11 @@ const Homepage = () => {
 
   return (
     <>
+      <BackButton />
       <IonHeader className="header plane">
         My-tinerary
         <IonIcon icon={airplane} />
+
       </IonHeader>
 
       <IonButton
