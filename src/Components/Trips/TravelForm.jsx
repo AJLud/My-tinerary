@@ -47,9 +47,9 @@ const TravelForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const leavingDate = newDate(newTravel.leavingDate);
-    newTravel.check_in = {
-      seconds: leavingDate,
+    const date = newDate(newTravel.leavingDate);
+    newTravel.leavingDate = {
+      seconds: date,
       nanoseconds: 0,
     };
 

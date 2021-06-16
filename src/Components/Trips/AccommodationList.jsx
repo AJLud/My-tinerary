@@ -13,6 +13,7 @@ import {
 
 import getAccommodationByTripId from '../../api/AccomCard.api';
 import deleteAccommByID from '../../api/deleteAccommByID.api';
+import { formatDate } from '../../utils/utils';
 
 const AccommodationDetails = () => {
   const history = useHistory();
@@ -67,7 +68,10 @@ const AccommodationDetails = () => {
           </IonCardHeader>
           <IonCardContent>
             <IonCardSubtitle>
-              <h5>{'Check-In Date: '}</h5>
+              <h5>
+                {'Check-In Date: '}
+                {formatDate(hotel.check_in.seconds)}
+              </h5>
             </IonCardSubtitle>
             <IonCardSubtitle>
               <h5>
