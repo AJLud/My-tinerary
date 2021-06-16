@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  text-align: center;
+  margin-top: 40px;
+  margin: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  font-size: 40px;
+  color: #002c3e;
+}
+.plane {
+  text-align: center;
+  font-size: 40px;
+}
+.page-head {
+  display: flex;
+  text-align: center;
+  margin-top: 4px;
+  margin: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: 40px;
+  color: #002c3e;
+  text-align: center;
+  font-size: 40px;
+}

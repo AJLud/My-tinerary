@@ -68,13 +68,14 @@ const ExcursionList = () => {
         <h2>Excursions</h2>
       </IonHeader>
       <IonButton
+        color="secondary"
         expand="block"
         onClick={() => history.push(`/trips/${tripId}/excursions/form`)}
       >
         Add new details
       </IonButton>
       {excursions.map((excursion) => (
-        <IonCard key={excursion.excursionID} color="light">
+        <IonCard key={excursion.excursionID} color="primary">
           <IonCardHeader>
             <IonCardTitle>
               <h5>

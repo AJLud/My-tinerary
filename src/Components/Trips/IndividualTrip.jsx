@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-/* eslint-disable */
-import { IonCard, IonCardTitle, IonButton, IonContent } from '@ionic/react';
-/* eslint-enable */
+import {
+  IonCardSubtitle,
+  IonButton,
+  IonContent,
+  IonBackButton,
+} from '@ionic/react';
+
 import getTripById from '../../api/tripById.api';
 import TripSectionBrief from './TripSectionBrief';
 
@@ -42,24 +46,23 @@ const Trip = () => {
   return (
     <IonContent>
       <BackButton />
-      <IonCard color="light">
-        <IonCardTitle>
-          <h1>
-            <Countdown trip={currentTrip} />
-            {currentTrip.trip_name}
-          </h1>
-        </IonCardTitle>
-        <h2>
-          {'Location: '}
-          {currentTrip.destination}
-        </h2>
-        <h2>
-          {'Dates: '}
-          {formatDate(currentTrip.start_date.seconds)}
-          {' - '}
-          {formatDate(currentTrip.end_date.seconds)}
-        </h2>
-      </IonCard>
+      <IonCardSubtitle className="page-head">
+        <Countdown trip={currentTrip} />
+        {currentTrip.trip_name}
+      </IonCardSubtitle>
+
+      <br />
+      <IonCardSubtitle color="secondary">
+        {'Location: '}
+        {currTrip.destination}
+      </IonCardSubtitle>
+      <IonCardSubtitle color="secondary">
+        {'Dates: '}
+        {formatDate(currentTrip.start_date.seconds)}
+        {' - '}
+        {formatDate(currentTrip.end_date.seconds)}
+      </IonCardSubtitle>
+      <br />
 
       <TripSectionBrief section="Accommodation" tripId={tripId} />
       <TripSectionBrief section="Travel" tripId={tripId} />
@@ -68,12 +71,12 @@ const Trip = () => {
 
       <IonButton
         expand="block"
-        color="danger"
+        color="primary"
         onClick={() => {
           deleteTrip(tripId);
         }}
       >
-        Delete
+        Delete Trip
       </IonButton>
     </IonContent>
   );
