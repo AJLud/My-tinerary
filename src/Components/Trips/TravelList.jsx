@@ -12,17 +12,21 @@ import {
 } from '@ionic/react';
 
 import getTravelByTripId from '../../api/getTravel.api';
+import getTripById from '../../api/tripById.api';
 import deleteTravelByID from '../../api/deleteTravelById.api';
 import { formatDate } from '../../utils/utils';
+import BackButton from '../BackButton';
 
 const TravelList = () => {
   const history = useHistory();
   const { tripId } = useParams();
+  const [currTrip, setCurrTrip] = useState({});
 
   const [travel, setTravel] = useState([]);
 
   useEffect(() => {
     getTravelByTripId(tripId, setTravel);
+    getTripById(tripId, setCurrTrip);
   }, []);
 
   const deleteTravel = (ID, journey) => {
@@ -33,13 +37,21 @@ const TravelList = () => {
 
   return (
     <IonContent>
-      <IonHeader
-        type="button"
-        onClick={() => {
-          history.go(-1);
-        }}
-      >
-        <h1>Travel</h1>
+      <nav>
+        {' '}
+        <BackButton />
+        <IonButton
+          onClick={() => {
+            history.push(`/trips/${tripId}`);
+          }}
+        >
+          Back To Trip
+        </IonButton>
+      </nav>
+
+      <IonHeader>
+        <h1>{currTrip.trip_name}</h1>
+        <h2>Travel</h2>
       </IonHeader>
       <IonButton
         expand="block"

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import {
   IonButton,
   IonContent,
@@ -7,19 +8,20 @@ import {
   IonListHeader,
   IonImg,
 } from '@ionic/react';
-import { Link } from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
 import getUserDetails from '../userDetails.api';
+import BackButton from './BackButton';
 
 const Profile = ({ user, setUser }) => {
   const [userDetails, setUserDetails] = useState('');
-
   useEffect(() => {
     getUserDetails(user, setUserDetails);
   }, []);
 
   return (
     <IonContent>
+      <BackButton />
       <IonListHeader lines="full">
         <IonLabel>
           <h1>Profile</h1>
