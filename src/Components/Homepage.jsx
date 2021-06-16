@@ -11,7 +11,7 @@ const Homepage = () => {
 
   return (
     <>
-      <IonHeader className="header plane">
+      <IonHeader className="header plane" class="ion-no-border">
         My-tinerary
         <IonIcon icon={airplane} />
       </IonHeader>
@@ -22,36 +22,40 @@ const Homepage = () => {
         }}
         color="secondary"
         expand="block"
+        size="large"
       >
         Profile
       </IonButton>
-
+      <br />
       <IonButton
         onClick={() => {
           landingPage('/trips');
         }}
         color="secondary"
         expand="block"
+        size="large"
       >
         Trips
       </IonButton>
-
+      <br />
       <IonButton
         onClick={() => {
           landingPage('/buddies');
         }}
         color="secondary"
         expand="block"
+        size="large"
       >
         Buddies
       </IonButton>
-
+      <br />
       <IonButton
         onClick={() => {
           landingPage('/chats');
         }}
         color="secondary"
         expand="block"
+        size="large"
       >
         Chat
       </IonButton>

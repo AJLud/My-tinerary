@@ -45,32 +45,23 @@ const ExcursionList = () => {
 
   if (isLoading) return <Loading />;
   if (isError.status) return <Error isError={isError} />;
+  /* eslint-disable */
   return (
     <IonContent>
-      <nav>
-        {' '}
-        <BackButton />
-        <IonButton
-          onClick={() => {
-            history.push(`/trips/${tripId}`);
-          }}
-        >
-          Back To Trip
-        </IonButton>
-      </nav>
-
-      <IonHeader>
-        <h1>{currentTrip.trip_name}</h1>
-        <h2>
-          {formatDate(currentTrip.start_date.seconds)}
-          {' - '}
-          {formatDate(currentTrip.end_date.seconds)}
-        </h2>
-        <h2>Excursions</h2>
+      <IonHeader className="page-head" class="ion-no-border">
+        <BackButton /> {currentTrip.trip_name}
       </IonHeader>
+      <h2>
+        {formatDate(currentTrip.start_date.seconds)}
+        {' - '}
+        {formatDate(currentTrip.end_date.seconds)}
+      </h2>
+      <h2>Excursions</h2>
+
       <IonButton
         color="secondary"
         expand="block"
+        size="large"
         onClick={() => history.push(`/trips/${tripId}/excursions/form`)}
       >
         Add new details
