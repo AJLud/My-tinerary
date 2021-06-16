@@ -57,14 +57,16 @@ const AccommodationForm = () => {
 
   return (
     <IonContent>
-      <BackButton />
-      <IonButton
-        onClick={() => {
-          history.push(`/trips/${tripId.tripId}`);
-        }}
-      >
-        Back To Trip
-      </IonButton>
+      <nav>
+        <BackButton />
+        <IonButton
+          onClick={() => {
+            history.push(`/trips/${tripId.tripId}`);
+          }}
+        >
+          Back To Trip
+        </IonButton>
+      </nav>
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
@@ -120,7 +122,6 @@ const AccommodationForm = () => {
             <IonItem>
               <IonInput
                 type="text"
-                required
                 value={newAccommodation.notes}
                 onIonChange={(event) => {
                   setNewAccommodation((currAccommodation) => {

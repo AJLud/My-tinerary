@@ -105,7 +105,6 @@ const FormPage = () => {
             <IonItem>
               <IonInput
                 type="text"
-                required
                 value={newExcursion.cost}
                 onIonChange={(event) => {
                   setNewExcursion((currExcursion) => {
@@ -120,7 +119,6 @@ const FormPage = () => {
             <IonItem>
               <IonInput
                 type="text"
-                required
                 value={newExcursion.address}
                 onIonChange={(event) => {
                   setNewExcursion((currExcursion) => {

@@ -6,15 +6,13 @@ import { arrowBackOutline } from 'ionicons/icons';
 const BackButton = () => {
   const history = useHistory();
   return (
-    <nav>
-      <IonButton
-        onClick={() => {
-          history.go(-1);
-        }}
-      >
-        <IonIcon icon={arrowBackOutline} />
-      </IonButton>
-    </nav>
+    <IonButton
+      onClick={() => {
+        history.go(-1);
+      }}
+    >
+      <IonIcon icon={arrowBackOutline} />
+    </IonButton>
   );
 };
 

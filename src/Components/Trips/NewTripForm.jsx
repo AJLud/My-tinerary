@@ -143,7 +143,6 @@ const NewTrip = () => {
                 <IonInput
                   type="text"
                   placeholder="Notes..."
-                  required
                   value={newTrip.notes}
                   onIonChange={(event) => {
                     setNewTrip((currTrip) => {
