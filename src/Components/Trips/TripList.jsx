@@ -21,8 +21,10 @@ const TripsList = ({ user }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getTripsByUser(user, setUserTrips);
-    setIsLoading(false);
+    getTripsByUser(user).then((trips) => {
+      setUserTrips(trips);
+      setIsLoading(false);
+    });
   }, []);
 
   const specificTrip = (trip) => {
