@@ -18,6 +18,8 @@ import Home from './Components/Homepage';
 import AccommodationDetails from './Components/Trips/AccommodationList';
 import ExcursionList from './Components/Trips/ExcursionList';
 import TravelList from './Components/Trips/TravelList';
+import TravelNotes from './Components/Trips/TravelNotes';
+
 import Error from './Components/Error';
 import UserContext from './Contexts/User';
 
@@ -107,6 +109,9 @@ const App = () => {
             </Route>
             <Route path="/buddies" exact>
               <Buddies user={user} />
+            </Route>
+            <Route path="/trips/:tripId/Notes" exact>
+              <TravelNotes />
             </Route>
             <Route path="/404" exact>
               <Error />

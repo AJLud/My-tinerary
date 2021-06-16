@@ -4,7 +4,6 @@ import { IonCardSubtitle, IonButton, IonContent } from '@ionic/react';
 
 import getTripById from '../../api/tripById.api';
 import TripSectionBrief from './TripSectionBrief';
-
 import Loading from '../Loading';
 import deleteTripByID from '../../api/deleteTripById.api';
 import BackButton from '../BackButton';
