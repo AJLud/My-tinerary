@@ -12,6 +12,7 @@ import {
 } from '@ionic/react';
 
 import postAccommodationDetails from '../../api/postAccom';
+import BackButton from '../BackButton';
 
 const AccommodationForm = () => {
   const [isPosted, setIsPosted] = useState(false);
@@ -56,15 +57,7 @@ const AccommodationForm = () => {
 
   return (
     <IonContent>
-      <IonButton
-        expand="block"
-        color="warning"
-        onClick={() => {
-          history.push(`/trips/${tripId.tripId}`);
-        }}
-      >
-        Back to trip
-      </IonButton>
+      <BackButton />
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>

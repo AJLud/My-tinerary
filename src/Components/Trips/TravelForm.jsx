@@ -12,8 +12,8 @@ import {
   IonSelect,
   IonSelectOption,
 } from '@ionic/react';
-
 import postTravelDetails from '../../api/postTravel';
+import BackButton from '../BackButton';
 
 const TravelForm = () => {
   const [isPosted, setIsPosted] = useState(false);
@@ -62,13 +62,7 @@ const TravelForm = () => {
 
   return (
     <IonContent>
-      <IonItem
-        onClick={() => {
-          history.push(`/trips/${tripId.tripId}`);
-        }}
-      >
-        Back to trip
-      </IonItem>
+      <BackButton />
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>

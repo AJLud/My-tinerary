@@ -12,6 +12,7 @@ import {
 } from '@ionic/react';
 
 import postExcursion from '../../api/postExcursion.api';
+import BackButton from '../BackButton';
 
 const FormPage = () => {
   const [isPosted, setIsPosted] = useState(false);
@@ -56,13 +57,7 @@ const FormPage = () => {
 
   return (
     <IonContent>
-      <IonItem
-        onClick={() => {
-          history.push(`/trips/${tripId.tripId}`);
-        }}
-      >
-        Back to trip
-      </IonItem>
+      <BackButton />
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>

@@ -9,12 +9,14 @@ import {
   IonTitle,
   IonButton,
 } from '@ionic/react';
+
 /* eslint-disable */
 import { React, useState, useContext, useEffect } from 'react';
 /* eslint-enable */
 import { Redirect, useHistory } from 'react-router-dom';
 import postTripByUser from '../../api/postTrips.api';
 import UserContext from '../../Contexts/User';
+import BackButton from '../BackButton';
 
 const NewTrip = () => {
   const [isPosted, setIsPosted] = useState(false);
@@ -64,6 +66,7 @@ const NewTrip = () => {
   return (
     <ion-content overflow-scroll="true" class="has-header">
       <IonContent>
+        <BackButton />
         <IonHeader>
           <IonToolbar>
             <IonTitle>Plan New Trip ⛅ </IonTitle>

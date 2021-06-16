@@ -7,21 +7,25 @@ import {
   IonButton,
   IonAvatar,
 } from '@ionic/react';
+import BackButton from '../BackButton';
 
-const BuddiesCard = () => (
-  <>
-    <IonCard>
-      <IonCardTitle>Buddies</IonCardTitle>
+const BuddiesCard = () => {
+  return (
+    <>
+      <BackButton />
+      <IonCard>
+        <IonCardTitle>Buddies</IonCardTitle>
 
-      <IonList>
-        <IonAvatar />
-      </IonList>
+        <IonList>
+          <IonAvatar />
+        </IonList>
 
-      <IonButton color="success">
-        <Link to="/form"> Edit</Link>
-      </IonButton>
-    </IonCard>
-  </>
-);
+        <IonButton color="success">
+          <Link to="/form"> Edit</Link>
+        </IonButton>
+      </IonCard>
+    </>
+  );
+};
 
 export default BuddiesCard;
