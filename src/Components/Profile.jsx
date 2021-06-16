@@ -3,15 +3,15 @@ import {
   IonButton,
   IonContent,
   IonItem,
-  IonLabel,
-  IonListHeader,
+  IonHeader,
   IonImg,
 } from '@ionic/react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import getUserDetails from '../userDetails.api';
 
 const Profile = ({ user, setUser }) => {
+  const history = useHistory();
   const [userDetails, setUserDetails] = useState('');
 
   useEffect(() => {
@@ -20,20 +20,10 @@ const Profile = ({ user, setUser }) => {
 
   return (
     <IonContent>
-      <IonListHeader lines="full">
-        <IonLabel>
-          <h1>Profile</h1>
-        </IonLabel>
-        <Link to="/">
-          <IonButton
-            onClick={() => {
-              setUser(null);
-            }}
-          >
-            Sign Out
-          </IonButton>
-        </Link>
-      </IonListHeader>
+      <IonHeader>
+        <h1>Profile</h1>
+      </IonHeader>
+
       <IonItem>
         {'User: '}
         {userDetails.name}
@@ -41,20 +31,28 @@ const Profile = ({ user, setUser }) => {
 
       <IonImg src={userDetails.avatar_url} alt={userDetails.name} />
 
-      <IonButton expand="full" size="large" color="warning">
+      <IonButton expand="block" size="large" color="primary">
         Change Avatar
       </IonButton>
       <br />
-      <IonButton expand="full" size="large" color="warning">
+      <IonButton expand="block" size="large" color="primary">
         Change Password
       </IonButton>
       <br />
-      <IonButton expand="full" size="large" color="secondary">
+      <IonButton expand="block" size="large" color="secondary">
         Archived Trips
       </IonButton>
       <br />
-      <IonButton expand="full" size="large" color="secondary">
-        Settings
+      <IonButton
+        expand="block"
+        size="large"
+        color="secondary"
+        onClick={() => {
+          setUser(null);
+          history.push('/');
+        }}
+      >
+        Sign Out
       </IonButton>
     </IonContent>
   );

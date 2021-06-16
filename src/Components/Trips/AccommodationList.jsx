@@ -42,13 +42,14 @@ const AccommodationDetails = () => {
         <h1>Accommodation</h1>
       </IonHeader>
       <IonButton
+        color="secondary"
         expand="block"
         onClick={() => history.push(`/trips/${tripId}/accommodation/form`)}
       >
         Add new details
       </IonButton>
       {accommodation.map((hotel) => (
-        <IonCard key={hotel.hotel_name} color="light">
+        <IonCard key={hotel.hotel_name} color="primary">
           <IonCardHeader>
             <IonCardTitle>
               <h5>

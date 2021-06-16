@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import {
-  IonCard,
-  IonCardTitle,
   IonCardSubtitle,
   IonButton,
   IonContent,
+  IonBackButton,
 } from '@ionic/react';
 
 import getTripById from '../../api/tripById.api';
@@ -30,17 +29,19 @@ const Trip = () => {
 
   return (
     <IonContent>
-      <IonCard color="light">
-        <IonCardTitle>
-          {'15 days until '}
-          {currTrip.trip_name}
-        </IonCardTitle>
-        <IonCardSubtitle>
-          {'Location: '}
-          {currTrip.destination}
-        </IonCardSubtitle>
-      </IonCard>
+      <IonCardSubtitle className="page-head">
+        {'15 days until... '}
+        {currTrip.trip_name}
+      </IonCardSubtitle>
 
+      <br />
+      <IonCardSubtitle color="secondary">
+        {'Location: '}
+        {currTrip.destination}
+      </IonCardSubtitle>
+      <br />
+
+      <IonBackButton />
       <TripSectionBrief section="Accommodation" tripId={tripId} />
       <TripSectionBrief section="Travel" tripId={tripId} />
       <TripSectionBrief section="Excursions" tripId={tripId} />
@@ -48,12 +49,12 @@ const Trip = () => {
 
       <IonButton
         expand="block"
-        color="danger"
+        color="primary"
         onClick={() => {
           deleteTrip(tripId);
         }}
       >
-        Delete
+        Delete Trip
       </IonButton>
     </IonContent>
   );

@@ -4,7 +4,6 @@ import {
   IonButton,
   IonCard,
   IonCardHeader,
-  IonCardTitle,
   IonHeader,
   IonContent,
   IonCardContent,
@@ -28,8 +27,8 @@ const TripsList = ({ user }) => {
 
   return (
     <IonContent overflow-scroll="true">
-      <IonHeader>
-        <h1>Current Trips</h1>
+      <IonHeader className="page-head" position="none">
+        Current Trips
       </IonHeader>
       <IonButton
         expand="block"
@@ -44,23 +43,24 @@ const TripsList = ({ user }) => {
       {userTrips.map((trip) => (
         <IonCard
           key={trip.tripId}
-          color="light"
+          color="primary"
           onClick={() => specificTrip(trip)}
         >
           <Countdown trip={trip} />
           <IonCardHeader>
-            <IonCardTitle>{trip.trip_name}</IonCardTitle>
+            <h2>{trip.trip_name}</h2>
           </IonCardHeader>
 
           <IonCardContent>
             <h5>
               {'Organised By: '}
               {trip.owner}
+              <br />
+              {'Dates: '}
+              {formatDate(trip.start_date.seconds)}
+              {' - '}
+              {formatDate(trip.end_date.seconds)}
             </h5>
-            {'Dates: '}
-            {formatDate(trip.start_date.seconds)}
-            {' - '}
-            {formatDate(trip.end_date.seconds)}
           </IonCardContent>
         </IonCard>
       ))}
