@@ -1,45 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import {
-  IonCard,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonButton,
-  IonContent,
-} from '@ionic/react';
-
+/* eslint-disable */
+import { IonCard, IonCardTitle, IonButton, IonContent } from '@ionic/react';
+/* eslint-enable */
 import getTripById from '../../api/tripById.api';
 import TripSectionBrief from './TripSectionBrief';
 import deleteTripByID from '../../api/deleteTripById.api';
 import BackButton from '../BackButton';
+import Error from '../Error';
+import Countdown from './Countdown';
+import { formatDate } from '../../utils/utils';
 
 const Trip = () => {
   const history = useHistory();
   const { tripId } = useParams();
-  const [currTrip, setCurrTrip] = useState(tripId);
+  const [currentTrip, setCurrentTrip] = useState({});
+  const [isError, setIsError] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getTripById(currTrip, setCurrTrip);
+    getTripById(tripId).then((specificTrip) => {
+      setCurrentTrip(specificTrip);
+      setIsLoading(false);
+    });
   }, []);
 
   const deleteTrip = (tripID) => {
-    deleteTripByID(tripID).then(() => {
-      history.go(-1);
-    });
+    deleteTripByID(tripID)
+      .then(() => {
+        history.go(-1);
+      })
+      .catch((err) => setIsError({ status: true, message: err }));
   };
 
+  if (isLoading) return <p>Loading</p>;
+  if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
       <BackButton />
       <IonCard color="light">
         <IonCardTitle>
-          {'15 days until '}
-          {currTrip.trip_name}
+          <h1>
+            <Countdown trip={currentTrip} />
+            {currentTrip.trip_name}
+          </h1>
         </IonCardTitle>
-        <IonCardSubtitle>
+        <h2>
           {'Location: '}
-          {currTrip.destination}
-        </IonCardSubtitle>
+          {currentTrip.destination}
+        </h2>
+        <h2>
+          {'Dates: '}
+          {formatDate(currentTrip.start_date.seconds)}
+          {' - '}
+          {formatDate(currentTrip.end_date.seconds)}
+        </h2>
       </IonCard>
 
       <TripSectionBrief section="Accommodation" tripId={tripId} />

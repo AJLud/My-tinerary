@@ -55,14 +55,20 @@ const TripsList = ({ user }) => {
           </IonCardHeader>
 
           <IonCardContent>
-            <h5>
+            <h2>
               {'Organised By: '}
               {trip.owner}
-            </h5>
-            {'Dates: '}
-            {formatDate(trip.start_date.seconds)}
-            {' - '}
-            {formatDate(trip.end_date.seconds)}
+            </h2>
+            <h2>
+              {'Dates: '}
+              {formatDate(trip.start_date.seconds)}
+              {' - '}
+              {formatDate(trip.end_date.seconds)}
+            </h2>
+            <h2>
+              {'Location: '}
+              {trip.destination}
+            </h2>
           </IonCardContent>
         </IonCard>
       ))}
