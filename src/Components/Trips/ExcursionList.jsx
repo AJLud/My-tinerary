@@ -17,6 +17,7 @@ import deleteExcursionByID from '../../api/deleteExcursionById';
 import { formatDate } from '../../utils/utils';
 import BackButton from '../BackButton';
 import Error from '../Error';
+import Loading from '../Loading';
 
 const ExcursionList = () => {
   const history = useHistory();
@@ -42,7 +43,7 @@ const ExcursionList = () => {
       .catch((err) => setIsError({ status: true, message: err }));
   };
 
-  if (isLoading) return <p>Loading</p>;
+  if (isLoading) return <Loading />;
   if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>

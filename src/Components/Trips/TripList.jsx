@@ -21,10 +21,8 @@ const TripsList = ({ user }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      getTripsByUser(user, setUserTrips);
-      setIsLoading(false);
-    }, 1000);
+    getTripsByUser(user, setUserTrips);
+    setIsLoading(false);
   }, []);
 
   const specificTrip = (trip) => {

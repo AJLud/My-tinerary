@@ -17,6 +17,7 @@ import deleteAccommByID from '../../api/deleteAccommByID.api';
 import { formatDate } from '../../utils/utils';
 import BackButton from '../BackButton';
 import Error from '../Error';
+import Loading from '../Loading';
 
 const AccommodationDetails = () => {
   const history = useHistory();
@@ -42,7 +43,7 @@ const AccommodationDetails = () => {
       .catch((err) => setIsError({ status: true, message: err }));
   };
 
-  if (isLoading) return <p>Loading</p>;
+  if (isLoading) return <Loading />;
   if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
