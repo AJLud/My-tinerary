@@ -40,9 +40,13 @@ const NewTrip = () => {
   const newDate = (date) => new Date(date).getTime() / 1000;
 
   useEffect(() => {
-    if (isPosted) {
+    let mounted = true;
+    if (isPosted && mounted) {
       setNewTrip({ trip_name: '', destination: '' });
     }
+    return function cleanup() {
+      mounted = false;
+    };
   }, []);
 
   const handleSubmit = (e) => {
@@ -51,7 +55,6 @@ const NewTrip = () => {
     const endDate = newDate(newTrip.end_date);
     newTrip.start_date = { seconds: startDate, nanoseconds: 0 };
     newTrip.end_date = { seconds: endDate, nanoseconds: 0 };
-
     postTripByUser(newTrip)
       .then(() => {
         setIsPosted(true);
@@ -63,8 +66,6 @@ const NewTrip = () => {
   if (isPosted) {
     return <Redirect to="/trips" />;
   }
-  // isPosted is not changing to true.
-  // every other form submission the submit breaks
 
   return (
     <ion-content overflow-scroll="true" class="has-header">

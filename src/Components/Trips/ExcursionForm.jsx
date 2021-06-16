@@ -31,15 +31,13 @@ const FormPage = () => {
   const newDate = (date) => new Date(date).getTime() / 1000;
 
   useEffect(() => {
-    if (isPosted) {
-      setNewExcursion({
-        name: '',
-        address: '',
-        date: '',
-        cost: '',
-      });
+    let mounted = true;
+    if (isPosted && mounted) {
       history.push(`/trips/${tripId.tripId}/excursions`);
     }
+    return function cleanup() {
+      mounted = false;
+    };
   }, [isPosted]);
 
   const handleSubmit = (e) => {
