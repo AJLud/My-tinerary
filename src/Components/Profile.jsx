@@ -18,25 +18,32 @@ const Profile = ({ user, setUser }) => {
       <IonHeader className="page-head" class="ion-no-border">
         Profile
       </IonHeader>
+
       <IonItem>
         {'User: '}
         {userDetails.name}
       </IonItem>
+
       <div className="homepage-img-container">
         <img
           className="profile-img"
           src={userDetails.avatar_url}
           alt={userDetails.name}
         />
+      </div>
+
       <IonButton expand="block" size="large" color="primary">
         Change Avatar
       </IonButton>
+
       <IonButton expand="block" size="large" color="primary">
         Change Password
       </IonButton>
+
       <IonButton expand="block" size="large" color="secondary">
         Archived Trips
       </IonButton>
+
       <IonButton
         expand="block"
         size="large"
@@ -51,4 +58,5 @@ const Profile = ({ user, setUser }) => {
     </IonContent>
   );
 };
+
 export default Profile;
