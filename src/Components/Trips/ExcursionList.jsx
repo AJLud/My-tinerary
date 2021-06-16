@@ -15,6 +15,7 @@ import getExcursionByTripID from '../../api/getExcursions.api';
 import getTripById from '../../api/tripById.api';
 import deleteExcursionByID from '../../api/deleteExcursionById';
 import { formatDate } from '../../utils/utils';
+import BackButton from '../BackButton';
 
 const ExcursionList = () => {
   const history = useHistory();
@@ -36,23 +37,9 @@ const ExcursionList = () => {
 
   return (
     <IonContent>
-      {/* <IonHeader>
-        <IonButton
-          expand="block"
-          color="warning"
-          onClick={() => {
-            history.push(`/trips/${tripId}`);
-          }}
-        >
-          {currTrip.trip_name}
-        </IonButton> */}
+      <BackButton />
 
-      <IonHeader
-        type="button"
-        onClick={() => {
-          history.go(-1);
-        }}
-      >
+      <IonHeader>
         <h1>{currTrip.trip_name}</h1>
         <h2>Excursions</h2>
       </IonHeader>

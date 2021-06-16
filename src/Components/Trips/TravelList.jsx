@@ -9,13 +9,13 @@ import {
   IonHeader,
   IonCardContent,
   IonContent,
-  IonItem,
 } from '@ionic/react';
 
 import getTravelByTripId from '../../api/getTravel.api';
 import getTripById from '../../api/tripById.api';
 import deleteTravelByID from '../../api/deleteTravelById.api';
 import { formatDate } from '../../utils/utils';
+import BackButton from '../BackButton';
 
 const TravelList = () => {
   const history = useHistory();
@@ -37,21 +37,10 @@ const TravelList = () => {
 
   return (
     <IonContent>
-      {/* <IonHeader>
-        <IonItem
-          onClick={() => {
-            history.push(`/trips/${tripId.tripId}`);
-          }}
-        >
-          {currTrip.trip_name}
-        </IonItem> */}
-      <IonHeader
-        type="button"
-        onClick={() => {
-          history.go(-1);
-        }}
-      >
-        <h1>Travel</h1>
+      <BackButton />
+      <IonHeader>
+        <h1>{currTrip.trip_name}</h1>
+        <h2>Travel</h2>
       </IonHeader>
       <IonButton
         expand="block"

@@ -15,6 +15,7 @@ import getAccommodationByTripId from '../../api/getAccom.api';
 import getTripById from '../../api/tripById.api';
 import deleteAccommByID from '../../api/deleteAccommByID.api';
 import { formatDate } from '../../utils/utils';
+import BackButton from '../BackButton';
 
 const AccommodationDetails = () => {
   const history = useHistory();
@@ -36,24 +37,10 @@ const AccommodationDetails = () => {
 
   return (
     <IonContent>
-      {/* <IonHeader> */}
-      {/* <IonButton
-          expand="block"
-          color="warning"
-          onClick={() => {
-            history.push(`/trips/${tripId}`);
-          }}
-        >
-          {currTrip.trip_name}
-        </IonButton>
-        <h1>Hotels</h1> */}
-      <IonHeader
-        type="button"
-        onClick={() => {
-          history.go(-1);
-        }}
-      >
-        <h1>Accommodation</h1>
+      <BackButton />
+      <IonHeader>
+        <h1>{currTrip.trip_name}</h1>
+        <h2>Accommodation</h2>
       </IonHeader>
       <IonButton
         expand="block"
