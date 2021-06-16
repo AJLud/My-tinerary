@@ -13,11 +13,13 @@ import {
 
 import postAccommodationDetails from '../../api/postAccom';
 import BackButton from '../BackButton';
+import Error from '../Error';
 
 const AccommodationForm = () => {
   const [isPosted, setIsPosted] = useState(false);
   const history = useHistory();
   const tripId = useParams();
+  const [isError, setIsError] = useState({});
 
   const [newAccommodation, setNewAccommodation] = useState({
     days: '',
@@ -29,12 +31,6 @@ const AccommodationForm = () => {
   const newDate = (date) => new Date(date).getTime() / 1000;
 
   useEffect(() => {
-    setNewAccommodation({
-      days: '',
-      hotel_name: '',
-      check_in: '',
-      notes: '',
-    });
     if (isPosted) {
       history.push(`/trips/${tripId.tripId}/accommodation`);
     }
@@ -47,14 +43,14 @@ const AccommodationForm = () => {
       seconds: checkIn,
       nanoseconds: 0,
     };
-
     postAccommodationDetails(newAccommodation, tripId)
       .then(() => {
         setIsPosted(true);
       })
-      .catch((err) => console.log('details did not post', err));
+      .catch((err) => setIsError({ status: true, message: err }));
   };
 
+  if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
       <nav>

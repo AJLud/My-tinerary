@@ -13,11 +13,13 @@ import {
 
 import postExcursion from '../../api/postExcursion.api';
 import BackButton from '../BackButton';
+import Error from '../Error';
 
 const FormPage = () => {
   const [isPosted, setIsPosted] = useState(false);
   const history = useHistory();
   const tripId = useParams();
+  const [isError, setIsError] = useState({});
 
   const [newExcursion, setNewExcursion] = useState({
     name: '',
@@ -52,9 +54,10 @@ const FormPage = () => {
       .then(() => {
         setIsPosted(true);
       })
-      .catch((err) => console.log('excursion did not post', err));
+      .catch((err) => setIsError({ status: true, message: err }));
   };
 
+  if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
       <BackButton />

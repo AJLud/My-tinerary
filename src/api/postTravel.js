@@ -18,9 +18,7 @@ const postTravel = (newTravel, tripId) => {
       response = `successfully posted trip: ${docRef.id}`;
       return response;
     })
-    .catch((err) => {
-      console.log('message', err);
-    });
+    .catch((err) => `Journey did not post: ${err}`);
 };
 
 export default postTravel;

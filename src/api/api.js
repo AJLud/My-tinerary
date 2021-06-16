@@ -15,9 +15,7 @@ const getTripsByUser = (user, setUserTrips) => {
       });
       setUserTrips(userTripsArray);
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => `Trips failed to fetch: ${err}`);
 };
 
 export default getTripsByUser;

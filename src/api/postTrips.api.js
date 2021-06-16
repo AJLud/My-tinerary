@@ -16,9 +16,7 @@ const postTripByUser = (newTrip) => {
       response = `successfully posted trip: ${docRef.id}`;
       return response;
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => `Trip did not post: ${err}`);
 };
 
 export default postTripByUser;

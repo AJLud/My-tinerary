@@ -16,9 +16,7 @@ const postAccommodationDetails = (newAccommodation, tripId) => {
       response = `successfully posted trip: ${docRef.id}`;
       return response;
     })
-    .catch((err) => {
-      console.log('message', err);
-    });
+    .catch((err) => `Accomodation did not post: ${err}`);
 };
 
 export default postAccommodationDetails;
