@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import {
-  IonCardSubtitle,
-  IonButton,
-  IonContent,
-  IonBackButton,
-} from '@ionic/react';
+import { IonCardSubtitle, IonButton, IonContent } from '@ionic/react';
 
 import getTripById from '../../api/tripById.api';
 import TripSectionBrief from './TripSectionBrief';
@@ -54,7 +49,7 @@ const Trip = () => {
       <br />
       <IonCardSubtitle color="secondary">
         {'Location: '}
-        {currTrip.destination}
+        {currentTrip.destination}
       </IonCardSubtitle>
       <IonCardSubtitle color="secondary">
         {'Dates: '}

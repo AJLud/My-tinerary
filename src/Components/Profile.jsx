@@ -8,7 +8,6 @@ import {
   IonImg,
 } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import getUserDetails from '../userDetails.api';
 import BackButton from './BackButton';
 
@@ -21,12 +20,11 @@ const Profile = ({ user, setUser }) => {
 
   return (
     <IonContent>
-
       <BackButton />
       <IonHeader>
         <h1>Profile</h1>
       </IonHeader>
-       <IonItem>
+      <IonItem>
         {'User: '}
         {userDetails.name}
       </IonItem>
