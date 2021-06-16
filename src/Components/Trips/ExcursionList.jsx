@@ -29,7 +29,6 @@ const ExcursionList = () => {
   }, []);
 
   const deleteExcursion = (ID, excursion) => {
-    console.log(excursion);
     deleteExcursionByID(ID, excursion.excursionID).then(() => {
       history.go(0);
     });
