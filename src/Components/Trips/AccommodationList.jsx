@@ -47,34 +47,27 @@ const AccommodationDetails = () => {
   if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
-      <nav>
-        {' '}
+      <IonHeader className="page-head" class="ion-no-border">
         <BackButton />
-        <IonButton
-          onClick={() => {
-            history.push(`/trips/${tripId}`);
-          }}
-        >
-          Back To Trip
-        </IonButton>
-      </nav>
-
-      <IonHeader>
-        <h1>{currentTrip.trip_name}</h1>
-        <h2>
-          {formatDate(currentTrip.start_date.seconds)}
-          {' - '}
-          {formatDate(currentTrip.end_date.seconds)}
-        </h2>
-        <h2>Accommodation</h2>
+        {currentTrip.trip_name}
       </IonHeader>
+
+      <h2>
+        {formatDate(currentTrip.start_date.seconds)}
+        {' - '}
+        {formatDate(currentTrip.end_date.seconds)}
+      </h2>
+      <h2>Accommodation</h2>
+
       <IonButton
         color="secondary"
         expand="block"
+        size="large"
         onClick={() => history.push(`/trips/${tripId}/accommodation/form`)}
       >
         Add new details
       </IonButton>
+
       {accommodation.map((hotel) => (
         <IonCard key={hotel.accommId} color="primary">
           <IonCardHeader>

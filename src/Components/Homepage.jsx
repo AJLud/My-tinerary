@@ -2,7 +2,6 @@ import React from 'react';
 import { IonHeader, IonButton, IonIcon } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { airplane } from 'ionicons/icons';
-import BackButton from './BackButton';
 
 const Homepage = () => {
   const history = useHistory();
@@ -12,11 +11,9 @@ const Homepage = () => {
 
   return (
     <>
-      <BackButton />
-      <IonHeader className="header plane">
+      <IonHeader className="header plane" class="ion-no-border">
         My-tinerary
         <IonIcon icon={airplane} />
-
       </IonHeader>
 
       <IonButton
@@ -25,36 +22,40 @@ const Homepage = () => {
         }}
         color="secondary"
         expand="block"
+        size="large"
       >
         Profile
       </IonButton>
-
+      <br />
       <IonButton
         onClick={() => {
           landingPage('/trips');
         }}
         color="secondary"
         expand="block"
+        size="large"
       >
         Trips
       </IonButton>
-
+      <br />
       <IonButton
         onClick={() => {
           landingPage('/buddies');
         }}
         color="secondary"
         expand="block"
+        size="large"
       >
         Buddies
       </IonButton>
-
+      <br />
       <IonButton
         onClick={() => {
           landingPage('/chats');
         }}
         color="secondary"
         expand="block"
+        size="large"
       >
         Chat
       </IonButton>

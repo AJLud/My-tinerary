@@ -37,7 +37,7 @@ const SignIn = ({ setUser }) => {
   };
   return (
     <IonContent>
-      <IonHeader className="header plane">
+      <IonHeader className="header plane" class="ion-no-border">
         My-tinerary <IonIcon icon={airplane} />
       </IonHeader>
 
@@ -76,7 +76,7 @@ const SignIn = ({ setUser }) => {
         color="primary"
         className="blue-button"
       >
-        Login
+        Log In
       </IonButton>
 
       <IonButton

@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { IonCardSubtitle, IonButton, IonContent } from '@ionic/react';
+import {
+  IonCardSubtitle,
+  IonButton,
+  IonContent,
+  IonHeader,
+} from '@ionic/react';
 
 import getTripById from '../../api/tripById.api';
 import TripSectionBrief from './TripSectionBrief';
@@ -40,11 +45,13 @@ const Trip = () => {
   if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
-      <BackButton />
-      <IonCardSubtitle className="page-head">
-        <Countdown trip={currentTrip} />
-        {currentTrip.trip_name}
-      </IonCardSubtitle>
+      <IonHeader className="page-head" class="ion-no-border">
+        <BackButton />
+        <IonCardSubtitle className="page-head">
+          <Countdown trip={currentTrip} />
+          {currentTrip.trip_name}
+        </IonCardSubtitle>
+      </IonHeader>
 
       <br />
       <IonCardSubtitle color="secondary">
