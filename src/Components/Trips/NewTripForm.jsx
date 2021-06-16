@@ -2,10 +2,12 @@ import {
   IonInput,
   IonContent,
   IonItem,
-  IonItemDivider,
   IonList,
   IonHeader,
   IonButton,
+  IonCardTitle,
+  IonTextarea,
+  IonCard,
 } from '@ionic/react';
 
 /* eslint-disable */
@@ -66,16 +68,18 @@ const NewTrip = () => {
 
   return (
     <IonContent overflow-scroll="true" class="has-header">
-      <BackButton />
+      <IonHeader className="page-head" class="ion-no-border">
+        <BackButton />
+        Plan New Trip ⛅
+      </IonHeader>
 
-      <IonHeader className="header plane">Plan New Trip ⛅</IonHeader>
-
-      <IonContent>
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <IonCard>
           <IonList>
-            <IonItemDivider>Name your trip</IonItemDivider>
+            <IonCardTitle color="danger">Trip Name:</IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="text"
                 placeholder="Amazing Holiday 🌞 "
                 required
@@ -89,9 +93,10 @@ const NewTrip = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Input Start Date</IonItemDivider>
+            <IonCardTitle color="danger">Start Date:</IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="date"
                 required
                 value={newTrip.start_date}
@@ -104,9 +109,10 @@ const NewTrip = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Input End Date</IonItemDivider>
+            <IonCardTitle color="danger">End Date:</IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="date"
                 required
                 value={newTrip.end_date}
@@ -119,11 +125,11 @@ const NewTrip = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Destination</IonItemDivider>
+            <IonCardTitle color="danger">Destination:</IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="text"
-                placeholder="Input Destination"
                 required
                 value={newTrip.destination}
                 onIonChange={(event) => {
@@ -135,40 +141,34 @@ const NewTrip = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Notes</IonItemDivider>
-            <IonItem>
-              <IonInput
-                type="text"
-                placeholder="Notes..."
-                value={newTrip.notes}
-                onIonChange={(event) => {
-                  setNewTrip((currTrip) => {
-                    const copyTrip = { ...currTrip };
-                    copyTrip.notes = event.target.value;
-                    return copyTrip;
-                  });
-                }}
-              />
-            </IonItem>
-            <IonButton
-              type="submit"
-              size="large"
-              expand="block"
-              color="secondary"
-            >
-              submit
-            </IonButton>
+            <IonCardTitle color="danger">Notes:</IonCardTitle>
+            <IonTextarea
+              type="text"
+              color="danger"
+              placeholder="Notes..."
+              value={newTrip.notes}
+              onIonChange={(event) => {
+                setNewTrip((currTrip) => {
+                  const copyTrip = { ...currTrip };
+                  copyTrip.notes = event.target.value;
+                  return copyTrip;
+                });
+              }}
+            />
           </IonList>
-        </form>
-        <IonButton
-          size="large"
-          expand="block"
-          color="primary"
-          onClick={() => history.push('/trips')}
-        >
-          Cancel
+        </IonCard>
+        <IonButton type="submit" size="large" expand="block" color="secondary">
+          Add trip
         </IonButton>
-      </IonContent>
+      </form>
+      <IonButton
+        size="large"
+        expand="block"
+        color="primary"
+        onClick={() => history.push('/trips')}
+      >
+        Cancel
+      </IonButton>
     </IonContent>
   );
 };

@@ -6,7 +6,7 @@ import {
   IonItem,
   IonAvatar,
   IonHeader,
-  IonTitle,
+  IonCardSubtitle,
 } from '@ionic/react';
 import BackButton from './BackButton';
 
@@ -33,24 +33,24 @@ const Buddies = () => {
       username: 'CalCosta42',
     },
   ];
+
   return (
     <IonContent>
-      <BackButton />
-
-      <IonHeader>
-        <IonTitle color="danger">Buddies</IonTitle>
-        <IonButton fill="solid" color="secondary">
-          Add Buddy
-        </IonButton>
+      <IonHeader className="page-head" class="ion-no-border">
+        <BackButton />
+        <IonCardSubtitle className="page-head">Buddies</IonCardSubtitle>
       </IonHeader>
+      <IonButton size="large" expand="block" color="secondary">
+        Add Buddy
+      </IonButton>
       {buddies.map((buddy) => (
-        <IonItem color="primary" className="buddy-card">
-          <IonLabel color="success" className="buddy-name">
-            {buddy.username}
-          </IonLabel>
+        <IonItem color="primary" className="buddy-card" key={buddy.username}>
           <IonAvatar>
             <img src={buddy.avatar_url} alt="buddy" className="buddy-img" />
           </IonAvatar>
+          <IonLabel color="success" className="buddy-name">
+            {buddy.username}
+          </IonLabel>
         </IonItem>
       ))}
     </IonContent>

@@ -78,6 +78,7 @@ const SignIn = ({ setUser }) => {
       </IonItem>
       <IonButton
         expand="block"
+        size="large"
         onClick={() => {
           handleSignIn(username, password, setUser);
         }}
@@ -89,6 +90,7 @@ const SignIn = ({ setUser }) => {
 
       <IonButton
         className="orange-button"
+        size="large"
         color="secondary"
         expand="block"
         onClick={() => {

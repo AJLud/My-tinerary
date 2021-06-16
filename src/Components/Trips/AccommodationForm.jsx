@@ -5,8 +5,9 @@ import {
   IonList,
   IonItem,
   IonButton,
-  IonItemDivider,
+  IonTextarea,
   IonCard,
+  IonHeader,
   IonContent,
   IonInput,
 } from '@ionic/react';
@@ -53,25 +54,18 @@ const AccommodationForm = () => {
   if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
-      <nav>
+      <IonHeader className="page-head" class="ion-no-border">
         <BackButton />
-        <IonButton
-          onClick={() => {
-            history.push(`/trips/${tripId.tripId}`);
-          }}
-        >
-          Back To Trip
-        </IonButton>
-      </nav>
+        Accommodation
+      </IonHeader>
+
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
-            <IonItem>
-              <IonCardTitle>Accomodation</IonCardTitle>
-            </IonItem>
-            <IonItemDivider>Name:</IonItemDivider>
+            <IonCardTitle color="danger">Venue:</IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="text"
                 required
                 value={newAccommodation.hotel_name}
@@ -84,9 +78,10 @@ const AccommodationForm = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Check-In Date</IonItemDivider>
+            <IonCardTitle color="danger">Check-In Date:</IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="date"
                 required
                 value={newAccommodation.check_in}
@@ -99,9 +94,10 @@ const AccommodationForm = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Number of nights </IonItemDivider>
+            <IonCardTitle color="danger">Nights: </IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="text"
                 required
                 value={newAccommodation.days}
@@ -114,28 +110,41 @@ const AccommodationForm = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Notes:</IonItemDivider>
-            <IonItem>
-              <IonInput
-                type="text"
-                value={newAccommodation.notes}
-                onIonChange={(event) => {
-                  setNewAccommodation((currAccommodation) => {
-                    const copyAccommodation = { ...currAccommodation };
-                    copyAccommodation.notes = event.target.value;
-                    return copyAccommodation;
-                  });
-                }}
-              />
-            </IonItem>
+            <IonCardTitle color="danger">Notes:</IonCardTitle>
+
+            <IonTextarea
+              color="danger"
+              type="text"
+              placeholder="Half-Board, 2 Bed, etc"
+              value={newAccommodation.notes}
+              onIonChange={(event) => {
+                setNewAccommodation((currAccommodation) => {
+                  const copyAccommodation = { ...currAccommodation };
+                  copyAccommodation.notes = event.target.value;
+                  return copyAccommodation;
+                });
+              }}
+            />
           </IonList>
         </IonCard>
-        <IonButton expand="block" color="success" type="submit">
+        <IonButton
+          type="submit"
+          size="large"
+          expand="block"
+          color="secondary"
+          className="orange-button"
+        >
           Add Details
         </IonButton>
       </form>
 
-      <IonButton expand="block" color="danger" onClick={() => history.go(-1)}>
+      <IonButton
+        size="large"
+        expand="block"
+        color="primary"
+        className="blue-button"
+        onClick={() => history.go(-1)}
+      >
         Cancel
       </IonButton>
     </IonContent>

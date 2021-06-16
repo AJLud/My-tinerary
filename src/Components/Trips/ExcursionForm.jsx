@@ -5,8 +5,8 @@ import {
   IonList,
   IonItem,
   IonButton,
-  IonItemDivider,
   IonCard,
+  IonHeader,
   IonContent,
   IonInput,
 } from '@ionic/react';
@@ -60,24 +60,19 @@ const FormPage = () => {
   if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
-      <BackButton />
-      <IonButton
-        onClick={() => {
-          history.push(`/trips/${tripId.tripId}`);
-        }}
-      >
-        Back To Trip
-      </IonButton>
+      <IonHeader className="page-head" class="ion-no-border">
+        <BackButton />
+        Excursion
+      </IonHeader>
+
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
-            <IonItem>
-              <IonCardTitle>Excursions</IonCardTitle>
-            </IonItem>
-            <IonItemDivider>Name:</IonItemDivider>
+            <IonCardTitle color="danger">Name:</IonCardTitle>
             <IonItem>
               <IonInput
                 type="text"
+                color="danger"
                 required
                 value={newExcursion.name}
                 onIonChange={(event) => {
@@ -89,9 +84,10 @@ const FormPage = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Date</IonItemDivider>
+            <IonCardTitle color="danger">Date:</IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="date"
                 required
                 value={newExcursion.date}
@@ -104,10 +100,12 @@ const FormPage = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Cost</IonItemDivider>
+            <IonCardTitle color="danger">Budget:</IonCardTitle>
             <IonItem>
               <IonInput
                 type="text"
+                color="danger"
+                placeholder="£ / $ / €"
                 value={newExcursion.cost}
                 onIonChange={(event) => {
                   setNewExcursion((currExcursion) => {
@@ -118,28 +116,39 @@ const FormPage = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Address:</IonItemDivider>
-            <IonItem>
-              <IonInput
-                type="text"
-                value={newExcursion.address}
-                onIonChange={(event) => {
-                  setNewExcursion((currExcursion) => {
-                    const copyExcursion = { ...currExcursion };
-                    copyExcursion.address = event.target.value;
-                    return copyExcursion;
-                  });
-                }}
-              />
-            </IonItem>
+            <IonCardTitle color="danger">Where:</IonCardTitle>
+
+            <IonInput
+              type="text"
+              value={newExcursion.address}
+              onIonChange={(event) => {
+                setNewExcursion((currExcursion) => {
+                  const copyExcursion = { ...currExcursion };
+                  copyExcursion.address = event.target.value;
+                  return copyExcursion;
+                });
+              }}
+            />
           </IonList>
         </IonCard>
-        <IonButton color="success" type="submit" expand="block">
+        <IonButton
+          type="submit"
+          size="large"
+          expand="block"
+          color="secondary"
+          className="orange-button"
+        >
           Add Details
         </IonButton>
       </form>
 
-      <IonButton expand="block" color="danger" onClick={() => history.go(-1)}>
+      <IonButton
+        size="large"
+        expand="block"
+        color="primary"
+        className="blue-button"
+        onClick={() => history.go(-1)}
+      >
         Cancel
       </IonButton>
     </IonContent>

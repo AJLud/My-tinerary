@@ -8,9 +8,10 @@ import {
   IonCardSubtitle,
   IonHeader,
   IonCardContent,
+  IonIcon,
   IonContent,
 } from '@ionic/react';
-
+import { trash } from 'ionicons/icons';
 import getTravelByTripId from '../../api/getTravel.api';
 import getTripById from '../../api/tripById.api';
 import deleteTravelByID from '../../api/deleteTravelById.api';
@@ -74,14 +75,7 @@ const TravelList = () => {
               <h5>
                 {'Direction: '}
                 {journey.direction}
-                <IonButton
-                  color="light"
-                  onClick={() => {
-                    deleteTravel(tripId, journey.travelId);
-                  }}
-                >
-                  🗑
-                </IonButton>
+                <IonButton color="light">🗑</IonButton>
               </h5>
             </IonCardTitle>
           </IonCardHeader>
@@ -106,7 +100,7 @@ const TravelList = () => {
             </IonCardSubtitle>
             <IonCardSubtitle>
               <h5>
-                {'Cost: '}
+                {'Budget: '}
                 {journey.cost}
               </h5>
             </IonCardSubtitle>
@@ -116,6 +110,12 @@ const TravelList = () => {
                 {journey.transport}
               </h5>
             </IonCardSubtitle>
+            <IonIcon
+              icon={trash}
+              onClick={() => {
+                deleteTravel(tripId, journey.travelId);
+              }}
+            />
           </IonCardContent>
         </IonCard>
       ))}

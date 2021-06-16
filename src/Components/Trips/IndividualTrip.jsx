@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import {
   IonCardSubtitle,
+  IonCardTitle,
   IonButton,
   IonContent,
   IonHeader,
@@ -42,6 +43,7 @@ const Trip = () => {
 
   if (isLoading) return <Loading />;
   if (isError.status) return <Error isError={isError} />;
+
   return (
     <IonContent>
       <IonHeader className="page-head" class="ion-no-border">
@@ -53,17 +55,16 @@ const Trip = () => {
       </IonHeader>
 
       <br />
-      <IonCardSubtitle color="secondary">
+      <IonCardTitle color="danger">
         {'Location: '}
         {currentTrip.destination}
-      </IonCardSubtitle>
-      <IonCardSubtitle color="secondary">
+      </IonCardTitle>
+      <IonCardTitle color="danger">
         {'Dates: '}
         {formatDate(currentTrip.start_date.seconds)}
         {' - '}
         {formatDate(currentTrip.end_date.seconds)}
-      </IonCardSubtitle>
-      <br />
+      </IonCardTitle>
 
       <TripSectionBrief section="Accommodation" tripId={tripId} />
       <TripSectionBrief section="Travel" tripId={tripId} />
@@ -73,11 +74,12 @@ const Trip = () => {
       <IonButton
         expand="block"
         color="primary"
+        size="large"
         onClick={() => {
           deleteTrip(tripId);
         }}
       >
-        Delete Trip
+        Remove Trip
       </IonButton>
     </IonContent>
   );

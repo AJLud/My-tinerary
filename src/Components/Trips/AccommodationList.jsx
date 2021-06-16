@@ -8,8 +8,11 @@ import {
   IonCardSubtitle,
   IonHeader,
   IonCardContent,
+  IonIcon,
   IonContent,
 } from '@ionic/react';
+/* eslint-disable */
+import { trash } from 'ionicons/icons';
 
 import getAccommodationByTripId from '../../api/getAccom.api';
 import getTripById from '../../api/tripById.api';
@@ -57,6 +60,7 @@ const AccommodationDetails = () => {
         {' - '}
         {formatDate(currentTrip.end_date.seconds)}
       </h2>
+
       <h2>Accommodation</h2>
 
       <IonButton
@@ -75,15 +79,6 @@ const AccommodationDetails = () => {
               <h5>
                 {'Hotel Name: '}
                 {hotel.hotel_name}
-                <IonButton
-                  slot="end"
-                  color="light"
-                  onClick={() => {
-                    deleteAccomm(tripId, hotel);
-                  }}
-                >
-                  🗑
-                </IonButton>
               </h5>
             </IonCardTitle>
           </IonCardHeader>
@@ -107,6 +102,12 @@ const AccommodationDetails = () => {
                 {hotel.notes}
               </h5>
             </IonCardSubtitle>
+            <IonIcon
+              icon={trash}
+              onClick={() => {
+                deleteAccomm(tripId, hotel);
+              }}
+            />
           </IonCardContent>
         </IonCard>
       ))}

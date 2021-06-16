@@ -4,7 +4,7 @@ import { IonButton, IonContent, IonItem, IonHeader } from '@ionic/react';
 /* eslint-enable */
 import { useHistory } from 'react-router-dom';
 import getUserDetails from '../userDetails.api';
-// import BackButton from './BackButton';
+import BackButton from './BackButton';
 
 const Profile = ({ user, setUser }) => {
   const history = useHistory();
@@ -16,6 +16,7 @@ const Profile = ({ user, setUser }) => {
   return (
     <IonContent>
       <IonHeader className="page-head" class="ion-no-border">
+        <BackButton />
         Profile
       </IonHeader>
 
@@ -32,19 +33,35 @@ const Profile = ({ user, setUser }) => {
         />
       </div>
 
-      <IonButton expand="block" size="large" color="primary">
+      <IonButton
+        expand="block"
+        size="large"
+        color="primary"
+        className="blue-button"
+      >
         Change Avatar
       </IonButton>
 
-      <IonButton expand="block" size="large" color="primary">
+      <IonButton
+        expand="block"
+        size="large"
+        color="primary"
+        className="blue-button"
+      >
         Change Password
       </IonButton>
 
-      <IonButton expand="block" size="large" color="secondary">
+      <IonButton
+        expand="block"
+        size="large"
+        color="secondary"
+        className="orange-button"
+      >
         Archived Trips
       </IonButton>
 
       <IonButton
+        className="orange-button"
         expand="block"
         size="large"
         color="secondary"

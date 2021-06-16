@@ -7,10 +7,11 @@ import {
   IonCardTitle,
   IonCardSubtitle,
   IonHeader,
+  IonIcon,
   IonCardContent,
   IonContent,
 } from '@ionic/react';
-
+import { trash } from 'ionicons/icons';
 import getExcursionByTripID from '../../api/getExcursions.api';
 import getTripById from '../../api/tripById.api';
 import deleteExcursionByID from '../../api/deleteExcursionById';
@@ -73,14 +74,6 @@ const ExcursionList = () => {
               <h5>
                 {'Event: '}
                 {excursion.name}
-                <IonButton
-                  color="light"
-                  onClick={() => {
-                    deleteExcursion(tripId, excursion);
-                  }}
-                >
-                  🗑
-                </IonButton>
               </h5>
             </IonCardTitle>
           </IonCardHeader>
@@ -103,6 +96,12 @@ const ExcursionList = () => {
                 {excursion.cost}
               </h5>
             </IonCardSubtitle>
+            <IonIcon
+              icon={trash}
+              onClick={() => {
+                deleteExcursion(tripId, excursion);
+              }}
+            />
           </IonCardContent>
         </IonCard>
       ))}
