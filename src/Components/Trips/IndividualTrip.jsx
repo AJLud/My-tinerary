@@ -42,6 +42,7 @@ const Trip = () => {
 
   if (isLoading) return <Loading />;
   if (isError.status) return <Error isError={isError} />;
+
   return (
     <IonContent>
       <IonHeader className="page-head" class="ion-no-border">

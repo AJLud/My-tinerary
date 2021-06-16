@@ -9,6 +9,7 @@ import {
   IonCard,
   IonContent,
   IonInput,
+  IonHeader,
   IonSelect,
   IonSelectOption,
 } from '@ionic/react';
@@ -63,21 +64,26 @@ const TravelForm = () => {
   };
 
   if (isError.status) return <Error isError={isError} />;
+
   return (
     <IonContent>
-      <BackButton />
-      <IonButton
+      <IonHeader className="page-head" class="ion-no-border">
+        <BackButton />
+        Travel
+      </IonHeader>
+
+      {/* <IonButton
         onClick={() => {
           history.push(`/trips/${tripId.tripId}`);
         }}
       >
         Back To Trip
-      </IonButton>
+      </IonButton> */}
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
             <IonItem>
-              <IonCardTitle>Travel Plans</IonCardTitle>
+              <IonCardTitle>Add Plans</IonCardTitle>
             </IonItem>
             <IonItemDivider>Direction: </IonItemDivider>
             <IonSelect
@@ -114,6 +120,7 @@ const TravelForm = () => {
               <IonInput
                 type="text"
                 required
+                placeholder="..."
                 value={newTravel.leavingFrom}
                 onIonChange={(event) => {
                   setNewTravel((currTravel) => {
@@ -129,6 +136,7 @@ const TravelForm = () => {
               <IonInput
                 type="text"
                 required
+                placeholder="..."
                 value={newTravel.arrivingAt}
                 onIonChange={(event) => {
                   setNewTravel((currTravel) => {
@@ -143,6 +151,7 @@ const TravelForm = () => {
             <IonItem>
               <IonInput
                 type="text"
+                placeholder="..."
                 required
                 value={newTravel.cost}
                 onIonChange={(event) => {
@@ -158,6 +167,7 @@ const TravelForm = () => {
             <IonItem>
               <IonInput
                 type="text"
+                placeholder="..."
                 required
                 value={newTravel.transport}
                 onIonChange={(event) => {
@@ -171,11 +181,16 @@ const TravelForm = () => {
             </IonItem>
           </IonList>
         </IonCard>
-        <IonButton expand="block" color="success" type="submit">
+        <IonButton type="submit" size="large" expand="block" color="secondary">
           Add Details
         </IonButton>
       </form>
-      <IonButton expand="block" color="danger" onClick={() => history.go(-1)}>
+      <IonButton
+        size="large"
+        expand="block"
+        color="primary"
+        onClick={() => history.go(-1)}
+      >
         Cancel
       </IonButton>
     </IonContent>
