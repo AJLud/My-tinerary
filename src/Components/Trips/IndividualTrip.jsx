@@ -5,6 +5,8 @@ import { IonCard, IonCardTitle, IonButton, IonContent } from '@ionic/react';
 /* eslint-enable */
 import getTripById from '../../api/tripById.api';
 import TripSectionBrief from './TripSectionBrief';
+
+import Loading from '../Loading';
 import deleteTripByID from '../../api/deleteTripById.api';
 import BackButton from '../BackButton';
 import Error from '../Error';
@@ -19,10 +21,12 @@ const Trip = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getTripById(tripId).then((specificTrip) => {
-      setCurrentTrip(specificTrip);
-      setIsLoading(false);
-    });
+    setTimeout(() => {
+      getTripById(tripId).then((specificTrip) => {
+        setCurrentTrip(specificTrip);
+        setIsLoading(false);
+      });
+    }, 1000);
   }, []);
 
   const deleteTrip = (tripID) => {
@@ -33,7 +37,7 @@ const Trip = () => {
       .catch((err) => setIsError({ status: true, message: err }));
   };
 
-  if (isLoading) return <p>Loading</p>;
+  if (isLoading) return <Loading />;
   if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
