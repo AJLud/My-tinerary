@@ -58,6 +58,13 @@ const Trip = () => {
       </IonCardSubtitle>
       <br />
 
+      <IonButton
+        onClick={() => {
+          history.push(`/trips/${tripId}/chat`);
+        }}
+      >
+        Chat
+      </IonButton>
       <TripSectionBrief section="Accommodation" tripId={tripId} />
       <TripSectionBrief section="Travel" tripId={tripId} />
       <TripSectionBrief section="Excursions" tripId={tripId} />

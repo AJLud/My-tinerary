@@ -19,7 +19,8 @@ import AccommodationDetails from './Components/Trips/AccommodationList';
 import ExcursionList from './Components/Trips/ExcursionList';
 import TravelList from './Components/Trips/TravelList';
 import TravelNotes from './Components/Trips/TravelNotes';
-
+import ArchivedTrips from './Components/Trips/ArchivedTrips';
+import Chat from './Components/Trips/Chat';
 import Error from './Components/Error';
 import UserContext from './Contexts/User';
 
@@ -42,7 +43,6 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import './theme/app.css';
-import ArchivedTrips from './Components/Trips/ArchivedTrips';
 
 const App = () => {
   const [user, setUser] = useState({ username: 'Bex123' });
@@ -112,6 +112,9 @@ const App = () => {
             </Route>
             <Route path="/trips/:tripId/Notes" exact>
               <TravelNotes />
+            </Route>
+            <Route path="/trips/:tripId/chat">
+              <Chat />
             </Route>
             <Route path="/404" exact>
               <Error />
