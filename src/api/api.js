@@ -1,8 +1,9 @@
 import db from '../Config/firebase-setup';
 
-const getTripsByUser = (user, setUserTrips) => {
+const getTripsByUser = (user) => {
   const userTripsArray = [];
-  db.collection('trips')
+  return db
+    .collection('trips')
     .where('owner', '==', user.username)
     .orderBy('start_date')
     .get()
@@ -13,7 +14,7 @@ const getTripsByUser = (user, setUserTrips) => {
         const combinedTripIdAndData = { tripId, ...tripData };
         userTripsArray.push(combinedTripIdAndData);
       });
-      setUserTrips(userTripsArray);
+      return userTripsArray;
     })
     .catch((err) => `Trips failed to fetch: ${err}`);
 };
