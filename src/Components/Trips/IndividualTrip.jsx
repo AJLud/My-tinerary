@@ -13,6 +13,7 @@ import TripSectionBrief from './TripSectionBrief';
 import Loading from '../Loading';
 
 import deleteTripByID from '../../api/deleteTripById.api';
+import BackButton from '../BackButton';
 
 const Trip = () => {
   const history = useHistory();
@@ -37,6 +38,7 @@ const Trip = () => {
 
   return (
     <IonContent>
+      <BackButton />
       <IonCard color="light">
         <IonCardTitle>
           {'15 days until '}
