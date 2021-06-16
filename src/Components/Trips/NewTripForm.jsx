@@ -5,8 +5,6 @@ import {
   IonItemDivider,
   IonList,
   IonHeader,
-  IonToolbar,
-  IonTitle,
   IonButton,
 } from '@ionic/react';
 
@@ -68,110 +66,111 @@ const NewTrip = () => {
   }
 
   return (
-    <ion-content overflow-scroll="true" class="has-header">
-      <IonContent>
-        <BackButton />
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Plan New Trip ⛅ </IonTitle>
-          </IonToolbar>
-        </IonHeader>
+    <IonContent overflow-scroll="true" class="has-header">
+      <BackButton />
 
-        <IonContent>
-          <form onSubmit={handleSubmit}>
-            <IonList>
-              <IonItemDivider>Name your trip</IonItemDivider>
-              <IonItem>
-                <IonInput
-                  type="text"
-                  placeholder="Amazing Holiday 🌞 "
-                  required
-                  value={newTrip.trip_name}
-                  onIonChange={(event) => {
-                    setNewTrip((currTrip) => {
-                      const copyTrip = { ...currTrip };
-                      copyTrip.trip_name = event.target.value;
-                      return copyTrip;
-                    });
-                  }}
-                />
-              </IonItem>
-              <IonItemDivider>Input Start Date</IonItemDivider>
-              <IonItem>
-                <IonInput
-                  type="date"
-                  required
-                  value={newTrip.start_date}
-                  onIonChange={(event) => {
-                    setNewTrip((currTrip) => {
-                      const copyTrip = { ...currTrip };
-                      copyTrip.start_date = event.target.value;
-                      return copyTrip;
-                    });
-                  }}
-                />
-              </IonItem>
-              <IonItemDivider>Input End Date</IonItemDivider>
-              <IonItem>
-                <IonInput
-                  type="date"
-                  required
-                  value={newTrip.end_date}
-                  onIonChange={(event) => {
-                    setNewTrip((currTrip) => {
-                      const copyTrip = { ...currTrip };
-                      copyTrip.end_date = event.target.value;
-                      return copyTrip;
-                    });
-                  }}
-                />
-              </IonItem>
-              <IonItemDivider>Destination</IonItemDivider>
-              <IonItem>
-                <IonInput
-                  type="text"
-                  placeholder="Input Destination"
-                  required
-                  value={newTrip.destination}
-                  onIonChange={(event) => {
-                    setNewTrip((currTrip) => {
-                      const copyTrip = { ...currTrip };
-                      copyTrip.destination = event.target.value;
-                      return copyTrip;
-                    });
-                  }}
-                />
-              </IonItem>
-              <IonItemDivider>Notes</IonItemDivider>
-              <IonItem>
-                <IonInput
-                  type="text"
-                  placeholder="Notes..."
-                  value={newTrip.notes}
-                  onIonChange={(event) => {
-                    setNewTrip((currTrip) => {
-                      const copyTrip = { ...currTrip };
-                      copyTrip.notes = event.target.value;
-                      return copyTrip;
-                    });
-                  }}
-                />
-              </IonItem>
-              <IonButton type="submit" expand="block" color="success">
-                submit
-              </IonButton>
-            </IonList>
-          </form>
-          <IonButton
-            expand="block"
-            color="danger"
-            onClick={() => history.push('/trips')}
-          >
-            Cancel
-          </IonButton>
-        </IonContent>
+      <IonHeader className="header plane">Plan New Trip ⛅</IonHeader>
+
+      <IonContent>
+        <form onSubmit={handleSubmit}>
+          <IonList>
+            <IonItemDivider>Name your trip</IonItemDivider>
+            <IonItem>
+              <IonInput
+                type="text"
+                placeholder="Amazing Holiday 🌞 "
+                required
+                value={newTrip.trip_name}
+                onIonChange={(event) => {
+                  setNewTrip((currTrip) => {
+                    const copyTrip = { ...currTrip };
+                    copyTrip.trip_name = event.target.value;
+                    return copyTrip;
+                  });
+                }}
+              />
+            </IonItem>
+            <IonItemDivider>Input Start Date</IonItemDivider>
+            <IonItem>
+              <IonInput
+                type="date"
+                required
+                value={newTrip.start_date}
+                onIonChange={(event) => {
+                  setNewTrip((currTrip) => {
+                    const copyTrip = { ...currTrip };
+                    copyTrip.start_date = event.target.value;
+                    return copyTrip;
+                  });
+                }}
+              />
+            </IonItem>
+            <IonItemDivider>Input End Date</IonItemDivider>
+            <IonItem>
+              <IonInput
+                type="date"
+                required
+                value={newTrip.end_date}
+                onIonChange={(event) => {
+                  setNewTrip((currTrip) => {
+                    const copyTrip = { ...currTrip };
+                    copyTrip.end_date = event.target.value;
+                    return copyTrip;
+                  });
+                }}
+              />
+            </IonItem>
+            <IonItemDivider>Destination</IonItemDivider>
+            <IonItem>
+              <IonInput
+                type="text"
+                placeholder="Input Destination"
+                required
+                value={newTrip.destination}
+                onIonChange={(event) => {
+                  setNewTrip((currTrip) => {
+                    const copyTrip = { ...currTrip };
+                    copyTrip.destination = event.target.value;
+                    return copyTrip;
+                  });
+                }}
+              />
+            </IonItem>
+            <IonItemDivider>Notes</IonItemDivider>
+            <IonItem>
+              <IonInput
+                type="text"
+                placeholder="Notes..."
+                value={newTrip.notes}
+                onIonChange={(event) => {
+                  setNewTrip((currTrip) => {
+                    const copyTrip = { ...currTrip };
+                    copyTrip.notes = event.target.value;
+                    return copyTrip;
+                  });
+                }}
+              />
+            </IonItem>
+            <IonButton
+              type="submit"
+              size="large"
+              expand="block"
+              color="secondary"
+            >
+              submit
+            </IonButton>
+          </IonList>
+        </form>
+        <IonButton
+          size="large"
+          expand="block"
+          color="primary"
+          onClick={() => history.push('/trips')}
+        >
+          Cancel
+        </IonButton>
       </IonContent>
-    </ion-content>
+    </IonContent>
   );
 };
 

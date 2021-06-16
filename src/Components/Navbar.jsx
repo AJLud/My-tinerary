@@ -6,7 +6,7 @@ import { IonFab, IonFabButton, IonFabList, IonIcon } from '@ionic/react';
 import {
   airplane,
   people,
-  triangle,
+  arrowUpOutline,
   chatbubbles,
   person,
   home,
@@ -17,11 +17,12 @@ const Navbar = () => {
 
   return (
     <IonFab vertical="bottom" horizontal="end">
-      <IonFabButton color="light">
-        <IonIcon icon={triangle} />
+      <IonFabButton color="danger">
+        <IonIcon icon={arrowUpOutline} />
       </IonFabButton>
       <IonFabList side="top">
         <IonFabButton
+          color="danger"
           onClick={() => {
             history.push('/profile');
           }}
@@ -29,6 +30,7 @@ const Navbar = () => {
           <IonIcon icon={person} />
         </IonFabButton>
         <IonFabButton
+          color="danger"
           onClick={() => {
             history.push('/buddies');
           }}
@@ -36,6 +38,7 @@ const Navbar = () => {
           <IonIcon icon={people} />
         </IonFabButton>
         <IonFabButton
+          color="danger"
           onClick={() => {
             history.push('/chats');
           }}
@@ -43,6 +46,7 @@ const Navbar = () => {
           <IonIcon icon={chatbubbles} />
         </IonFabButton>
         <IonFabButton
+          color="danger"
           onClick={() => {
             history.push('/trips');
           }}
@@ -50,6 +54,7 @@ const Navbar = () => {
           <IonIcon icon={airplane} />
         </IonFabButton>
         <IonFabButton
+          color="danger"
           onClick={() => {
             history.push('/');
           }}

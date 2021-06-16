@@ -9,12 +9,12 @@ const countdown = ({ seconds, tripDurationSeconds }) => {
     const day = 60 * 60 * 24;
     const days = Math.floor(seconds / day);
 
-    return `${days} day${pluralized(days)} until`;
+    return `${days} day${pluralized(days)} until... `;
   }
 
   if (seconds >= 3600) {
     const hours = Math.floor(seconds / hour);
-    return `${hours} hour${pluralized(hours)} until`;
+    return `${hours} hour${pluralized(hours)} until... `;
   }
 
   // within the last hour of start trip
