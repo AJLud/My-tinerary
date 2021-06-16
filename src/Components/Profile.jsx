@@ -39,7 +39,14 @@ const Profile = ({ user, setUser }) => {
         Change Password
       </IonButton>
       <br />
-      <IonButton expand="block" size="large" color="secondary">
+      <IonButton
+        expand="block"
+        size="large"
+        color="secondary"
+        onClick={() => {
+          history.push('/archived-trips');
+        }}
+      >
         Archived Trips
       </IonButton>
       <br />
