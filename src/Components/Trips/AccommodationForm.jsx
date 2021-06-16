@@ -58,6 +58,13 @@ const AccommodationForm = () => {
   return (
     <IonContent>
       <BackButton />
+      <IonButton
+        onClick={() => {
+          history.push(`/trips/${tripId.tripId}`);
+        }}
+      >
+        Back To Trip
+      </IonButton>
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
