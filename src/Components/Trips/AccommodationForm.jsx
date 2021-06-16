@@ -7,6 +7,7 @@ import {
   IonButton,
   IonItemDivider,
   IonCard,
+  IonHeader,
   IonContent,
   IonInput,
 } from '@ionic/react';
@@ -51,28 +52,32 @@ const AccommodationForm = () => {
   };
 
   if (isError.status) return <Error isError={isError} />;
+
   return (
     <IonContent>
-      <nav>
+      <IonHeader className="page-head" class="ion-no-border">
         <BackButton />
-        <IonButton
-          onClick={() => {
-            history.push(`/trips/${tripId.tripId}`);
-          }}
-        >
-          Back To Trip
-        </IonButton>
-      </nav>
+        Accommodation
+      </IonHeader>
+
+      {/* <IonButton
+        onClick={() => {
+          history.push(`/trips/${tripId.tripId}`);
+        }}
+      >
+        Back To Trip
+      </IonButton> */}
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
             <IonItem>
-              <IonCardTitle>Accomodation</IonCardTitle>
+              <IonCardTitle>Add Plans</IonCardTitle>
             </IonItem>
-            <IonItemDivider>Name:</IonItemDivider>
+            <IonItemDivider>Venue Name:</IonItemDivider>
             <IonItem>
               <IonInput
                 type="text"
+                placeholder="..."
                 required
                 value={newAccommodation.hotel_name}
                 onIonChange={(event) => {
@@ -105,6 +110,7 @@ const AccommodationForm = () => {
                 type="text"
                 required
                 value={newAccommodation.days}
+                placeholder="..."
                 onIonChange={(event) => {
                   setNewAccommodation((currAccommodation) => {
                     const copyAccommodation = { ...currAccommodation };
@@ -119,6 +125,7 @@ const AccommodationForm = () => {
               <IonInput
                 type="text"
                 value={newAccommodation.notes}
+                placeholder="..."
                 onIonChange={(event) => {
                   setNewAccommodation((currAccommodation) => {
                     const copyAccommodation = { ...currAccommodation };
@@ -130,12 +137,17 @@ const AccommodationForm = () => {
             </IonItem>
           </IonList>
         </IonCard>
-        <IonButton expand="block" color="success" type="submit">
+        <IonButton size="large" expand="block" type="submit" color="secondary">
           Add Details
         </IonButton>
       </form>
 
-      <IonButton expand="block" color="danger" onClick={() => history.go(-1)}>
+      <IonButton
+        size="large"
+        expand="block"
+        color="primary"
+        onClick={() => history.go(-1)}
+      >
         Cancel
       </IonButton>
     </IonContent>
