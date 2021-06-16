@@ -18,7 +18,7 @@ import Home from './Components/Homepage';
 import AccommodationDetails from './Components/Trips/AccommodationList';
 import ExcursionList from './Components/Trips/ExcursionList';
 import TravelList from './Components/Trips/TravelList';
-
+import Error from './Components/Error';
 import UserContext from './Contexts/User';
 
 /* Core CSS required for Ionic components to work properly */
@@ -106,6 +106,9 @@ const App = () => {
             </Route>
             <Route path="/buddies" exact>
               <Buddies user={user} />
+            </Route>
+            <Route path="/404" exact>
+              <Error />
             </Route>
           </IonRouterOutlet>
         </IonReactRouter>

@@ -14,11 +14,13 @@ import {
 } from '@ionic/react';
 import postTravelDetails from '../../api/postTravel';
 import BackButton from '../BackButton';
+import Error from '../Error';
 
 const TravelForm = () => {
   const [isPosted, setIsPosted] = useState(false);
   const history = useHistory();
   const tripId = useParams();
+  const [isError, setIsError] = useState(false);
 
   const [newTravel, setNewTravel] = useState({
     cost: '',
@@ -57,9 +59,10 @@ const TravelForm = () => {
       .then(() => {
         setIsPosted(true);
       })
-      .catch((err) => console.log('travel details did not post', err));
+      .catch((err) => setIsError({ status: true, message: err }));
   };
 
+  if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
       <BackButton />

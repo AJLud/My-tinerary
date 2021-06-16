@@ -16,25 +16,35 @@ import getTripById from '../../api/tripById.api';
 import deleteAccommByID from '../../api/deleteAccommByID.api';
 import { formatDate } from '../../utils/utils';
 import BackButton from '../BackButton';
+import Error from '../Error';
+import Loading from '../Loading';
 
 const AccommodationDetails = () => {
   const history = useHistory();
   const { tripId } = useParams();
-  const [currTrip, setCurrTrip] = useState({});
-
+  const [currentTrip, setCurrentTrip] = useState({});
+  const [isError, setIsError] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const [accommodation, setAccommodation] = useState([]);
 
   useEffect(() => {
     getAccommodationByTripId(tripId, setAccommodation);
-    getTripById(tripId, setCurrTrip);
+    getTripById(tripId).then((specificTrip) => {
+      setCurrentTrip(specificTrip);
+      setIsLoading(false);
+    });
   }, []);
 
   const deleteAccomm = (ID, hotel) => {
-    deleteAccommByID(ID, hotel.accommId).then(() => {
-      history.go(0);
-    });
+    deleteAccommByID(ID, hotel.accommId)
+      .then(() => {
+        history.go(0);
+      })
+      .catch((err) => setIsError({ status: true, message: err }));
   };
 
+  if (isLoading) return <Loading />;
+  if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
       <nav>
@@ -50,7 +60,12 @@ const AccommodationDetails = () => {
       </nav>
 
       <IonHeader>
-        <h1>{currTrip.trip_name}</h1>
+        <h1>{currentTrip.trip_name}</h1>
+        <h2>
+          {formatDate(currentTrip.start_date.seconds)}
+          {' - '}
+          {formatDate(currentTrip.end_date.seconds)}
+        </h2>
         <h2>Accommodation</h2>
       </IonHeader>
       <IonButton
@@ -61,7 +76,7 @@ const AccommodationDetails = () => {
         Add new details
       </IonButton>
       {accommodation.map((hotel) => (
-        <IonCard key={hotel.hotel_name} color="primary">
+        <IonCard key={hotel.accommId} color="primary">
           <IonCardHeader>
             <IonCardTitle>
               <h5>

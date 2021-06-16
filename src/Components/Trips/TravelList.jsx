@@ -16,25 +16,35 @@ import getTripById from '../../api/tripById.api';
 import deleteTravelByID from '../../api/deleteTravelById.api';
 import { formatDate } from '../../utils/utils';
 import BackButton from '../BackButton';
+import Error from '../Error';
+import Loading from '../Loading';
 
 const TravelList = () => {
   const history = useHistory();
   const { tripId } = useParams();
-  const [currTrip, setCurrTrip] = useState({});
-
+  const [currentTrip, setCurrentTrip] = useState({});
+  const [isError, setIsError] = useState({});
   const [travel, setTravel] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getTravelByTripId(tripId, setTravel);
-    getTripById(tripId, setCurrTrip);
+    getTripById(tripId).then((specificTrip) => {
+      setCurrentTrip(specificTrip);
+      setIsLoading(false);
+    });
   }, []);
 
   const deleteTravel = (ID, journey) => {
-    deleteTravelByID(ID, journey).then(() => {
-      history.go(0);
-    });
+    deleteTravelByID(ID, journey)
+      .then(() => {
+        history.go(0);
+      })
+      .catch((err) => setIsError({ status: true, message: err }));
   };
 
+  if (isLoading) return <Loading />;
+  if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
       <nav>
@@ -50,7 +60,12 @@ const TravelList = () => {
       </nav>
 
       <IonHeader>
-        <h1>{currTrip.trip_name}</h1>
+        <h1>{currentTrip.trip_name}</h1>
+        <h2>
+          {formatDate(currentTrip.start_date.seconds)}
+          {' - '}
+          {formatDate(currentTrip.end_date.seconds)}
+        </h2>
         <h2>Travel</h2>
       </IonHeader>
       <IonButton

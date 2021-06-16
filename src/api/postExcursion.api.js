@@ -16,9 +16,7 @@ const postExcursionDetails = (newExcursion, tripId) => {
       response = `successfully posted excursion: ${docRef.id}`;
       return response;
     })
-    .catch((err) => {
-      console.log('message', err);
-    });
+    .catch((err) => `Excursion did not post: ${err}`);
 };
 
 export default postExcursionDetails;

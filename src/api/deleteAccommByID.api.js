@@ -1,15 +1,12 @@
 import db from '../Config/firebase-setup';
-
-const deleteAccommByID = (tripId, hotelId) => {
-  console.log('hey');
-  return db
+/* eslint-disable */
+const deleteAccommByID = (tripId, hotelId) =>
+  db
     .collection('trips')
     .doc(tripId)
     .collection('hotels')
     .doc(hotelId)
     .delete()
-    .catch((err) => {
-      console.log(err);
-    });
-};
+    .catch((err) => `Deletion failed: ${err}`);
+
 export default deleteAccommByID;

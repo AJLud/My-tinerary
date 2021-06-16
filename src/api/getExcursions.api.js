@@ -16,7 +16,7 @@ const getExcursionByTripID = (tripID, setExcursions) => {
       });
       setExcursions(excursionsArray);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => `Failed to get Excursions: ${err}`);
 };
 
 export default getExcursionByTripID;

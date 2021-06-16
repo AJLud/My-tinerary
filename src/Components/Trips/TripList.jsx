@@ -21,10 +21,8 @@ const TripsList = ({ user }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      getTripsByUser(user, setUserTrips);
-      setIsLoading(false);
-    }, 1000);
+    getTripsByUser(user, setUserTrips);
+    setIsLoading(false);
   }, []);
 
   const specificTrip = (trip) => {
@@ -35,8 +33,8 @@ const TripsList = ({ user }) => {
 
   return (
     <IonContent overflow-scroll="true">
-        <BackButton />
-        <IonHeader className="page-head" position="none">
+      <BackButton />
+      <IonHeader className="page-head" position="none">
         Current Trips
       </IonHeader>
       <IonButton
@@ -61,7 +59,7 @@ const TripsList = ({ user }) => {
           </IonCardHeader>
 
           <IonCardContent>
-            <h5>
+            <h2>
               {'Organised By: '}
               {trip.owner}
               <br />
@@ -69,7 +67,10 @@ const TripsList = ({ user }) => {
               {formatDate(trip.start_date.seconds)}
               {' - '}
               {formatDate(trip.end_date.seconds)}
-            </h5>
+              <br />
+              {'Location: '}
+              {trip.destination}
+            </h2>
           </IonCardContent>
         </IonCard>
       ))}

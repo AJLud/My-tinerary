@@ -9,6 +9,7 @@ import { React, useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import db from '../../Config/firebase-setup';
+import Error from '../Error';
 
 const SignUp = () => {
   const [newUsername, setNewUsername] = useState('');
@@ -16,6 +17,7 @@ const SignUp = () => {
   const [newConfirmPassword, setNewConfirmPassword] = useState('');
   const [newAvatarURL, setNewAvatarURL] = useState('');
   const [name, setName] = useState('');
+  const [isError, setIsError] = useState(false);
 
   // const imgurlRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
 
@@ -32,18 +34,19 @@ const SignUp = () => {
           buddies: [],
           trips: [],
         })
-        .then((docRef) => {
-          console.log('User Added', docRef.id);
+        .then((/* docRef */) => {
+          // console.log('User Added', docRef.id);
           history.push('/');
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          setIsError(true);
         });
     } else {
       alert("Password doesn't match");
     }
   };
 
+  if (isError) return <Error />;
   return (
     <IonContent>
       <form
