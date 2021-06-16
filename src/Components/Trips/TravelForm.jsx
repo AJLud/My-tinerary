@@ -9,6 +9,8 @@ import {
   IonCard,
   IonContent,
   IonInput,
+  IonSelect,
+  IonSelectOption,
 } from '@ionic/react';
 
 import postTravelDetails from '../../api/postTravel';
@@ -73,22 +75,21 @@ const TravelForm = () => {
             <IonItem>
               <IonCardTitle>Travel Plans</IonCardTitle>
             </IonItem>
-            {/* Change this to a outbound/inbound dropdown */}
-            <IonItemDivider>Direction:</IonItemDivider>
-            <IonItem>
-              <IonInput
-                type="text"
-                required
-                value={newTravel.direction}
-                onIonChange={(event) => {
-                  setNewTravel((currTravel) => {
-                    const copyTravel = { ...currTravel };
-                    copyTravel.direction = event.target.value;
-                    return copyTravel;
-                  });
-                }}
-              />
-            </IonItem>
+            <IonItemDivider>Direction: </IonItemDivider>
+            <IonSelect
+              value={newTravel.direction}
+              placeholder="Select One"
+              onIonChange={(event) => {
+                setNewTravel((currTravel) => {
+                  const copyTravel = { ...currTravel };
+                  copyTravel.direction = event.target.value;
+                  return copyTravel;
+                });
+              }}
+            >
+              <IonSelectOption value="Outbound">Outbound</IonSelectOption>
+              <IonSelectOption value="Inbound">Inbound</IonSelectOption>
+            </IonSelect>
             <IonItemDivider>Date: </IonItemDivider>
             <IonItem>
               <IonInput
@@ -166,12 +167,12 @@ const TravelForm = () => {
             </IonItem>
           </IonList>
         </IonCard>
-        <IonButton color="success" type="submit">
+        <IonButton expand="block" color="success" type="submit">
           Add Details
         </IonButton>
       </form>
-      <IonButton color="danger" onClick={() => history.push('/trips')}>
-        Back
+      <IonButton expand="block" color="danger" onClick={() => history.go(-1)}>
+        Cancel
       </IonButton>
     </IonContent>
   );

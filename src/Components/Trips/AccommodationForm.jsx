@@ -133,13 +133,13 @@ const AccommodationForm = () => {
             </IonItem>
           </IonList>
         </IonCard>
-        <IonButton color="success" type="submit">
+        <IonButton expand="block" color="success" type="submit">
           Add Details
         </IonButton>
       </form>
 
-      <IonButton color="danger" onClick={() => history.push('/trips')}>
-        Back
+      <IonButton expand="block" color="danger" onClick={() => history.go(-1)}>
+        Cancel
       </IonButton>
     </IonContent>
   );

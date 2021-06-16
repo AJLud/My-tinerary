@@ -13,6 +13,7 @@ import {
 
 import getAccommodationByTripId from '../../api/getAccom.api';
 import getTripById from '../../api/tripById.api';
+import deleteAccommByID from '../../api/deleteAccommByID.api';
 import { formatDate } from '../../utils/utils';
 
 const AccommodationDetails = () => {
@@ -27,10 +28,16 @@ const AccommodationDetails = () => {
     getTripById(tripId, setCurrTrip);
   }, []);
 
+  const deleteAccomm = (ID, hotel) => {
+    deleteAccommByID(ID, hotel.accommId).then(() => {
+      history.go(0);
+    });
+  };
+
   return (
     <IonContent>
-      <IonHeader>
-        <IonButton
+      {/* <IonHeader> */}
+      {/* <IonButton
           expand="block"
           color="warning"
           onClick={() => {
@@ -39,9 +46,17 @@ const AccommodationDetails = () => {
         >
           {currTrip.trip_name}
         </IonButton>
-        <h1>Hotels</h1>
+        <h1>Hotels</h1> */}
+      <IonHeader
+        type="button"
+        onClick={() => {
+          history.go(-1);
+        }}
+      >
+        <h1>Accommodation</h1>
       </IonHeader>
       <IonButton
+        expand="block"
         onClick={() => history.push(`/trips/${tripId}/accommodation/form`)}
       >
         Add new details
@@ -53,6 +68,15 @@ const AccommodationDetails = () => {
               <h5>
                 {'Hotel Name: '}
                 {hotel.hotel_name}
+                <IonButton
+                  slot="end"
+                  color="light"
+                  onClick={() => {
+                    deleteAccomm(tripId, hotel);
+                  }}
+                >
+                  🗑
+                </IonButton>
               </h5>
             </IonCardTitle>
           </IonCardHeader>
