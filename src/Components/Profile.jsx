@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
-import {
-  IonButton,
-  IonContent,
-  IonItem,
-  IonHeader,
-  IonImg,
-} from '@ionic/react';
+/* eslint-disable */
+import { IonButton, IonContent, IonItem, IonHeader } from '@ionic/react';
+/* eslint-enable */
 import { useHistory } from 'react-router-dom';
 import getUserDetails from '../userDetails.api';
 // import BackButton from './BackButton';
@@ -27,8 +22,12 @@ const Profile = ({ user, setUser }) => {
         {'User: '}
         {userDetails.name}
       </IonItem>
-
-      <IonImg src={userDetails.avatar_url} alt={userDetails.name} />
+      <div className="homepage-img-container">
+        <img
+          className="profile-img"
+          src={userDetails.avatar_url}
+          alt={userDetails.name}
+        />
       <IonButton expand="block" size="large" color="primary">
         Change Avatar
       </IonButton>
