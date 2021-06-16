@@ -1,53 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import {
-  IonCard,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonButton,
-  IonContent,
-} from '@ionic/react';
+import { IonCardSubtitle, IonButton, IonContent } from '@ionic/react';
 
 import getTripById from '../../api/tripById.api';
 import TripSectionBrief from './TripSectionBrief';
 import Loading from '../Loading';
 import deleteTripByID from '../../api/deleteTripById.api';
 import BackButton from '../BackButton';
+import Error from '../Error';
+import Countdown from './Countdown';
+import { formatDate } from '../../utils/utils';
 
 const Trip = () => {
   const history = useHistory();
   const { tripId } = useParams();
-  const [currTrip, setCurrTrip] = useState(tripId);
+  const [currentTrip, setCurrentTrip] = useState({});
+  const [isError, setIsError] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      getTripById(currTrip, setCurrTrip);
-      setIsLoading(false);
+      getTripById(tripId).then((specificTrip) => {
+        setCurrentTrip(specificTrip);
+        setIsLoading(false);
+      });
     }, 1000);
   }, []);
 
   const deleteTrip = (tripID) => {
-    deleteTripByID(tripID).then(() => {
-      history.go(-1);
-    });
+    deleteTripByID(tripID)
+      .then(() => {
+        history.go(-1);
+      })
+      .catch((err) => setIsError({ status: true, message: err }));
   };
 
   if (isLoading) return <Loading />;
-
+  if (isError.status) return <Error isError={isError} />;
   return (
     <IonContent>
       <BackButton />
-      <IonCard color="light">
-        <IonCardTitle>
-          {'15 days until '}
-          {currTrip.trip_name}
-        </IonCardTitle>
-        <IonCardSubtitle>
-          {'Location: '}
-          {currTrip.destination}
-        </IonCardSubtitle>
-      </IonCard>
+      <IonCardSubtitle className="page-head">
+        <Countdown trip={currentTrip} />
+        {currentTrip.trip_name}
+      </IonCardSubtitle>
+
+      <br />
+      <IonCardSubtitle color="secondary">
+        {'Location: '}
+        {currentTrip.destination}
+      </IonCardSubtitle>
+      <IonCardSubtitle color="secondary">
+        {'Dates: '}
+        {formatDate(currentTrip.start_date.seconds)}
+        {' - '}
+        {formatDate(currentTrip.end_date.seconds)}
+      </IonCardSubtitle>
+      <br />
 
       <TripSectionBrief section="Accommodation" tripId={tripId} />
       <TripSectionBrief section="Travel" tripId={tripId} />
@@ -56,12 +65,12 @@ const Trip = () => {
 
       <IonButton
         expand="block"
-        color="danger"
+        color="primary"
         onClick={() => {
           deleteTrip(tripId);
         }}
       >
-        Delete
+        Delete Trip
       </IonButton>
     </IonContent>
   );

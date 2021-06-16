@@ -13,7 +13,7 @@ const TripSectionBrief = ({ section, tripId }) => {
 
   return (
     <IonCard
-      color="light"
+      color="secondary"
       onClick={() => {
         history.push(`/trips/${tripId}/${section}`);
       }}

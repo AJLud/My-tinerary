@@ -20,6 +20,7 @@ import ExcursionList from './Components/Trips/ExcursionList';
 import TravelList from './Components/Trips/TravelList';
 import TravelNotes from './Components/Trips/TravelNotes';
 
+import Error from './Components/Error';
 import UserContext from './Contexts/User';
 
 /* Core CSS required for Ionic components to work properly */
@@ -40,6 +41,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './theme/app.css';
 
 const App = () => {
   const [user, setUser] = useState({ username: 'Bex123' });
@@ -109,6 +111,9 @@ const App = () => {
             </Route>
             <Route path="/trips/:tripId/Notes" exact>
               <TravelNotes />
+            </Route>
+            <Route path="/404" exact>
+              <Error />
             </Route>
           </IonRouterOutlet>
         </IonReactRouter>

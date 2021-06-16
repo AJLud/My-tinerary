@@ -5,6 +5,7 @@ const getAccommodationByTripId = (tripID, setAccommodation) => {
   db.collection('trips')
     .doc(tripID)
     .collection('hotels')
+    .orderBy('check_in')
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {

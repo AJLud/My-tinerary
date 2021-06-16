@@ -5,8 +5,6 @@ const deleteTripById = (tripId) =>
     .collection('trips')
     .doc(tripId)
     .delete()
-    .catch((err) => {
-      console.log(err);
-    });
-/* eslint-enable */
+    .catch((err) => `Deletion failed: ${err}`);
+
 export default deleteTripById;

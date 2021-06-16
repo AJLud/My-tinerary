@@ -17,11 +17,13 @@ import { Redirect, useHistory } from 'react-router-dom';
 import postTripByUser from '../../api/postTrips.api';
 import UserContext from '../../Contexts/User';
 import BackButton from '../BackButton';
+import Error from '../Error';
 
 const NewTrip = () => {
   const [isPosted, setIsPosted] = useState(false);
   const { user } = useContext(UserContext);
   const history = useHistory();
+  const [isError, setIsError] = useState({});
   const [newTrip, setNewTrip] = useState({
     owner: `${user.username}`,
     trip_name: '',
@@ -54,9 +56,10 @@ const NewTrip = () => {
       .then(() => {
         setIsPosted(true);
       })
-      .catch((err) => console.log('trip did not post', err));
+      .catch((err) => setIsError({ status: true, message: err }));
   };
 
+  if (isError.status) return <Error isError={isError} />;
   if (isPosted) {
     return <Redirect to="/trips" />;
   }
