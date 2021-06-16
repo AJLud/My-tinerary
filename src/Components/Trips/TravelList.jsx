@@ -11,7 +11,7 @@ import {
   IonContent,
 } from '@ionic/react';
 
-import getTravelByTripId from '../../api/TravelCard.api';
+import getTravelByTripId from '../../api/getTravel.api';
 import deleteTravelByID from '../../api/deleteTravelById.api';
 import { formatDate } from '../../utils/utils';
 

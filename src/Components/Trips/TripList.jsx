@@ -26,10 +26,6 @@ const TripsList = ({ user }) => {
     history.push(`/trips/${trip.tripId}`);
   };
 
-  const deleteTrip = (tripId) => {
-    console.log(tripId);
-  };
-
   return (
     <IonContent overflow-scroll="true">
       <IonHeader>

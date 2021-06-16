@@ -11,7 +11,7 @@ import {
   IonContent,
 } from '@ionic/react';
 
-import getAccommodationByTripId from '../../api/AccomCard.api';
+import getAccommodationByTripId from '../../api/getAccom.api';
 import deleteAccommByID from '../../api/deleteAccommByID.api';
 import { formatDate } from '../../utils/utils';
 
