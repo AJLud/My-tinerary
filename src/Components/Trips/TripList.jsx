@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import {
   IonButton,
   IonCard,
@@ -9,10 +8,12 @@ import {
   IonContent,
   IonCardContent,
 } from '@ionic/react';
+
 import { useHistory } from 'react-router-dom';
 import getTripsByUser from '../../api/api';
 import { formatDate } from '../../utils/utils';
 import Countdown from './Countdown';
+import BackButton from '../BackButton';
 
 const TripsList = ({ user }) => {
   const history = useHistory();
@@ -28,6 +29,7 @@ const TripsList = ({ user }) => {
 
   return (
     <IonContent overflow-scroll="true">
+      <BackButton />
       <IonHeader>
         <h1>Current Trips</h1>
       </IonHeader>

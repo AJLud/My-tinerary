@@ -6,9 +6,11 @@ import {
   IonList,
   IonListHeader,
 } from '@ionic/react';
+import BackButton from './BackButton';
 
 const Buddies = () => (
   <IonContent>
+    <BackButton />
     <IonList>
       <IonListHeader>
         <IonLabel color="secondary">Buddies</IonLabel>

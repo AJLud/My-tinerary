@@ -1,7 +1,7 @@
 import React from 'react';
-
 import { IonHeader, IonButton } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
+import BackButton from './BackButton';
 
 const Homepage = () => {
   const history = useHistory();
@@ -11,6 +11,7 @@ const Homepage = () => {
 
   return (
     <>
+      <BackButton />
       <IonHeader>
         <h1>Homepage</h1>
       </IonHeader>
