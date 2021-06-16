@@ -29,6 +29,15 @@ const ArchivedTrips = () => {
       trip_name: 'North Indian Roadtrip',
       date_difference: '42 days',
     },
+    {
+      destination: 'Glasgow',
+      end_date: { seconds: 1611152368, nanoseconds: 0 },
+      owner: 'Bex123',
+      start_date: { seconds: 1610806768, nanoseconds: 0 },
+      tripId: '3',
+      trip_name: 'Glasgow Minibreak',
+      date_difference: '149 days',
+    },
   ];
 
   return (
