@@ -43,6 +43,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import './theme/app.css';
+import ChatList from './Components/ChatList';
 
 const App = () => {
   const [user, setUser] = useState({ username: 'Bex123' });
@@ -114,7 +115,10 @@ const App = () => {
               <TravelNotes />
             </Route>
             <Route path="/trips/:tripId/chat">
-              <Chat />
+              <Chat user={user} />
+            </Route>
+            <Route>
+              <ChatList user={user} />
             </Route>
             <Route path="/404" exact>
               <Error />
