@@ -10,6 +10,7 @@ import {
 
 import getTripById from '../../api/tripById.api';
 import TripSectionBrief from './TripSectionBrief';
+import Loading from '../Loading';
 
 import deleteTripByID from '../../api/deleteTripById.api';
 
@@ -17,9 +18,13 @@ const Trip = () => {
   const history = useHistory();
   const { tripId } = useParams();
   const [currTrip, setCurrTrip] = useState(tripId);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getTripById(currTrip, setCurrTrip);
+    setTimeout(() => {
+      getTripById(currTrip, setCurrTrip);
+      setIsLoading(false);
+    }, 1000);
   }, []);
 
   const deleteTrip = (tripID) => {
@@ -27,6 +32,8 @@ const Trip = () => {
       history.go(-1);
     });
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <IonContent>

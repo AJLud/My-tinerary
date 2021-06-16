@@ -12,19 +12,26 @@ import {
 import { useHistory } from 'react-router-dom';
 import getTripsByUser from '../../api/api';
 import { formatDate } from '../../utils/utils';
+import Loading from '../Loading';
 import Countdown from './Countdown';
 
 const TripsList = ({ user }) => {
   const history = useHistory();
   const [userTrips, setUserTrips] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getTripsByUser(user, setUserTrips);
+    setTimeout(() => {
+      getTripsByUser(user, setUserTrips);
+      setIsLoading(false);
+    }, 1000);
   }, []);
 
   const specificTrip = (trip) => {
     history.push(`/trips/${trip.tripId}`);
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <IonContent overflow-scroll="true">

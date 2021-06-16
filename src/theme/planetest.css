@@ -1,0 +1,21 @@
+.loading-plane {
+  max-height: 100px;
+  animation: rotation 2s infinite;
+}
+
+.loading-title {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+.loading {
+  text-align: center;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
