@@ -37,7 +37,18 @@ const TravelList = () => {
 
   return (
     <IonContent>
-      <BackButton />
+      <nav>
+        {' '}
+        <BackButton />
+        <IonButton
+          onClick={() => {
+            history.push(`/trips/${tripId}`);
+          }}
+        >
+          Back To Trip
+        </IonButton>
+      </nav>
+
       <IonHeader>
         <h1>{currTrip.trip_name}</h1>
         <h2>Travel</h2>
