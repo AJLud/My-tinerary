@@ -14,7 +14,7 @@ const ArchivedTrips = () => {
     {
       destination: 'Barcelona',
       end_date: { seconds: 1584886491, nanoseconds: 0 },
-      owner: 'Bex123',
+      owner: 'Poonam_1478',
       start_date: { seconds: 1584454768, nanoseconds: 0 },
       tripId: '1',
       trip_name: 'Business in Spain',
@@ -32,7 +32,7 @@ const ArchivedTrips = () => {
     {
       destination: 'Glasgow',
       end_date: { seconds: 1611152368, nanoseconds: 0 },
-      owner: 'Bex123',
+      owner: 'BigDave101',
       start_date: { seconds: 1610806768, nanoseconds: 0 },
       tripId: '3',
       trip_name: 'Glasgow Minibreak',
