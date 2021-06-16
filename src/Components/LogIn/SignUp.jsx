@@ -15,6 +15,7 @@ const SignUp = () => {
   const [newPassword, setNewPassword] = useState('');
   const [newConfirmPassword, setNewConfirmPassword] = useState('');
   const [newAvatarURL, setNewAvatarURL] = useState('');
+  const [name, setName] = useState('');
 
   // const imgurlRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
 
@@ -27,6 +28,7 @@ const SignUp = () => {
           avatar_url: newAvatarURL,
           username: newUsername,
           password: newPassword,
+          name,
           buddies: [],
           trips: [],
         })
@@ -87,6 +89,15 @@ const SignUp = () => {
               placeholder="Avatar URL"
               onIonChange={(e) => {
                 setNewAvatarURL(e.target.value);
+              }}
+            />
+          </IonItem>
+          <IonItem>
+            <IonInput
+              type="text"
+              placeholder="Name/Nickname"
+              onIonChange={(e) => {
+                setName(e.target.value);
               }}
             />
           </IonItem>
