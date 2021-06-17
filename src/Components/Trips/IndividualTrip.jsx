@@ -78,17 +78,17 @@ const Trip = () => {
       <IonCard
         color="secondary"
         onClick={() => {
-          history.push('/chats');
+          history.push(`/trips/${tripId}/chat`);
         }}
       >
         <IonCardHeader>
-          <IonCardTitle>Chats</IonCardTitle>
+          <IonCardTitle>Chat</IonCardTitle>
         </IonCardHeader>
         <IonCardContent>
           <IonCardSubtitle>
             <h5>
-              {'Click here to access all your '}
-              Chats
+              {'Click here to access your '}
+              Chat
             </h5>
           </IonCardSubtitle>
         </IonCardContent>
