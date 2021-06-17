@@ -52,9 +52,7 @@ const SignUp = () => {
   return (
     <IonContent>
       <IonHeader className="page-head" class="ion-no-border">
-        <IonCardSubtitle className="page-head">
-          Register Account
-        </IonCardSubtitle>
+        <IonCardSubtitle className="page-head">Sign Up</IonCardSubtitle>
       </IonHeader>
       <form
         onSubmit={(event) => {
@@ -119,7 +117,7 @@ const SignUp = () => {
           type="submit"
           className="orange-button"
         >
-          Register
+          Sign Up
         </IonButton>
 
         <IonButton

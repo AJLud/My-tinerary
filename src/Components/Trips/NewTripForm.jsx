@@ -5,11 +5,9 @@ import {
   IonList,
   IonHeader,
   IonButton,
-
   IonCardTitle,
   IonTextarea,
   IonCard,
-
 } from '@ionic/react';
 
 /* eslint-disable */

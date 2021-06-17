@@ -4,6 +4,9 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonButton,
+  IonCardContent,
+  IonCardHeader,
+  IonCard,
   IonContent,
   IonHeader,
 } from '@ionic/react';
@@ -54,23 +57,43 @@ const Trip = () => {
         </IonCardSubtitle>
       </IonHeader>
 
-      <br />
-      <IonCardTitle color="danger">
-        {'Location: '}
-        {currentTrip.destination}
-      </IonCardTitle>
-      <IonCardTitle color="danger">
-        {'Dates: '}
-        {formatDate(currentTrip.start_date.seconds)}
-        {' - '}
-        {formatDate(currentTrip.end_date.seconds)}
-      </IonCardTitle>
-
+      <IonCardContent>
+        <IonCardTitle color="danger">
+          {'Dates: '}
+          {formatDate(currentTrip.start_date.seconds)}
+          {' - '}
+          {formatDate(currentTrip.end_date.seconds)}
+        </IonCardTitle>
+        <br />
+        <IonCardTitle color="danger">
+          {'Location: '}
+          {currentTrip.destination}
+        </IonCardTitle>
+      </IonCardContent>
       <TripSectionBrief section="Accommodation" tripId={tripId} />
       <TripSectionBrief section="Travel" tripId={tripId} />
       <TripSectionBrief section="Excursions" tripId={tripId} />
-      <TripSectionBrief section="Notes" tripId={tripId} />
+      <TripSectionBrief section="Checklist" tripId={tripId} />
 
+      <IonCard
+        color="secondary"
+        onClick={() => {
+          history.push('/chats');
+        }}
+      >
+        <IonCardHeader>
+          <IonCardTitle>Chats</IonCardTitle>
+        </IonCardHeader>
+        <IonCardContent>
+          <IonCardSubtitle>
+            <h5>
+              {'Click here to access all your '}
+              Chats
+            </h5>
+          </IonCardSubtitle>
+        </IonCardContent>
+      </IonCard>
+      {/* <TripSectionBrief section="Trip Buddies" tripId={tripId} /> */}
       <IonButton
         expand="block"
         color="primary"
