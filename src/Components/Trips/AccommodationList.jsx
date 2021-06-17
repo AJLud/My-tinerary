@@ -54,15 +54,16 @@ const AccommodationDetails = () => {
         <BackButton />
         {currentTrip.trip_name}
       </IonHeader>
-
-      <h2>
-        {formatDate(currentTrip.start_date.seconds)}
-        {' - '}
-        {formatDate(currentTrip.end_date.seconds)}
-      </h2>
-
-      <h2>Accommodation</h2>
-
+      <IonCardContent>
+        <IonCardTitle color="danger">
+          {'Dates: '}
+          {formatDate(currentTrip.start_date.seconds)}
+          {' - '}
+          {formatDate(currentTrip.end_date.seconds)}
+        </IonCardTitle>
+        <br />
+        <IonCardTitle color="danger">Accommodation </IonCardTitle>
+      </IonCardContent>
       <IonButton
         color="secondary"
         expand="block"

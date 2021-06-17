@@ -53,13 +53,16 @@ const TravelList = () => {
         {currentTrip.trip_name}
       </IonHeader>
 
-      <h2>
-        {formatDate(currentTrip.start_date.seconds)}
-        {' - '}
-        {formatDate(currentTrip.end_date.seconds)}
-      </h2>
-      <h2>Travel</h2>
-
+      <IonCardContent>
+        <IonCardTitle color="danger">
+          {'Dates: '}
+          {formatDate(currentTrip.start_date.seconds)}
+          {' - '}
+          {formatDate(currentTrip.end_date.seconds)}
+        </IonCardTitle>
+        <br />
+        <IonCardTitle color="danger">Travel </IonCardTitle>
+      </IonCardContent>
       <IonButton
         color="secondary"
         expand="block"
@@ -75,7 +78,6 @@ const TravelList = () => {
               <h5>
                 {'Direction: '}
                 {journey.direction}
-                <IonButton color="light">🗑</IonButton>
               </h5>
             </IonCardTitle>
           </IonCardHeader>

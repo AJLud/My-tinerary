@@ -52,18 +52,17 @@ const AccommodationForm = () => {
   };
 
   if (isError.status) return <Error isError={isError} />;
-
   return (
     <IonContent>
       <IonHeader className="page-head" class="ion-no-border">
         <BackButton />
         Accommodation
       </IonHeader>
+
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
             <IonCardTitle color="danger">Venue:</IonCardTitle>
-
             <IonItem>
               <IonInput
                 color="danger"
@@ -114,6 +113,7 @@ const AccommodationForm = () => {
               />
             </IonItem>
             <IonCardTitle color="danger">Notes:</IonCardTitle>
+
             <IonTextarea
               color="danger"
               type="text"
@@ -139,6 +139,7 @@ const AccommodationForm = () => {
           Add Details
         </IonButton>
       </form>
+
       <IonButton
         size="large"
         expand="block"

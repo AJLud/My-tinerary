@@ -5,10 +5,10 @@ import {
   IonList,
   IonItem,
   IonButton,
+  IonHeader,
   IonCard,
   IonContent,
   IonInput,
-  IonHeader,
   IonSelect,
   IonSelectOption,
 } from '@ionic/react';
@@ -63,7 +63,6 @@ const TravelForm = () => {
   };
 
   if (isError.status) return <Error isError={isError} />;
-
   return (
     <IonContent>
       <IonHeader className="page-head" class="ion-no-border">
@@ -88,8 +87,12 @@ const TravelForm = () => {
                   });
                 }}
               >
-                <IonSelectOption value="Outbound">Outbound</IonSelectOption>
-                <IonSelectOption value="Inbound">Inbound</IonSelectOption>
+                <IonSelectOption color="danger" value="Outbound">
+                  Outbound
+                </IonSelectOption>
+                <IonSelectOption color="danger" value="Inbound">
+                  Inbound
+                </IonSelectOption>
               </IonSelect>
             </IonItem>
             <IonCardTitle color="danger">Date: </IonCardTitle>

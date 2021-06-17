@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import {
+  IonCardTitle,
   IonList,
   IonItem,
   IonButton,
   IonCard,
-  IonCardTitle,
   IonHeader,
   IonContent,
   IonInput,
@@ -58,7 +58,6 @@ const FormPage = () => {
   };
 
   if (isError.status) return <Error isError={isError} />;
-
   return (
     <IonContent>
       <IonHeader className="page-head" class="ion-no-border">
@@ -119,6 +118,7 @@ const FormPage = () => {
               />
             </IonItem>
             <IonCardTitle color="danger">Where:</IonCardTitle>
+
             <IonInput
               type="text"
               value={newExcursion.address}
@@ -142,6 +142,7 @@ const FormPage = () => {
           Add Details
         </IonButton>
       </form>
+
       <IonButton
         size="large"
         expand="block"

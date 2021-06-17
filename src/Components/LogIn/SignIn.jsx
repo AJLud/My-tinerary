@@ -85,7 +85,7 @@ const SignIn = ({ setUser }) => {
         color="primary"
         className="blue-button"
       >
-        Log In
+        Sign In
       </IonButton>
 
       <IonButton
@@ -97,7 +97,15 @@ const SignIn = ({ setUser }) => {
           history.push('/signup');
         }}
       >
-        Sign up
+        Create New Account
+      </IonButton>
+      <IonButton
+        className="orange-button"
+        size="large"
+        expand="block"
+        color="primary"
+      >
+        Forgot Password
       </IonButton>
     </IonContent>
   );
