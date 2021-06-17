@@ -109,7 +109,7 @@ const App = () => {
             <Route path="/buddies" exact>
               <Buddies user={user} />
             </Route>
-            <Route path="/trips/:tripId/Notes" exact>
+            <Route path="/trips/:tripId/Checklist" exact>
               <TravelNotes />
             </Route>
             <Route path="/archived-trips">
