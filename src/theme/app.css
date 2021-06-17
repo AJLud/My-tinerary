@@ -42,9 +42,6 @@
   padding-bottom: 60px;
 }
 
-.my-message {
-  text-align: right;
-}
 .buddy-card {
   text-align: center;
   display: block;
@@ -71,4 +68,23 @@
 .orange-button {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.other-message {
+  width: 80%;
+  padding: 50px;
+  background-color: #78bcc4;
+  color: #002c3e;
+}
+
+.other-subtitle {
+  color: #002c3e;
+}
+
+.my-message {
+  text-align: right;
+  padding: 50px;
+  color: white;
+  background-color: #002c3e;
+  width: 80%;
 }
