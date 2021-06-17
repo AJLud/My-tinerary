@@ -19,7 +19,7 @@ import AccommodationDetails from './Components/Trips/AccommodationList';
 import ExcursionList from './Components/Trips/ExcursionList';
 import TravelList from './Components/Trips/TravelList';
 import TravelNotes from './Components/Trips/TravelNotes';
-
+import ArchivedTrips from './Components/Trips/ArchivedTrips';
 import Error from './Components/Error';
 import UserContext from './Contexts/User';
 
@@ -111,6 +111,9 @@ const App = () => {
             </Route>
             <Route path="/trips/:tripId/Notes" exact>
               <TravelNotes />
+            </Route>
+            <Route path="/archived-trips">
+              <ArchivedTrips />
             </Route>
             <Route path="/404" exact>
               <Error />

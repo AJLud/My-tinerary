@@ -65,6 +65,9 @@ const Profile = ({ user, setUser }) => {
         expand="block"
         size="large"
         color="secondary"
+        onClick={() => {
+          history.push('/archived-trips');
+        }}
         className="orange-button"
       >
         Archived Trips
