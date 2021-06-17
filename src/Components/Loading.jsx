@@ -8,7 +8,7 @@ const Loading = () => (
       Organising your trips....
     </IonCardTitle>
     <img
-      src="https://cdn.iconscout.com/icon/free/png-512/aeroplane-airplane-plane-air-transportation-vehicle-pessanger-people-emoj-symbol-30708.png"
+      src="https://www.jing.fm/clipimg/full/203-2033437_plane-svg-png-icon-free-download-plane-icon.png"
       alt="plane"
       className="loading-plane"
     />
