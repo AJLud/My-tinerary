@@ -26,7 +26,7 @@ const Chat = ({ user }) => {
       >
         Back To Trip
       </IonButton>
-      <IonCardSubtitle className="page-head">[Trip Name]</IonCardSubtitle>
+      <IonCardSubtitle className="page-head">London 🎡️💂‍♂️️</IonCardSubtitle>
       <IonGrid className="chat-messages">
         <IonCard className="other-message">
           <IonCardSubtitle className="other-subtitle">
