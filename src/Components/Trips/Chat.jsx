@@ -19,7 +19,7 @@ const Chat = ({ user }) => {
   const messages = [
     {
       sender: 'CalCosta42',
-      text: 'so pumped for this break!',
+      text: 'so pumped for this city break!',
       time: '  10 May, 11:29',
       sentBy: 'buddy',
       avatar_url:
@@ -35,11 +35,11 @@ const Chat = ({ user }) => {
     },
     {
       sender: 'Jason890',
-      text: 'OMG lost my passport!!',
+      text: "London Eye, can't wait! 🎡️",
       time: '  11 May, 09:45',
       sentBy: 'buddy',
       avatar_url:
-        'https://ca.slack-edge.com/T01KPE0QGCD-U01R87UE71S-0e600c82397a-512',
+        'https://ca.slack-edge.com/T01KPE0QGCD-U01QZ0E72DB-59852633220d-72',
     },
     {
       sender: 'CalCosta42',
@@ -93,7 +93,7 @@ const Chat = ({ user }) => {
             />
           </IonAvatar>
           <IonCardContent color="success" className="chat-right">
-            <h2>Obsessed!</h2>
+            <h2>Does anyone have an oyster card?</h2>
           </IonCardContent>
         </IonItem>
         <IonLabel>11 May, 10:11</IonLabel>
