@@ -5,7 +5,6 @@ import {
   IonList,
   IonItem,
   IonButton,
-  IonHeader,
   IonCard,
   IonContent,
   IonInput,
@@ -72,13 +71,11 @@ const TravelForm = () => {
         Travel
       </IonHeader>
 
-
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
             <IonCardTitle color="danger">Direction: </IonCardTitle>
             <IonItem>
-
               <IonSelect
                 color="danger"
                 value={newTravel.direction}
@@ -94,7 +91,6 @@ const TravelForm = () => {
                 <IonSelectOption value="Outbound">Outbound</IonSelectOption>
                 <IonSelectOption value="Inbound">Inbound</IonSelectOption>
               </IonSelect>
-
             </IonItem>
             <IonCardTitle color="danger">Date: </IonCardTitle>
             <IonItem>
@@ -151,7 +147,7 @@ const TravelForm = () => {
               <IonInput
                 color="danger"
                 type="text"
-                placeholder="..."
+                // placeholder="..."
                 required
                 placeholder="£ / $ / €"
                 value={newTravel.cost}

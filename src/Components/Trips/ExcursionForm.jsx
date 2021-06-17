@@ -5,6 +5,7 @@ import {
   IonItem,
   IonButton,
   IonCard,
+  IonCardTitle,
   IonHeader,
   IonContent,
   IonInput,
@@ -107,7 +108,6 @@ const FormPage = () => {
                 type="text"
                 color="danger"
                 placeholder="£ / $ / €"
-
                 value={newExcursion.cost}
                 onIonChange={(event) => {
                   setNewExcursion((currExcursion) => {
