@@ -65,6 +65,11 @@ const Homepage = () => {
       >
         Chat
       </IonButton>
+      <img
+        src="https://media.tenor.com/images/864d09f6140c18af929bb7a1868ad4f1/tenor.gif"
+        alt="plane-gif"
+        className="plane-gif"
+      />
     </>
   );
 };
