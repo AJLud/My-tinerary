@@ -24,14 +24,21 @@ const Trip = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      getTripById(tripId).then((specificTrip) => {
-        setCurrentTrip(specificTrip);
-        setIsLoading(false);
-      });
-    }, 1000);
+    let mounted = true;
+    if (mounted) {
+      getTripById(tripId)
+        .then((specificTrip) => {
+          setCurrentTrip(specificTrip);
+        })
+        .then(() => {
+          setIsLoading(false);
+        });
+    }
+    return function cleanup() {
+      mounted = false;
+    };
   }, []);
-
+  console.log(currentTrip);
   const deleteTrip = (tripID) => {
     deleteTripByID(tripID)
       .then(() => {
