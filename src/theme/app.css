@@ -1,10 +1,10 @@
 .header {
   display: flex;
   text-align: center;
-  margin-top: 40px;
-  margin: 30px;
+  margin-top: 10px;
+  /* margin: 30px; */
   /* padding-top: 20px; */
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   font-weight: bold;
   font-size: 40px;
   color: #002c3e;
@@ -54,6 +54,9 @@
 
 .buddy-img {
   margin: auto;
+}
+.homepage-plane {
+  padding-top: 50px;
 }
 
 /* .buddy-name {
