@@ -89,9 +89,10 @@ const Chat = ({ user }) => {
         </IonCardSubtitle>
       </IonChip>
       <form>
-        <IonItem>
+        <IonItem color="dark">
           <IonInput type="text" />
         </IonItem>
+        <IonButton>Send</IonButton>
       </form>
     </IonContent>
   );

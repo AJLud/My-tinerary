@@ -38,7 +38,6 @@ const Trip = () => {
       mounted = false;
     };
   }, []);
-  console.log(currentTrip);
   const deleteTrip = (tripID) => {
     deleteTripByID(tripID)
       .then(() => {
