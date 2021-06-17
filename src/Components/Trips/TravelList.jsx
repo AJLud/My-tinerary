@@ -34,7 +34,7 @@ const TravelList = () => {
       setCurrentTrip(specificTrip);
       setIsLoading(false);
     });
-  }, []);
+  }, [tripId]);
 
   const deleteTravel = (ID, journey) => {
     deleteTravelByID(ID, journey)

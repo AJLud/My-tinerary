@@ -1,10 +1,11 @@
 .loading-plane {
+  margin-top: 100px;
   max-height: 100px;
   animation: rotation 2s infinite;
 }
 
 .loading-title {
-  padding-top: 50px;
+  padding-top: 100px;
   padding-bottom: 100px;
 }
 .loading {

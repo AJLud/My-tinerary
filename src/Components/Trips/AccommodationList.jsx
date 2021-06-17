@@ -76,10 +76,7 @@ const AccommodationDetails = () => {
       {accommodation.map((hotel) => (
         <IonCard key={hotel.accommId} color="primary">
           <IonCardHeader>
-            <h2>
-              {'Hotel Name: '}
-              {hotel.hotel_name}
-            </h2>
+            <h2>{hotel.hotel_name}</h2>
           </IonCardHeader>
           <IonCardContent>
             <IonCardSubtitle>

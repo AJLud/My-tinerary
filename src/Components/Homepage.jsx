@@ -29,18 +29,6 @@ const Homepage = () => {
       />
       <IonButton
         onClick={() => {
-          landingPage('/profile');
-        }}
-        color="secondary"
-        expand="block"
-        size="large"
-      >
-        Profile
-      </IonButton>
-      <br />
-      <br />
-      <IonButton
-        onClick={() => {
           landingPage('/trips');
         }}
         color="secondary"
@@ -72,6 +60,18 @@ const Homepage = () => {
         size="large"
       >
         Chat
+      </IonButton>
+      <br />
+      <br />
+      <IonButton
+        onClick={() => {
+          landingPage('/profile');
+        }}
+        color="secondary"
+        expand="block"
+        size="large"
+      >
+        Profile
       </IonButton>
 
       <IonBackButton />

@@ -23,7 +23,7 @@ const TripsList = ({ user }) => {
   useEffect(() => {
     getTripsByUser(user, setUserTrips);
     setIsLoading(false);
-  }, []);
+  }, [user]);
 
   const specificTrip = (trip) => {
     history.push(`/trips/${trip.tripId}`);

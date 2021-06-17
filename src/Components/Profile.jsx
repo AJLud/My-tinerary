@@ -17,7 +17,7 @@ const Profile = ({ user, setUser }) => {
   const [userDetails, setUserDetails] = useState('');
   useEffect(() => {
     getUserDetails(user, setUserDetails);
-  }, []);
+  }, [user]);
 
   return (
     <IonContent>

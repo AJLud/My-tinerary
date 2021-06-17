@@ -45,7 +45,7 @@ const TravelForm = () => {
     if (isPosted) {
       history.push(`/trips/${tripId.tripId}/travel`);
     }
-  }, [isPosted]);
+  }, [isPosted, history, tripId.tripId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

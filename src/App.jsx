@@ -46,7 +46,7 @@ import './theme/variables.css';
 import './theme/app.css';
 
 const App = () => {
-  const [user, setUser] = useState({ username: 'Bex123' });
+  const [user, setUser] = useState(null);
 
   const SignInSignUpView = () => (
     <IonApp>

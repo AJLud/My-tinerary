@@ -43,7 +43,7 @@ const NewTrip = () => {
     if (isPosted) {
       setNewTrip({ trip_name: '', destination: '' });
     }
-  }, []);
+  }, [isPosted]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

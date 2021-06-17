@@ -34,7 +34,7 @@ const ExcursionList = () => {
       setCurrentTrip(specificTrip);
       setIsLoading(false);
     });
-  }, []);
+  }, [tripId]);
 
   const deleteExcursion = (ID, excursion) => {
     deleteExcursionByID(ID, excursion.excursionID)
@@ -73,7 +73,6 @@ const ExcursionList = () => {
       {excursions.map((excursion) => (
         <IonCard key={excursion.excursionID} color="primary">
           <IonCardHeader>
-            =
             <h2>
               {'Event: '}
               {excursion.name}

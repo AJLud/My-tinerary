@@ -34,7 +34,7 @@ const Trip = () => {
         setIsLoading(false);
       });
     }, 1000);
-  }, []);
+  }, [tripId]);
 
   const deleteTrip = (tripID) => {
     deleteTripByID(tripID)

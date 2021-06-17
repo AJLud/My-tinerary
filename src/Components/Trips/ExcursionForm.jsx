@@ -40,7 +40,7 @@ const FormPage = () => {
       });
       history.push(`/trips/${tripId.tripId}/excursions`);
     }
-  }, [isPosted]);
+  }, [isPosted, history, tripId.tripId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

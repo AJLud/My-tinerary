@@ -12,15 +12,6 @@ import { formatDate } from '../../utils/utils';
 const ArchivedTrips = () => {
   const tripsArr = [
     {
-      destination: 'Barcelona',
-      end_date: { seconds: 1584886491, nanoseconds: 0 },
-      owner: 'Poonam_1478',
-      start_date: { seconds: 1584454768, nanoseconds: 0 },
-      tripId: '1',
-      trip_name: 'Business in Spain',
-      date_difference: '1 year, 2 months and 27 days ',
-    },
-    {
       destination: 'Delhi',
       end_date: { seconds: 1620393291, nanoseconds: 0 },
       owner: 'Bex123',
@@ -37,6 +28,15 @@ const ArchivedTrips = () => {
       tripId: '3',
       trip_name: 'Glasgow Minibreak',
       date_difference: '149 days',
+    },
+    {
+      destination: 'Barcelona',
+      end_date: { seconds: 1584886491, nanoseconds: 0 },
+      owner: 'Poonam_1478',
+      start_date: { seconds: 1584454768, nanoseconds: 0 },
+      tripId: '1',
+      trip_name: 'Business in Spain',
+      date_difference: '1 year, 2 months and 27 days ',
     },
   ];
   return (

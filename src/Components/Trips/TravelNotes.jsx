@@ -32,7 +32,7 @@ const TravelNotes = () => {
       setCurrentTrip(specificTrip);
       setIsLoading(false);
     });
-  }, []);
+  }, [tripId]);
 
   if (isLoading) return <Loading />;
 

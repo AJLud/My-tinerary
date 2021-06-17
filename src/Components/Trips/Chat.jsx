@@ -61,7 +61,7 @@ const Chat = ({ user }) => {
       <IonCardContent>
         <IonCardTitle color="danger">
           {'Dates: '}
-          [DATES FROM - DATES TO]
+          {'20/08/2021 - 22/08/2021'}
         </IonCardTitle>
         <br />
         <IonCardTitle color="danger">Trip Chat </IonCardTitle>
@@ -88,7 +88,7 @@ const Chat = ({ user }) => {
         <IonItem className="message-card" color="danger">
           <IonAvatar>
             <img
-              src="https://pbs.twimg.com/profile_images/1293174487672696833/dAfMsGZW_400x400.jpg"
+              src="https://media-exp1.licdn.com/dms/image/C4E03AQGCxTo3HCn7Bg/profile-displayphoto-shrink_800_800/0/1606771870275?e=1628726400&v=beta&t=YDbitvwL8rbF9PjNFcAQ8hgqARzP8dxVzQYJx7x3zBE"
               alt="buddy"
             />
           </IonAvatar>

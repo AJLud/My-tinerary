@@ -21,7 +21,7 @@ const ChatList = ({ user }) => {
   useEffect(() => {
     getTripsByUser(user, setUserTrips);
     setIsLoading(false);
-  }, []);
+  }, [user]);
   if (isLoading) return <Loading />;
 
   return (
