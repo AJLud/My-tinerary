@@ -22,6 +22,8 @@ import TravelNotes from './Components/Trips/TravelNotes';
 import ArchivedTrips from './Components/Trips/ArchivedTrips';
 import Error from './Components/Error';
 import UserContext from './Contexts/User';
+import ChatList from './Components/ChatList';
+import Chat from './Components/Trips/Chat';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -114,6 +116,12 @@ const App = () => {
             </Route>
             <Route path="/archived-trips">
               <ArchivedTrips />
+            </Route>
+            <Route path="/trips/:tripId/chat" exact>
+              <Chat user={user} />
+            </Route>
+            <Route path="/chats" exact>
+              <ChatList user={user} />
             </Route>
             <Route path="/404" exact>
               <Error />
