@@ -147,7 +147,6 @@ const TravelForm = () => {
               <IonInput
                 color="danger"
                 type="text"
-                // placeholder="..."
                 required
                 placeholder="£ / $ / €"
                 value={newTravel.cost}
