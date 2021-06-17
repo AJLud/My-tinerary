@@ -74,6 +74,7 @@ const FormPage = () => {
                 type="text"
                 color="danger"
                 required
+                placeholder="..."
                 value={newExcursion.name}
                 onIonChange={(event) => {
                   setNewExcursion((currExcursion) => {

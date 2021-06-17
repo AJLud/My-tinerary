@@ -67,6 +67,7 @@ const AccommodationForm = () => {
               <IonInput
                 color="danger"
                 type="text"
+                placeholder="..."
                 required
                 value={newAccommodation.hotel_name}
                 onIonChange={(event) => {
@@ -101,6 +102,7 @@ const AccommodationForm = () => {
                 type="text"
                 required
                 value={newAccommodation.days}
+                placeholder="..."
                 onIonChange={(event) => {
                   setNewAccommodation((currAccommodation) => {
                     const copyAccommodation = { ...currAccommodation };

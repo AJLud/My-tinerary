@@ -117,6 +117,7 @@ const TravelForm = () => {
                 color="danger"
                 type="text"
                 required
+                placeholder="..."
                 value={newTravel.leavingFrom}
                 onIonChange={(event) => {
                   setNewTravel((currTravel) => {
@@ -133,6 +134,7 @@ const TravelForm = () => {
                 color="danger"
                 type="text"
                 required
+                placeholder="..."
                 value={newTravel.arrivingAt}
                 onIonChange={(event) => {
                   setNewTravel((currTravel) => {
@@ -161,7 +163,6 @@ const TravelForm = () => {
               />
             </IonItem>
             <IonCardTitle color="danger">Transport:</IonCardTitle>
-
             <IonInput
               color="danger"
               type="text"
