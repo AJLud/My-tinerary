@@ -55,7 +55,7 @@ const Chat = ({ user }) => {
     <IonContent>
       <IonHeader className="page-head" class="ion-no-border">
         <BackButton />
-        [Trip Name]
+        London 💂‍♂️️
       </IonHeader>
 
       <IonCardContent>
