@@ -22,9 +22,11 @@ const Homepage = () => {
         My-tinerary
         <IonIcon icon={airplane} />
       </IonHeader>
-      <br />
-      <br />
-      <br />
+      <img
+        src="https://media.tenor.com/images/864d09f6140c18af929bb7a1868ad4f1/tenor.gif"
+        alt="plane-gif"
+        className="plane-gif"
+      />
       <IonButton
         onClick={() => {
           landingPage('/profile');
@@ -71,6 +73,7 @@ const Homepage = () => {
       >
         Chat
       </IonButton>
+
       <IonBackButton />
     </IonContent>
   );
