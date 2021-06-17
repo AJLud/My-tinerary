@@ -9,8 +9,13 @@ http://ionicframework.com/docs/theming/ */
   font-family: 'Merriweather', serif;
 }
 
+.align-text {
+  text-align: right;
+}
+
 h5 {
   color: #002c3e;
+  align-items: center;
 }
 
 /*
@@ -42,12 +47,12 @@ orange = #FF7235
   --ion-color-secondary-tint: #ff7235;
 
   /** success **/
-  --ion-color-success: #fcf5ef;
+  --ion-color-success: #ffffff;
   /* --ion-color-success-rgb: 45, 211, 111; */
   --ion-color-success-contrast: #ffffff;
   --ion-color-success-contrast-rgb: 255, 255, 255;
-  --ion-color-success-shade: #fcf5ef;
-  --ion-color-success-tint: #fcf5ef;
+  --ion-color-success-shade: #ffffff;
+  --ion-color-success-tint: #ffffff;
 
   /** danger **/
   --ion-color-danger: #002c3e;

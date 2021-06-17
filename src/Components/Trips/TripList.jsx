@@ -13,7 +13,7 @@ import getTripsByUser from '../../api/api';
 import { formatDate } from '../../utils/utils';
 import Loading from '../Loading';
 import Countdown from './Countdown';
-// import BackButton from '../BackButton';
+import BackButton from '../BackButton';
 
 const TripsList = ({ user }) => {
   const history = useHistory();
@@ -34,6 +34,7 @@ const TripsList = ({ user }) => {
   return (
     <IonContent overflow-scroll="true">
       <IonHeader className="page-head" class="ion-no-border">
+        <BackButton />
         Current Trips
       </IonHeader>
 
@@ -54,8 +55,9 @@ const TripsList = ({ user }) => {
           color="primary"
           onClick={() => specificTrip(trip)}
         >
-          <Countdown trip={trip} />
           <IonCardHeader>
+            {' '}
+            <Countdown trip={trip} />
             <h2>{trip.trip_name}</h2>
           </IonCardHeader>
 

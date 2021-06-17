@@ -4,10 +4,12 @@ import {
   IonItem,
   IonContent,
   IonCardContent,
+  IonHeader,
+  IonCardSubtitle,
 } from '@ionic/react';
 import { React, useState } from 'react';
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+
 import db from '../../Config/firebase-setup';
 import Error from '../Error';
 
@@ -49,6 +51,11 @@ const SignUp = () => {
   if (isError) return <Error />;
   return (
     <IonContent>
+      <IonHeader className="page-head" class="ion-no-border">
+        <IonCardSubtitle className="page-head">
+          Register Account
+        </IonCardSubtitle>
+      </IonHeader>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -105,10 +112,27 @@ const SignUp = () => {
             />
           </IonItem>
         </IonCardContent>
-        <IonButton type="submit">Register</IonButton>
-        <Link to="/">
-          <IonButton>Back To Login</IonButton>
-        </Link>
+        <IonButton
+          size="large"
+          expand="block"
+          color="secondary"
+          type="submit"
+          className="orange-button"
+        >
+          Register
+        </IonButton>
+
+        <IonButton
+          className="blue-button"
+          size="large"
+          expand="block"
+          color="primary"
+          onClick={() => {
+            history.push('/');
+          }}
+        >
+          Back To Login
+        </IonButton>
       </form>
     </IonContent>
   );

@@ -5,7 +5,7 @@ import {
   IonList,
   IonItem,
   IonButton,
-  IonItemDivider,
+  IonHeader,
   IonCard,
   IonContent,
   IonInput,
@@ -72,37 +72,34 @@ const TravelForm = () => {
         Travel
       </IonHeader>
 
-      {/* <IonButton
-        onClick={() => {
-          history.push(`/trips/${tripId.tripId}`);
-        }}
-      >
-        Back To Trip
-      </IonButton> */}
+
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
+            <IonCardTitle color="danger">Direction: </IonCardTitle>
             <IonItem>
-              <IonCardTitle>Add Plans</IonCardTitle>
+
+              <IonSelect
+                color="danger"
+                value={newTravel.direction}
+                placeholder="Select One"
+                onIonChange={(event) => {
+                  setNewTravel((currTravel) => {
+                    const copyTravel = { ...currTravel };
+                    copyTravel.direction = event.target.value;
+                    return copyTravel;
+                  });
+                }}
+              >
+                <IonSelectOption value="Outbound">Outbound</IonSelectOption>
+                <IonSelectOption value="Inbound">Inbound</IonSelectOption>
+              </IonSelect>
+
             </IonItem>
-            <IonItemDivider>Direction: </IonItemDivider>
-            <IonSelect
-              value={newTravel.direction}
-              placeholder="Select One"
-              onIonChange={(event) => {
-                setNewTravel((currTravel) => {
-                  const copyTravel = { ...currTravel };
-                  copyTravel.direction = event.target.value;
-                  return copyTravel;
-                });
-              }}
-            >
-              <IonSelectOption value="Outbound">Outbound</IonSelectOption>
-              <IonSelectOption value="Inbound">Inbound</IonSelectOption>
-            </IonSelect>
-            <IonItemDivider>Date: </IonItemDivider>
+            <IonCardTitle color="danger">Date: </IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="date"
                 required
                 value={newTravel.leavingDate}
@@ -115,9 +112,10 @@ const TravelForm = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Leaving From: </IonItemDivider>
+            <IonCardTitle color="danger">Leaving From: </IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="text"
                 required
                 placeholder="..."
@@ -131,9 +129,10 @@ const TravelForm = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Arriving At:</IonItemDivider>
+            <IonCardTitle color="danger">Arriving At:</IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="text"
                 required
                 placeholder="..."
@@ -147,12 +146,14 @@ const TravelForm = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Cost:</IonItemDivider>
+            <IonCardTitle color="danger">Budget:</IonCardTitle>
             <IonItem>
               <IonInput
+                color="danger"
                 type="text"
                 placeholder="..."
                 required
+                placeholder="£ / $ / €"
                 value={newTravel.cost}
                 onIonChange={(event) => {
                   setNewTravel((currTravel) => {
@@ -163,25 +164,30 @@ const TravelForm = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Transport:</IonItemDivider>
-            <IonItem>
-              <IonInput
-                type="text"
-                placeholder="..."
-                required
-                value={newTravel.transport}
-                onIonChange={(event) => {
-                  setNewTravel((currTravel) => {
-                    const copyTravel = { ...currTravel };
-                    copyTravel.transport = event.target.value;
-                    return copyTravel;
-                  });
-                }}
-              />
-            </IonItem>
+            <IonCardTitle color="danger">Transport:</IonCardTitle>
+            <IonInput
+              color="danger"
+              type="text"
+              required
+              placeholder="Aeroplane / Bus / Train / Taxi"
+              value={newTravel.transport}
+              onIonChange={(event) => {
+                setNewTravel((currTravel) => {
+                  const copyTravel = { ...currTravel };
+                  copyTravel.transport = event.target.value;
+                  return copyTravel;
+                });
+              }}
+            />
           </IonList>
         </IonCard>
-        <IonButton type="submit" size="large" expand="block" color="secondary">
+        <IonButton
+          type="submit"
+          size="large"
+          expand="block"
+          color="secondary"
+          className="orange-button"
+        >
           Add Details
         </IonButton>
       </form>
@@ -189,6 +195,7 @@ const TravelForm = () => {
         size="large"
         expand="block"
         color="primary"
+        className="blue-button"
         onClick={() => history.go(-1)}
       >
         Cancel
