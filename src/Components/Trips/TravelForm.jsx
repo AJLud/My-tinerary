@@ -9,6 +9,7 @@ import {
   IonCard,
   IonContent,
   IonInput,
+  IonHeader,
   IonSelect,
   IonSelectOption,
 } from '@ionic/react';
@@ -63,6 +64,7 @@ const TravelForm = () => {
   };
 
   if (isError.status) return <Error isError={isError} />;
+
   return (
     <IonContent>
       <IonHeader className="page-head" class="ion-no-border">
@@ -70,11 +72,13 @@ const TravelForm = () => {
         Travel
       </IonHeader>
 
+
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
             <IonCardTitle color="danger">Direction: </IonCardTitle>
             <IonItem>
+
               <IonSelect
                 color="danger"
                 value={newTravel.direction}
@@ -90,6 +94,7 @@ const TravelForm = () => {
                 <IonSelectOption value="Outbound">Outbound</IonSelectOption>
                 <IonSelectOption value="Inbound">Inbound</IonSelectOption>
               </IonSelect>
+
             </IonItem>
             <IonCardTitle color="danger">Date: </IonCardTitle>
             <IonItem>
@@ -113,6 +118,7 @@ const TravelForm = () => {
                 color="danger"
                 type="text"
                 required
+                placeholder="..."
                 value={newTravel.leavingFrom}
                 onIonChange={(event) => {
                   setNewTravel((currTravel) => {
@@ -129,6 +135,7 @@ const TravelForm = () => {
                 color="danger"
                 type="text"
                 required
+                placeholder="..."
                 value={newTravel.arrivingAt}
                 onIonChange={(event) => {
                   setNewTravel((currTravel) => {
@@ -144,6 +151,7 @@ const TravelForm = () => {
               <IonInput
                 color="danger"
                 type="text"
+                placeholder="..."
                 required
                 placeholder="£ / $ / €"
                 value={newTravel.cost}
@@ -157,7 +165,6 @@ const TravelForm = () => {
               />
             </IonItem>
             <IonCardTitle color="danger">Transport:</IonCardTitle>
-
             <IonInput
               color="danger"
               type="text"
