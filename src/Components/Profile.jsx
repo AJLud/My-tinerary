@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 /* eslint-disable */
-import { IonButton, IonContent, IonItem, IonHeader } from '@ionic/react';
+import {
+  IonButton,
+  IonContent,
+  IonCardTitle,
+  IonHeader,
+  IonCard,
+} from '@ionic/react';
 /* eslint-enable */
 import { useHistory } from 'react-router-dom';
 import getUserDetails from '../userDetails.api';
@@ -20,10 +26,14 @@ const Profile = ({ user, setUser }) => {
         Profile
       </IonHeader>
 
-      <IonItem>
-        {'User: '}
+      <IonButton
+        expand="block"
+        size="large"
+        color="secondary"
+        className="orange-button"
+      >
         {userDetails.name}
-      </IonItem>
+      </IonButton>
 
       <div className="homepage-img-container">
         <img

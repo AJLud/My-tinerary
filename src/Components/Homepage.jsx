@@ -2,6 +2,7 @@ import React from 'react';
 import { IonHeader, IonButton, IonIcon } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { airplane } from 'ionicons/icons';
+import '../theme/planetest.css';
 
 const Homepage = () => {
   const history = useHistory();
@@ -15,7 +16,9 @@ const Homepage = () => {
         My-tinerary
         <IonIcon icon={airplane} />
       </IonHeader>
-
+      <br />
+      <br />
+      <br />
       <IonButton
         onClick={() => {
           landingPage('/profile');
@@ -26,6 +29,7 @@ const Homepage = () => {
       >
         Profile
       </IonButton>
+      <br />
       <br />
       <IonButton
         onClick={() => {
@@ -38,6 +42,7 @@ const Homepage = () => {
         Trips
       </IonButton>
       <br />
+      <br />
       <IonButton
         onClick={() => {
           landingPage('/buddies');
@@ -48,6 +53,7 @@ const Homepage = () => {
       >
         Buddies
       </IonButton>
+      <br />
       <br />
       <IonButton
         onClick={() => {

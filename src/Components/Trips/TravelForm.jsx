@@ -87,8 +87,12 @@ const TravelForm = () => {
                   });
                 }}
               >
-                <IonSelectOption value="Outbound">Outbound</IonSelectOption>
-                <IonSelectOption value="Inbound">Inbound</IonSelectOption>
+                <IonSelectOption color="danger" value="Outbound">
+                  Outbound
+                </IonSelectOption>
+                <IonSelectOption color="danger" value="Inbound">
+                  Inbound
+                </IonSelectOption>
               </IonSelect>
             </IonItem>
             <IonCardTitle color="danger">Date: </IonCardTitle>

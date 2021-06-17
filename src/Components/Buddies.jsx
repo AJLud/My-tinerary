@@ -40,19 +40,31 @@ const Buddies = () => {
         <BackButton />
         <IonCardSubtitle className="page-head">Buddies</IonCardSubtitle>
       </IonHeader>
+
       <IonButton size="large" expand="block" color="secondary">
         Add Buddy
       </IonButton>
+
       {buddies.map((buddy) => (
         <IonItem color="primary" className="buddy-card" key={buddy.username}>
           <IonAvatar>
             <img src={buddy.avatar_url} alt="buddy" className="buddy-img" />
           </IonAvatar>
           <IonLabel color="success" className="buddy-name">
-            {buddy.username}
+            <h2>{buddy.username}</h2>
           </IonLabel>
         </IonItem>
       ))}
+      <br />
+      <IonButton size="medium" expand="block" color="secondary">
+        Add By Username
+      </IonButton>
+      <IonButton size="medium" expand="block" color="secondary">
+        Connect to Facebook
+      </IonButton>
+      <IonButton size="medium" expand="block" color="secondary">
+        Connect to Instagram
+      </IonButton>
     </IonContent>
   );
 };

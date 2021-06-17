@@ -52,13 +52,16 @@ const ExcursionList = () => {
       <IonHeader className="page-head" class="ion-no-border">
         <BackButton /> {currentTrip.trip_name}
       </IonHeader>
-      <h2>
-        {formatDate(currentTrip.start_date.seconds)}
-        {' - '}
-        {formatDate(currentTrip.end_date.seconds)}
-      </h2>
-      <h2>Excursions</h2>
-
+      <IonCardContent>
+        <IonCardTitle color="danger">
+          {'Dates: '}
+          {formatDate(currentTrip.start_date.seconds)}
+          {' - '}
+          {formatDate(currentTrip.end_date.seconds)}
+        </IonCardTitle>
+        <br />
+        <IonCardTitle color="danger">Excursions </IonCardTitle>
+      </IonCardContent>
       <IonButton
         color="secondary"
         expand="block"
