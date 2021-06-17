@@ -74,12 +74,10 @@ const TravelList = () => {
       {travel.map((journey) => (
         <IonCard key={journey.travelId} color="primary">
           <IonCardHeader>
-            <IonCardTitle>
-              <h5>
-                {'Direction: '}
-                {journey.direction}
-              </h5>
-            </IonCardTitle>
+            <h2>
+              {'Direction: '}
+              {journey.direction}
+            </h2>
           </IonCardHeader>
           <IonCardContent>
             <IonCardSubtitle>

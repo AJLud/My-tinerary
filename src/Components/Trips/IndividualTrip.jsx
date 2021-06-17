@@ -51,14 +51,15 @@ const Trip = () => {
     <IonContent>
       <IonHeader className="page-head" class="ion-no-border">
         <BackButton />
-        <IonCardSubtitle className="page-head">
-          <Countdown trip={currentTrip} />
+        <IonCardTitle className="page-head">
           {currentTrip.trip_name}
-        </IonCardSubtitle>
+        </IonCardTitle>
       </IonHeader>
 
       <IonCardContent>
         <IonCardTitle color="danger">
+          <Countdown trip={currentTrip} />
+          <br />
           {'Dates: '}
           {formatDate(currentTrip.start_date.seconds)}
           {' - '}

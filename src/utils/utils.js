@@ -14,12 +14,12 @@ const countdown = ({ seconds, tripDurationSeconds }) => {
 
   if (seconds >= 3600) {
     const hours = Math.floor(seconds / hour);
-    return `${hours} hour${pluralized(hours)} until... `;
+    return `Happening in ${hours} hour${pluralized(hours)}...`;
   }
 
   // within the last hour of start trip
   if (seconds < 3600 && seconds >= 0) {
-    return "Don't forget your toothbrush!";
+    return "OMG - Don't forget your toothbrush!";
   }
 
   // if curr date is in the durationg of an ongoing trip

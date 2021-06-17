@@ -1,5 +1,11 @@
 import React from 'react';
-import { IonHeader, IonButton, IonIcon } from '@ionic/react';
+import {
+  IonHeader,
+  IonButton,
+  IonIcon,
+  IonContent,
+  IonBackButton,
+} from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { airplane } from 'ionicons/icons';
 import '../theme/planetest.css';
@@ -11,7 +17,7 @@ const Homepage = () => {
   };
 
   return (
-    <>
+    <IonContent>
       <IonHeader className="header plane" class="ion-no-border">
         My-tinerary
         <IonIcon icon={airplane} />
@@ -65,7 +71,8 @@ const Homepage = () => {
       >
         Chat
       </IonButton>
-    </>
+      <IonBackButton />
+    </IonContent>
   );
 };
 
