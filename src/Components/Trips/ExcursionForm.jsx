@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import {
-  IonCardTitle,
   IonList,
   IonItem,
   IonButton,
+  IonCardTitle,
   IonItemDivider,
   IonCard,
+  IonHeader,
   IonContent,
   IonInput,
 } from '@ionic/react';
@@ -56,27 +57,33 @@ const FormPage = () => {
   };
 
   if (isError.status) return <Error isError={isError} />;
+
   return (
     <IonContent>
-      <BackButton />
-      <IonButton
+      <IonHeader className="page-head" class="ion-no-border">
+        <BackButton />
+        Excursion
+      </IonHeader>
+
+      {/* <IonButton
         onClick={() => {
           history.push(`/trips/${tripId.tripId}`);
         }}
       >
         Back To Trip
-      </IonButton>
+      </IonButton> */}
       <form onSubmit={handleSubmit}>
         <IonCard>
           <IonList>
             <IonItem>
-              <IonCardTitle>Excursions</IonCardTitle>
+              <IonCardTitle>Add Plans</IonCardTitle>
             </IonItem>
             <IonItemDivider>Name:</IonItemDivider>
             <IonItem>
               <IonInput
                 type="text"
                 required
+                placeholder="..."
                 value={newExcursion.name}
                 onIonChange={(event) => {
                   setNewExcursion((currExcursion) => {
@@ -106,6 +113,7 @@ const FormPage = () => {
             <IonItem>
               <IonInput
                 type="text"
+                placeholder="..."
                 value={newExcursion.cost}
                 onIonChange={(event) => {
                   setNewExcursion((currExcursion) => {
@@ -116,10 +124,11 @@ const FormPage = () => {
                 }}
               />
             </IonItem>
-            <IonItemDivider>Address:</IonItemDivider>
+            <IonItemDivider>Venue:</IonItemDivider>
             <IonItem>
               <IonInput
                 type="text"
+                placeholder="..."
                 value={newExcursion.address}
                 onIonChange={(event) => {
                   setNewExcursion((currExcursion) => {
@@ -132,12 +141,16 @@ const FormPage = () => {
             </IonItem>
           </IonList>
         </IonCard>
-        <IonButton color="success" type="submit" expand="block">
+        <IonButton type="submit" size="large" expand="block" color="secondary">
           Add Details
         </IonButton>
       </form>
-
-      <IonButton expand="block" color="danger" onClick={() => history.go(-1)}>
+      <IonButton
+        size="large"
+        expand="block"
+        color="primary"
+        onClick={() => history.go(-1)}
+      >
         Cancel
       </IonButton>
     </IonContent>
