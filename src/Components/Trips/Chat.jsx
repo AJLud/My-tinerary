@@ -3,9 +3,11 @@ import { useParams, useHistory } from 'react-router-dom';
 import {
   IonCardSubtitle,
   IonCardContent,
-  IonCard,
   IonContent,
   IonButton,
+  IonItem,
+  IonInput,
+  IonChip,
 } from '@ionic/react';
 import getTripById from '../../api/tripById.api';
 import BackButton from '../BackButton';
@@ -18,10 +20,19 @@ const Chat = ({ user }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getTripById(tripId).then((specificTrip) => {
-      setCurrentTrip(specificTrip);
-      setIsLoading(false);
-    });
+    let mounted = true;
+    if (mounted) {
+      getTripById(tripId)
+        .then((specificTrip) => {
+          setCurrentTrip(specificTrip);
+        })
+        .then(() => {
+          setIsLoading(false);
+        });
+    }
+    return function cleanup() {
+      mounted = false;
+    };
   }, []);
 
   if (isLoading) return <Loading />;
@@ -38,34 +49,50 @@ const Chat = ({ user }) => {
       <IonCardSubtitle className="page-head">
         {currentTrip.trip_name}
       </IonCardSubtitle>
-      <IonCard className="other-message">
-        <IonCardSubtitle>AlexAlexAlex</IonCardSubtitle>
+      <IonChip className="other-message">
+        <IonCardSubtitle className="other-subtitle">
+          AlexAlexAlex
+        </IonCardSubtitle>
         <IonCardContent>
           <h2>I&apos;m so pumped for this break!</h2>
         </IonCardContent>
-        <IonCardSubtitle>10 May, 11:29</IonCardSubtitle>
-      </IonCard>
-      <IonCard className="my-message">
+        <IonCardSubtitle className="other-subtitle">
+          10 May, 11:29
+        </IonCardSubtitle>
+      </IonChip>
+      <IonChip className="my-message">
         <IonCardSubtitle>{user.username}</IonCardSubtitle>
         <IonCardContent>
           <h2>I know right, bring a brolly though ☂ </h2>
         </IonCardContent>
         <IonCardSubtitle>10 May, 13:45</IonCardSubtitle>
-      </IonCard>
-      <IonCard className="other-message">
-        <IonCardSubtitle>BigDave101</IonCardSubtitle>
+      </IonChip>
+      <IonChip className="other-message">
+        <IonCardSubtitle className="other-subtitle">BigDave101</IonCardSubtitle>
         <IonCardContent>
           <h2>Rain rain go away am i right?</h2>
         </IonCardContent>
-        <IonCardSubtitle>10 May, 11:29</IonCardSubtitle>
-      </IonCard>
-      <IonCard className="other-message">
-        <IonCardSubtitle>Poonam_1478</IonCardSubtitle>
+        <IonCardSubtitle className="other-subtitle">
+          10 May, 11:29
+        </IonCardSubtitle>
+      </IonChip>
+      <IonChip className="other-message">
+        <IonCardSubtitle className="other-subtitle">
+          Poonam_1478
+        </IonCardSubtitle>
         <IonCardContent>
           <h2>🤣🤣🤣 </h2>
         </IonCardContent>
-        <IonCardSubtitle>10 May, 11:29</IonCardSubtitle>
-      </IonCard>
+        <IonCardSubtitle className="other-subtitle">
+          {' '}
+          10 May, 11:29
+        </IonCardSubtitle>
+      </IonChip>
+      <form>
+        <IonItem>
+          <IonInput type="text" />
+        </IonItem>
+      </form>
     </IonContent>
   );
 };
