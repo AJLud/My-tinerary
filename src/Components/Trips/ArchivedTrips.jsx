@@ -41,16 +41,19 @@ const ArchivedTrips = () => {
   ];
   return (
     <IonContent overflow-scroll="true">
-      <BackButton />
-      <IonHeader className="page-head" position="none">
+      <IonHeader className="page-head" class="ion-no-border">
+        <BackButton />
         Archived Trips
       </IonHeader>
+
       {tripsArr.map((trip) => (
         <IonCard key={trip.tripId} color="primary">
-          {trip.date_difference}
-          {'  '}
-          since
           <IonCardHeader>
+            <h5>
+              {trip.date_difference}
+              {' since '}
+            </h5>
+
             <h2>{trip.trip_name}</h2>
           </IonCardHeader>
           <IonCardContent>

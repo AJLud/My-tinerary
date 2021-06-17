@@ -40,7 +40,8 @@ const SignIn = ({ setUser }) => {
       <IonHeader className="header plane" class="ion-no-border">
         My-tinerary <IonIcon icon={airplane} />
       </IonHeader>
-
+      <br />
+      <br />
       <div className="homepage-img-container">
         <img
           src="https://svgsilh.com/svg/1552354.svg"

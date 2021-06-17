@@ -52,6 +52,15 @@
   border-radius: 50px;
 }
 
+.message-card {
+  text-align: center;
+  display: block;
+
+  width: 100%;
+  margin-top: 30px;
+  border-radius: 50px;
+}
+
 .buddy-img {
   margin: auto;
 }
@@ -86,10 +95,10 @@
 }
 .chat-messages {
   display: grid;
-  grid-template-columns: 80%;
+  grid-template-columns: 98%;
   grid-template-rows: auto auto auto auto;
-  justify-items: center;
-  padding: 0px;
+  justify-items: right;
+  padding: 5px;
 }
 .chat-left {
   justify-content: left;

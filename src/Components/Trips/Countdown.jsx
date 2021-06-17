@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonCardSubtitle } from '@ionic/react';
+import { IonCardTitle } from '@ionic/react';
 
 import * as utils from '../../utils/utils';
 
@@ -14,9 +14,7 @@ const Countdown = ({ trip }) => {
   );
 
   return (
-    <IonCardSubtitle>
-      <h5>{utils.countdown(timeElapsed)}</h5>
-    </IonCardSubtitle>
+    <IonCardTitle color="danger">{utils.countdown(timeElapsed)}</IonCardTitle>
   );
 };
 

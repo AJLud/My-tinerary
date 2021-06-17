@@ -73,12 +73,11 @@ const ExcursionList = () => {
       {excursions.map((excursion) => (
         <IonCard key={excursion.excursionID} color="primary">
           <IonCardHeader>
-            <IonCardTitle>
-              <h5>
-                {'Event: '}
-                {excursion.name}
-              </h5>
-            </IonCardTitle>
+            =
+            <h2>
+              {'Event: '}
+              {excursion.name}
+            </h2>
           </IonCardHeader>
           <IonCardContent>
             <IonCardSubtitle>

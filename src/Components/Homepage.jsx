@@ -1,5 +1,11 @@
 import React from 'react';
-import { IonHeader, IonButton, IonIcon } from '@ionic/react';
+import {
+  IonHeader,
+  IonButton,
+  IonIcon,
+  IonContent,
+  IonBackButton,
+} from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import { airplane } from 'ionicons/icons';
 import '../theme/planetest.css';
@@ -11,14 +17,16 @@ const Homepage = () => {
   };
 
   return (
-    <>
+    <IonContent>
       <IonHeader className="header plane" class="ion-no-border">
         My-tinerary
         <IonIcon icon={airplane} />
       </IonHeader>
-      <br />
-      <br />
-      <br />
+      <img
+        src="https://media.tenor.com/images/864d09f6140c18af929bb7a1868ad4f1/tenor.gif"
+        alt="plane-gif"
+        className="plane-gif"
+      />
       <IonButton
         onClick={() => {
           landingPage('/profile');
@@ -65,12 +73,9 @@ const Homepage = () => {
       >
         Chat
       </IonButton>
-      <img
-        src="https://media.tenor.com/images/864d09f6140c18af929bb7a1868ad4f1/tenor.gif"
-        alt="plane-gif"
-        className="plane-gif"
-      />
-    </>
+
+      <IonBackButton />
+    </IonContent>
   );
 };
 
